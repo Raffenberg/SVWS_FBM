@@ -60,7 +60,7 @@ try {
  }
  for(const [path,chapters] of [['/Datenbanken/testdaten/',catalog.schoolChapters],['/Datenbanken/schulungen/',catalog.moduleChapters]]) {
   await visit(path)
-  assert.deepEqual(await page.locator('.vp-doc h2').allTextContents().then(texts=>texts.map(x=>x.replace(/^#\s*/, '').trim())),chapters.map(x=>x.text),path)
+  assert.deepEqual(await page.locator('.vp-doc h2').evaluateAll(nodes=>nodes.map(node=>{const copy=node.cloneNode(true);copy.querySelectorAll('.header-anchor').forEach(a=>a.remove());return copy.textContent.trim()})),chapters.map(x=>x.text),path)
   assert.equal(await page.locator('.VPDocAsideOutline a.outline-link').count(),chapters.length,path)
   for(const chapter of chapters) assert.ok(await page.locator('.VPDocAsideOutline a[href="#'+chapter.id+'"]').count(),chapter.text)
   const last=chapters.at(-1)
