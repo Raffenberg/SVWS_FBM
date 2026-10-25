@@ -2,6 +2,12 @@
 
 Hier findest Du den gemeinsamen Einstieg für Fachberatung und Moderation. Maßgeblich ist, **was sich für Deine Aufgabe und Deine Programmversion ändert**. Eine ältere Fortbildungsseite mit „aktuell“ im Titel ist kein laufender Nachrichtenkanal.
 
+## Neueste veröffentlichte Hinweise
+
+<LatestTips />
+
+Die Auswahl kommt automatisch aus den beiden gepflegten Datumstabellen. Sie ist kein vollständiger Release-Ticker. [Alle SchILD-Tipps](./schild-tipps.md) und [alle SVWS-Tipps](./svws-tipps.md) bleiben erreichbar.
+
 ## Vor einer Beratung oder Schulung
 
 1. Notiere die eingesetzten Versionen von SVWS-Server, SchILD und benötigten Tools.

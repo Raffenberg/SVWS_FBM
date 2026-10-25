@@ -63,7 +63,10 @@
     "schulungsmodule/gost/Laufbahnplanung_kommende_EF/3_Wahlen_und_Beratung.md",
     "schulungsmodule/sek_i/15_Zeugnisdruck.md",
     "schulungsmodule/sek_i/9_Zeugnisformulare.md",
-    "schulungsmodule/uebergangsschulung/5_Noteneingabe.md"
+    "schulungsmodule/uebergangsschulung/5_Noteneingabe.md",
+    "Tipp_der_Woche/SVWS-Hack_der_Woche/konferenzmodul.md",
+    "schulungsmodule/gost/Laufbahnplanung_kommende_EF/index.md",
+    "schulungsmodule/gost/QPhase_und_Abitur/index.md"
   ],
   "newArticles": [
     "technik/index.md",
@@ -128,7 +131,6 @@
     "Tipp_der_Woche/SVWS-Hack_der_Woche/dbeaver-dump.md",
     "Tipp_der_Woche/SVWS-Hack_der_Woche/fehlerhafteKursarteDFGundDFK.md",
     "Tipp_der_Woche/SVWS-Hack_der_Woche/kataloge.md",
-    "Tipp_der_Woche/SVWS-Hack_der_Woche/konferenzmodul.md",
     "Tipp_der_Woche/SVWS-Hack_der_Woche/tools.md",
     "Tipp_der_Woche/SchILD-Tipp_der_Woche/StartwarnungSchuljahresabschnitt.md",
     "Tipp_der_Woche/SchILD-Tipp_der_Woche/datenbankmigration.md",
@@ -203,12 +205,10 @@
     "schulungsmodule/gost/Laufbahnplanung_kommende_EF/5_Blockung_Anwenden.md",
     "schulungsmodule/gost/Laufbahnplanung_kommende_EF/6_Um-Abwahlen.md",
     "schulungsmodule/gost/Laufbahnplanung_kommende_EF/7_Leistungsdaten_und_Zeugnisse.md",
-    "schulungsmodule/gost/Laufbahnplanung_kommende_EF/index.md",
     "schulungsmodule/gost/QPhase_und_Abitur/1_Orientierung_und_Wiederholung.md",
     "schulungsmodule/gost/QPhase_und_Abitur/2_NeueQphase_und_Laufbahnkorrekturen.md",
     "schulungsmodule/gost/QPhase_und_Abitur/3_KorrigierteEF_und_Q1Blocken.md",
     "schulungsmodule/gost/QPhase_und_Abitur/4_Umwahlen_und_Wahl_von_A3A4.md",
-    "schulungsmodule/gost/QPhase_und_Abitur/index.md",
     "schulungsmodule/gost/index.md",
     "schulungsmodule/sek_i/10_Halbjahreswechsel.md",
     "schulungsmodule/sek_i/11_Mahnungen.md",
@@ -250,6 +250,9 @@
     "schulungsmodule/gost/Laufbahnplanung_kommende_EF/3_Wahlen_und_Beratung.md",
     "schulungsmodule/sek_i/15_Zeugnisdruck.md",
     "schulungsmodule/sek_i/9_Zeugnisformulare.md",
-    "schulungsmodule/uebergangsschulung/5_Noteneingabe.md"
+    "schulungsmodule/uebergangsschulung/5_Noteneingabe.md",
+    "Tipp_der_Woche/SVWS-Hack_der_Woche/konferenzmodul.md",
+    "schulungsmodule/gost/Laufbahnplanung_kommende_EF/index.md",
+    "schulungsmodule/gost/QPhase_und_Abitur/index.md"
   ]
 }

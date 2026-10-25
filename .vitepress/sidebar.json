@@ -23,27 +23,30 @@
       {
         "text": "Übersicht",
         "link": "/moderation/",
-        "description": "Eine Schulung planen, durchführen und nachbereiten."
-      },
-      {
-        "text": "Schulung vorbereiten",
-        "link": "/moderation/vorbereiten",
-        "description": "Lernziele, Material und Raum abstimmen."
-      },
-      {
-        "text": "Schulung durchführen",
-        "link": "/moderation/durchfuehren",
-        "description": "Aufgaben anleiten und Lernfortschritt prüfen."
-      },
-      {
-        "text": "Schulung nachbereiten",
-        "link": "/moderation/nachbereiten",
-        "description": "Ergebnisse sichern und den Raum übergeben."
-      },
-      {
-        "text": "Material weiterentwickeln",
-        "link": "/moderation/material-pflegen",
-        "description": "Erprobte Aufgaben und Anleitungen pflegen."
+        "description": "Eine Schulung planen, durchführen und nachbereiten.",
+        "items": [
+          {
+            "text": "Schulung vorbereiten",
+            "link": "/moderation/vorbereiten",
+            "description": "Lernziele, Material und Raum abstimmen."
+          },
+          {
+            "text": "Schulung durchführen",
+            "link": "/moderation/durchfuehren",
+            "description": "Aufgaben anleiten und Lernfortschritt prüfen."
+          },
+          {
+            "text": "Schulung nachbereiten",
+            "link": "/moderation/nachbereiten",
+            "description": "Ergebnisse sichern und den Raum übergeben."
+          },
+          {
+            "text": "Material weiterentwickeln",
+            "link": "/moderation/material-pflegen",
+            "description": "Erprobte Aufgaben und Anleitungen pflegen."
+          }
+        ],
+        "collapsed": true
       },
       {
         "text": "Schulungsmodule",

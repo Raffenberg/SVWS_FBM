@@ -56,6 +56,12 @@ features:
 | Neuerungen oder ein Fehlerbild prüfen | [Aktuelle Hinweise](/wissen/aktuelles) und [Probleme und Lösungen](/beratung/probleme) |
 | Etwas erstmals selbst durchführen | [Lernwege](/fortbildung/lernwege) |
 
+## Neueste veröffentlichte Hinweise
+
+<LatestTips />
+
+Die Tabelle wird aus den vorhandenen datierten [SchILD- und SVWS-Tipps](/wissen/aktuelles) erzeugt. Prüfe den Programmstand vor der Anwendung.
+
 ## Verlässliche Quellen nutzen
 
 Dieses Portal beschreibt Arbeitsabläufe für Fachberatung und Moderation. Die ausführliche Programmbedienung und Installation bleiben in den zuständigen Wikis und Handbüchern. [Wichtige Links](/wissen/links) erschließt diese Quellen; die [Umstiegsorientierung](/wissen/umstieg) hilft beim Vergleich SchILD2/SchILD3.

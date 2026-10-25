@@ -2,6 +2,8 @@ import { defineConfig, loadEnv } from 'vite';
 import type { DefaultTheme, UserConfig } from 'vitepress';
 import sidebar from '../sidebar';
 import navigation from './sidebar.json';
+import { readFileSync } from 'node:fs';
+import { recentTips } from './recent.mjs';
 import { footerFor } from './navigation.mjs';
 import { configureMarkdown } from './markdown';
 import { containerLabels } from './hint-boxes';
@@ -15,6 +17,12 @@ export default defineConfig(({ mode }) => {
         description: 'Wissen, Schulungsmaterial und Austausch für Fachberatung und Moderation rund um SchILD-NRW und den SVWS-Server.',
         lastUpdated: true,
         transformPageData(pageData) {
+            if (['index.md', 'wissen/aktuelles.md'].includes(pageData.relativePath)) {
+                pageData.frontmatter.latestTips = recentTips([
+                    { product: 'SchILD', source: readFileSync('wissen/schild-tipps.md', 'utf8') },
+                    { product: 'SVWS', source: readFileSync('wissen/svws-tipps.md', 'utf8') },
+                ]);
+            }
             if (pageData.frontmatter.layout !== 'home') {
                 Object.assign(pageData.frontmatter, footerFor(navigation, '/' + pageData.relativePath));
             }

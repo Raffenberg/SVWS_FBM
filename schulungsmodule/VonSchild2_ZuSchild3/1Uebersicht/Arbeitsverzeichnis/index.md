@@ -12,7 +12,7 @@ Bei der Installation wird ein SVWS-Arbeitsverzeichnis angelegt, in dem sämtlich
 
 
  ::: details
- * Lade Dich von der Homepage das für Deine Schule passenende Zeugnispaket herunter: https://www.svws.nrw.de/download/schild-reports/zeugnisformulare
+ * Lade Dich von der Homepage das für Deine Schule passenende Zeugnispaket herunter: https://www.svws.nrw.de/reports-schild-nrw-3
  * Lege Dir im SVWS-Arbeitsverzeichnis einen Ordner Zeugnis-xx-xx-2024 an.
  * Entpacke das Zeugnispaket und speichere dieses im zuvor angelegten Ordner. 
  :::
