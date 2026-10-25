@@ -1,4 +1,4 @@
-# Schulungsdatenbanken für die Grundschule {#grundschuldatenbanken}
+# Datenbestände für die Grundschule {#grundschuldatenbanken}
 
 ## Einsatzbereich
 

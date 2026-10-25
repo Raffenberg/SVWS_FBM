@@ -1,233 +1,107 @@
 import { chromium } from 'playwright'
 import assert from 'node:assert/strict'
 import { mkdirSync, readFileSync } from 'node:fs'
-import { clean, createSidebar, footerFor, topicFor, sectionFor, sidebarFor } from '../.vitepress/navigation.mjs'
+import { clean, createSidebar, footerFor, sectionFor, sidebarFor, flatten } from '../.vitepress/navigation.mjs'
 import { overviewRows } from '../.vitepress/overview.mjs'
-const nav = JSON.parse(readFileSync('.vitepress/sidebar.json', 'utf8'))
-const menus = createSidebar(nav)
-const origin = process.env.PREVIEW_URL ?? 'http://127.0.0.1:4173'
-const base = process.env.BASE ?? '/Schulungsunterlagen/'
-const urlFor = link => origin + base + link.slice(1)
-const localPath = href => new URL(href, urlFor('/')).pathname.slice(base.length - 1)
-mkdirSync('test-results', { recursive: true })
-const browser = await chromium.launch()
-const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } })
-const errors = []
-page.on('pageerror', error => errors.push(error.message))
-const visit = async link => {
-  const response = await page.goto(urlFor(link), { waitUntil: 'networkidle' })
-  assert.equal(response.status(), 200, link)
-  await page.waitForSelector('.VPContent')
+const nav=JSON.parse(readFileSync('.vitepress/sidebar.json','utf8'))
+const origin=process.env.PREVIEW_URL??'http://127.0.0.1:4173'
+const base=process.env.BASE??'/Schulungsunterlagen/'
+const urlFor=link=>origin+base+link.slice(1)
+const local=href=>new URL(href,urlFor('/')).pathname.slice(base.length-1)
+const browser=await chromium.launch()
+const page=await browser.newPage({viewport:{width:1440,height:1000}})
+const errors=[]
+page.on('pageerror',error=>errors.push(error.message))
+mkdirSync('test-results',{recursive:true})
+const roots=()=>page.locator('#VPSidebarNav .VPSidebarItem.level-0')
+const visit=async link=>{
+ const response=await page.goto(urlFor(link),{waitUntil:'networkidle'})
+ assert.equal(response.status(),200,link)
+ await page.waitForSelector('.VPContent')
 }
-const roots = () => page.locator('#VPSidebarNav .VPSidebarItem.level-0')
-const collapsed = async () => roots().evaluateAll(nodes => nodes.map(node => node.classList.contains('collapsed')))
-const toggleRoot = async index => roots().nth(index).locator(':scope > .item .caret').click()
-const assertIndependent = async () => {
-  assert.deepEqual(await collapsed(), [false, true, true])
-  await toggleRoot(1)
-  assert.deepEqual(await collapsed(), [false, false, true])
-  await toggleRoot(2)
-  assert.deepEqual(await collapsed(), [false, false, false])
-  await roots().nth(1).locator(':scope > .item .caret').focus()
-  await page.keyboard.press('Enter')
-  assert.deepEqual(await collapsed(), [false, true, false])
-  await toggleRoot(0)
-  assert.deepEqual(await collapsed(), [true, true, false])
-}
-const assertRootNavigation = async (mobile = false) => {
-  await visit('/schulungsmodule/VonSchild2_ZuSchild3/')
-  if (mobile) await page.locator('.VPLocalNav button.menu').click()
-  for (const [index, path, heading] of [
-    [1, '/Fachberatung_Anleitungen/Test-_und_Schulungsserver/', 'Schulungsumgebungen'],
-    [0, '/schulungsmodule/', 'Schulungen durchführen']
-  ]) {
-    const link = roots().nth(index).locator(':scope > .item > a.link')
-    assert.equal(clean(localPath(await link.getAttribute('href'))), clean(path))
-    await link.click()
-    await page.waitForURL(url => url.pathname === new URL(urlFor(path)).pathname)
-    await page.waitForFunction(text => document.querySelector('.vp-doc h1')?.textContent?.includes(text), heading)
-    assert.ok((await page.locator('.vp-doc h1').innerText()).includes(heading))
-    if (mobile) await page.locator('.VPLocalNav button.menu').click()
-    for (const root of [0, 1]) {
-      assert.ok(!(await roots().nth(root).locator(':scope > .items > .VPSidebarItem > .item .text').allTextContents()).includes('Übersicht'))
-    }
-  }
-}
-const fontStyle = async selector => page.locator(selector).first().evaluate(node => {
-  const css = getComputedStyle(node)
-  return { size: css.fontSize, weight: css.fontWeight, family: css.fontFamily, lineHeight: css.lineHeight }
-})
+const paths=[...new Set([...Object.values(nav.sections).flatMap(flatten).filter(x=>x.link&&!x.link.includes('#')).map(x=>x.link),...nav.nav.map(x=>x.link),...Object.keys(nav.aliases)])]
 try {
-  await visit('/neu-im-team/')
-  assert.equal(await roots().first().locator(':scope > .item .caret').count(), 0)
-  assert.equal(await roots().last().locator(':scope > .item .text').innerText(), 'Weitere Bereiche')
-  assert.deepEqual(await collapsed(), [false, true])
-  await toggleRoot(1)
-  assert.deepEqual(await collapsed(), [false, false])
-  assert.equal(await roots().first().locator('a:visible').count(), 3)
-  await visit('/beratung/')
-  const referenceRoot = await fontStyle('#VPSidebarNav .VPSidebarItem.level-0 > .item .text')
-  const referenceTopic = await fontStyle('#VPSidebarNav .VPSidebarItem.level-1 > .item .text')
-  const referenceBranch = await fontStyle('#VPSidebarNav .VPSidebarItem.level-1.collapsible > .item .text')
-  const referenceArticle = await fontStyle('#VPSidebarNav .VPSidebarItem.level-2 > .item .text')
-  await visit('/schulungsmodule/')
-  assert.equal(await page.locator('.school-sidebar').count(), 0)
-  assert.deepEqual(await roots().locator(':scope > .item .text').allTextContents(),
-    ['Schulungen', 'Schulungsumgebungen', 'Weitere Bereiche'])
-  assert.deepEqual(await fontStyle('#VPSidebarNav .VPSidebarItem.level-0 > .item .text'), referenceRoot)
-  assert.deepEqual(await fontStyle('#VPSidebarNav .VPSidebarItem.level-1 > .item .text'), referenceTopic)
-  assert.deepEqual(await fontStyle('#VPSidebarNav .VPSidebarItem.level-1.collapsible > .item .text'), referenceBranch)
-  assert.deepEqual(await fontStyle('#VPSidebarNav .VPSidebarItem.level-2 > .item .text'), referenceArticle)
-  await assertIndependent()
-  await assertRootNavigation()
-  await visit('/Fachberatung_Anleitungen/Test-_und_Schulungsserver/')
-  assert.deepEqual(await collapsed(), [true, false, true])
-  assert.ok((await page.locator('.vp-doc h1').innerText()).includes('Schulungsumgebungen'))
-  for (const path of ['/schulungsmodule/', '/Fachberatung_Anleitungen/Test-_und_Schulungsserver/']) {
-    await visit(path)
-    assert.equal(await page.locator('.section-card').count(), 0)
-    const rows = page.locator('.navigation-overview tbody tr')
-    const expected = overviewRows(nav, path)
-    assert.equal(await rows.count(), expected.length)
-    for (const [index, item] of expected.entries()) {
-      assert.equal(await rows.nth(index).locator('a').innerText(), item.text)
-      assert.equal(clean(localPath(await rows.nth(index).locator('a').getAttribute('href'))), clean(item.link))
-      assert.equal(await rows.nth(index).locator('td').nth(1).innerText(), item.description)
-    }
-    const headings = await page.locator('.vp-doc h2').allTextContents()
-    assert.ok(!headings.some(title => /Basismodule|GoST|Reporterstellung|Sammlung Installations|Wie benutze|Wie setze|Quellen/.test(title)))
-    if (path === '/schulungsmodule/') assert.ok(headings.some(title => title.includes('Vorhandene Schulungsmodule')))
+ for(const path of paths) {
+  const link=path.endsWith('/')?path:path+'.html'
+  await visit(link)
+  const section=sectionFor(nav,path),menu=sidebarFor(nav,path)
+  assert.deepEqual(await roots().locator(':scope > .item .text').allTextContents(),menu.map(x=>x.text),path)
+  assert.deepEqual(await roots().last().locator('a .text').allTextContents(),menu.at(-1).items.map(x=>x.text),path)
+  assert.ok((await roots().last().getAttribute('class')).includes('collapsed'),path)
+  if(section==='testdaten') assert.deepEqual(await roots().evaluateAll(nodes=>nodes.map(n=>n.classList.contains('collapsed'))),menu.map(x=>x.collapsed),path)
+  else {
+   assert.equal(await roots().first().locator(':scope > .item .text').innerText(),nav.sectionLabels[section],path)
+   if(section==='team') assert.equal(await roots().first().locator(':scope > .item .caret').count(),0)
   }
-  await visit('/schulungsmodule/VonSchild2_ZuSchild3/')
-  assert.deepEqual(await collapsed(), [false, true, true])
-  assert.ok((await page.locator('.vp-doc h1').innerText()).includes('Umstieg zu SchILD-NRW 3'))
-  assert.equal((await page.locator('.VPNavBarMenu a.active').innerText()).trim(), 'Schulungen')
-  await visit('/schulungsmodule/uebergangsschulung/2_Filtern_Gruppenprozesse.html')
-  const prose = await page.locator('.vp-doc').innerText()
-  assert.ok(!prose.includes(':a:'), 'Training emoji shortcuts are still literal')
-  assert.ok(prose.includes('🅰'), 'Task emoji missing')
-
-  await visit('/Datenbanken/')
-  assert.equal(await page.locator('.section-card').count(), 0)
-  assert.equal(await page.locator('.vp-doc table').count(), 1)
-  assert.equal(await page.locator('#VPSidebarNav .VPSidebarItem.level-2').count(), 0)
-  assert.deepEqual(await roots().first().locator('.VPSidebarItem.level-1 > .item .text').allTextContents(), nav.sections.testdaten.map(item => item.text))
-  const databaseRows = overviewRows(nav, '/Datenbanken/')
-  for (const [index, item] of databaseRows.entries()) {
-    const row = page.locator('.navigation-overview tbody tr').nth(index)
-    assert.equal(await row.locator('td').first().innerText(), item.text)
-    assert.equal(await row.locator('td').nth(1).innerText(), item.description)
-    assert.equal(await row.locator('a').count(), item.link ? 1 : 0)
-    if (item.link) assert.equal(clean(localPath(await row.locator('a').getAttribute('href'))), clean(item.link))
+  const active=await page.locator('.VPNavBarMenu a.active').allTextContents()
+  if(section!=='team') assert.deepEqual(active.map(x=>x.trim()),[nav.sectionLabels[section]],path)
+  const footer=footerFor(nav,path)
+  for(const side of ['prev','next']) {
+   const a=page.locator('.VPDocFooter a.'+side)
+   assert.equal(await a.count(),footer[side]?1:0,path+': '+side)
+   if(footer[side]) assert.equal(clean(local(await a.getAttribute('href'))),clean(footer[side].link),path)
   }
-  assert.equal(await page.locator('.navigation-overview tbody tr').count(), databaseRows.length)
-  for (const item of [nav.sections.beratung.find(item => item.text === 'Lokale Analyse'), ...nav.sections.beratung.find(item => item.text === 'Lokale Analyse').items]) {
-    await visit(item.link.endsWith('/') ? item.link : item.link + '.html')
-    assert.equal((await page.locator('.VPNavBarMenu a.active').innerText()).trim(), 'Beratung')
-    assert.equal(await roots().first().locator(':scope > .item .text').innerText(), 'Beratung')
+ }
+ for(const path of ['/technik/','/Datenbanken/','/Datenbanken/testdaten/','/Datenbanken/schulungen/','/schulungsmodule/','/Fachberatung_Anleitungen/Test-_und_Schulungsserver/']) {
+  await visit(path)
+  const expected=overviewRows(nav,path),rows=page.locator('.navigation-overview tbody tr')
+  assert.equal(await rows.count(),expected.length,path)
+  for(const [i,item] of expected.entries()) {
+   assert.equal(await rows.nth(i).locator('td').first().innerText(),item.text,path)
+   assert.equal(await rows.nth(i).locator('td').nth(1).innerText(),item.description,path)
+   const a=rows.nth(i).locator('a')
+   assert.equal(await a.count(),item.link?1:0,path)
+   if(item.link) assert.equal(clean(local(await a.getAttribute('href'))),clean(item.link),path)
   }
-
-  await visit('/wissen/')
-  const knowledgeMenu = roots().first().locator(':scope > .items > .VPSidebarItem')
-  assert.deepEqual(await knowledgeMenu.locator(':scope > .item .text').allTextContents(), ['Übersicht', 'Wichtige Links', 'SchILD-Tipps', 'SVWS-Tipps'])
-  const important = knowledgeMenu.nth(1)
-  assert.equal(await important.locator('.caret').count(), 0)
-  assert.equal(await important.locator('.VPSidebarItem').count(), 0)
-  await important.locator(':scope > .item a').click()
-  await page.waitForFunction(() => document.querySelector('.vp-doc h1')?.textContent?.includes('Wichtige Links'))
-  assert.equal(await page.locator('.vp-doc table').first().locator('tbody tr').first().locator('a').innerText(), 'SVWS-Internetauftritt')
-  assert.equal(await page.locator('.vp-doc table').last().locator('tbody tr').count(), 5)
-  assert.ok(!(await page.locator('.vp-doc').innerText()).includes('Bisheriges SchILD-NRW-3-Wiki'))
-  for (const [index, path, prefix, count] of [
-    [2, '/wissen/schild-tipps', '/Tipp_der_Woche/SchILD-Tipp_der_Woche/', 11],
-    [3, '/wissen/svws-tipps', '/Tipp_der_Woche/SVWS-Hack_der_Woche/', 7]
-  ]) {
-    await knowledgeMenu.nth(index).locator(':scope > .item a').click()
-    await page.waitForURL(url => clean(localPath(url.href)) === path)
-    await page.waitForFunction(expected => document.querySelector('.vp-doc h1')?.textContent?.includes(expected), index === 2 ? 'SchILD-Tipps' : 'SVWS-Tipps')
-    const table = page.locator('.vp-doc table').last()
-    assert.equal(await table.locator('a').count(), count)
-    for (const href of await table.locator('a').evaluateAll(links => links.map(link => link.href))) assert.ok(localPath(href).startsWith(prefix))
-    const text = await page.locator('.vp-doc').innerText()
-    assert.ok(text.includes('Programmstand beachten'))
-    assert.ok(text.includes('📅') && text.includes('ℹ'))
-    assert.ok(!text.includes(':date:') && !text.includes(':information_source:'))
+ }
+ await visit('/Datenbanken/testdaten/')
+ const toggle=async i=>roots().nth(i).locator(':scope > .item .caret').click()
+ await toggle(1); await toggle(2)
+ assert.deepEqual(await roots().evaluateAll(nodes=>nodes.map(n=>n.classList.contains('collapsed'))),[false,false,false,true])
+ await roots().nth(1).locator(':scope > .item .caret').focus(); await page.keyboard.press('Enter')
+ assert.deepEqual(await roots().evaluateAll(nodes=>nodes.map(n=>n.classList.contains('collapsed'))),[false,true,false,true])
+ await visit('/Datenbanken/schulungen/laufbahndaten.html')
+ await page.goBack({waitUntil:'networkidle'})
+ assert.ok(page.url().includes('/Datenbanken/testdaten/'))
+ await visit('/schulungsmodule/uebergangsschulung/2_Filtern_Gruppenprozesse.html')
+ const prose=await page.locator('.vp-doc').innerText()
+ assert.ok(prose.includes('🅰')&&!prose.includes(':a:'))
+ await visit('/')
+ await page.getByRole('button',{name:'Dokumentation durchsuchen'}).click()
+ const search=page.locator('input[type="search"]')
+ await search.fill('Problemdatenbanken')
+ await page.locator('.VPLocalSearchBox .result').first().waitFor()
+ await search.press('Escape')
+ const shots=['/','/beratung/','/moderation/','/technik/','/Datenbanken/schulungen/','/Datenbanken/schulungen/oberstufe-qphase','/Datenbanken/problemdatenbanken','/umgebungen/einrichten','/umgebungen/dbeaver','/Fachberatung_Anleitungen/Test-_und_Schulungsserver/','/fortbildung/inhaltsstand','/wissen/aktuelles']
+ for(const scheme of ['light','dark']) {
+  await page.evaluate(mode=>{document.documentElement.classList.toggle('dark',mode==='dark');localStorage.setItem('vitepress-theme-appearance',mode)},scheme)
+  for(const width of [390,820,1440]) {
+   await page.setViewportSize({width,height:1000})
+   for(const link of shots) {
+    await visit(link)
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,width+': '+link)
+    await page.screenshot({path:'test-results/portal-'+scheme+'-'+width+'-'+encodeURIComponent(link)+'.png',fullPage:true})
+   }
+   if(width===390) {
+    await visit('/umgebungen/einrichten')
+    await page.locator('.VPLocalNav button.menu').click()
+    assert.ok(await roots().nth(1).isVisible())
+    assert.equal(await roots().nth(1).locator(':scope > .item .text').innerText(),'Testumgebung')
+    await page.screenshot({path:'test-results/portal-'+scheme+'-mobile-sidebar.png',fullPage:true})
+    await page.locator('.VPLocalNav button.menu').click()
+   }
   }
-
-  const keys = Object.keys(menus).filter(key => key.endsWith('.md'))
-  for (const key of keys) {
-    await visit(key.replace(/index\.md$/, '').replace(/\.md$/, '.html'))
-    const { section, topic } = topicFor(nav, key)
-    const level = section === 'team' ? 0 : 1
-    const topicCount = section === 'team' ? 0 : section === 'schulungen' && topic?.text === 'Schulungsumgebungen' ? 0 : topic?.items?.length ? 1 : 0
-    assert.equal(await page.locator('#VPSidebarNav .VPSidebarItem.level-' + level + '.collapsible:not(.collapsed)').count(), topicCount, key)
-    {
-      if (section === 'team') assert.equal(await roots().first().locator(':scope > .item .caret').count(), 0)
-      const root = roots()
-      assert.equal(await root.first().locator(':scope > .item .text').innerText(), nav.sectionLabels[section])
-      const others = root.last()
-      assert.equal(await others.locator(':scope > .item .text').innerText(), 'Weitere Bereiche')
-      assert.ok((await others.getAttribute('class')).includes('collapsed'))
-      if (section === 'schulungen') {
-        assert.deepEqual(await collapsed(), topic?.text === 'Schulungsumgebungen' ? [true, false, true] : [false, true, true])
-      }
-      assert.deepEqual(await others.locator('a .text').allTextContents(), sidebarFor(nav, key).at(-1).items.map(item => item.text))
-    }
-    for (const href of await page.locator('.section-cards a').evaluateAll(links => links.map(link => link.href))) {
-      assert.equal(sectionFor(nav, localPath(href)), section, key + ': misplaced card')
-    }
-    const footer = footerFor(nav, key)
-    for (const side of ['prev', 'next']) {
-      const locator = page.locator('.VPDocFooter a.' + side)
-      assert.equal(await locator.count(), footer[side] ? 1 : 0, key + ': ' + side)
-      if (footer[side]) assert.equal(clean(localPath(await locator.getAttribute('href'))), clean(footer[side].link))
-    }
-  }
-  const first = '/schulungsmodule/gost/Klausurplanung/1. allgemeine Vorlagen'
-  const second = '/schulungsmodule/sek_i/1_Unterrichtsfaecher'
-  await visit(first + '.html')
-  await page.locator('#VPSidebarNav a').evaluateAll((links, href) => links.find(a => decodeURI(a.href).includes(href))?.click(), second)
-  await page.waitForURL('**/1_Unterrichtsfaecher.html')
-  await page.goBack({ waitUntil: 'networkidle' })
-  assert.ok(decodeURI(page.url()).includes('1. allgemeine Vorlagen'))
-  assert.deepEqual(await collapsed(), [false, true, true])
-
-  await visit('/')
-  await page.getByRole('button', { name: 'Dokumentation durchsuchen' }).click()
-  const search = page.locator('input[type="search"]')
-  await search.fill('Klausurplanung')
-  await page.locator('.VPLocalSearchBox .result').first().waitFor()
-  await search.press('Escape')
-  for (const scheme of ['light', 'dark']) {
-    await page.evaluate(mode => {
-      document.documentElement.classList.toggle('dark', mode === 'dark')
-      localStorage.setItem('vitepress-theme-appearance', mode)
-    }, scheme)
-    for (const width of [390, 820, 1440]) {
-      await page.setViewportSize({ width, height: 1000 })
-      for (const link of ['/schulungsmodule/', '/Fachberatung_Anleitungen/Test-_und_Schulungsserver/', '/beratung/', '/Datenbanken/', '/wissen/links', '/wissen/schild-tipps', '/wissen/svws-tipps', '/fortbildung/convention-2026', "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Docker_Schulungsserver/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/VirtuaBox_SchulungsClient/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Windows_Testserver/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/SVWS-Tools/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/VirtuaBox_SchulungsClient/Virtualbox_Installation/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Proxmox_Schulungsserver/Proxmox_Installation/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Proxmox_Schulungsserver/", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Moderatoren_Schulungsserver/Wartung.html", "/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Installationsskripte/"]) {
-        await visit(link)
-        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 2), false, width + ': ' + link)
-        await page.screenshot({ path: 'test-results/' + scheme + '-' + width + '-' + encodeURIComponent(link) + '.png', fullPage: true })
-      }
-      if (width === 390) {
-        await visit('/schulungsmodule/')
-        await page.locator('.VPLocalNav button.menu').click()
-        await assertIndependent()
-        await page.screenshot({ path: 'test-results/' + scheme + '-mobile-sidebar.png', fullPage: true })
-        await assertRootNavigation(true)
-        await visit('/neu-im-team/')
-        await page.locator('.VPLocalNav button.menu').click()
-        assert.equal(await roots().first().locator(':scope > .item .caret').count(), 0)
-        await toggleRoot(1)
-        assert.deepEqual(await collapsed(), [false, false])
-        assert.equal(await roots().first().locator('a:visible').count(), 3)
-        await page.screenshot({ path: 'test-results/' + scheme + '-mobile-neu-im-team.png', fullPage: true })
-      }
-    }
-  }
-  assert.deepEqual(errors, [], 'Browserfehler')
-  console.log(keys.length + ' Artikelaufrufe, Umstiegsmodul, Emoji, Karten-Zuordnung, unabhängige native Menüs mit Maus/Tastatur/mobil und gemeinsame Schriftgestaltung, Verlauf und Suche erfolgreich.')
-} finally {
-  await browser.close()
-}
+ }
+ for(const width of [1024,1280,1440]) {
+  await page.setViewportSize({width,height:1000}); await visit('/')
+  if(width<1400) {
+   await page.locator('.VPNavBarHamburger').click()
+   assert.deepEqual((await page.locator('.VPNavScreenMenuLink').allTextContents()).map(x=>x.trim()),nav.nav.map(x=>x.text))
+   await page.locator('.VPNavBarHamburger').click()
+  } else assert.deepEqual((await page.locator('.VPNavBarMenu > a').allTextContents()).map(x=>x.trim()),nav.nav.map(x=>x.text))
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'Kopfmenü '+width)
+  await page.screenshot({path:'test-results/portal-header-'+width+'.png',fullPage:true})
+ }
+ assert.deepEqual(errors,[],'Browserfehler')
+ console.log(paths.length+' Artikel-/Übersichtsaufrufe: Bereich, Sidebar, Vorheriges/Nächstes; sechs Tabellen, unabhängige Sektionen, Suche, Emoji und Verlauf geprüft. 72 Layoutansichten hell/dunkel sowie Kopfmenü 1024/1280/1440 geprüft.')
+} finally { await browser.close() }

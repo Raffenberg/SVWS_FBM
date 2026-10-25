@@ -1,4 +1,6 @@
-# Schulungsumgebungen
+# Schulungsumgebung {#schulungsumgebungen}
+
+Diese Sektion gehört zu **Datenbanken & Installation**. Der Arbeitsablauf [Schulung vorbereiten](/moderation/vorbereiten) verbindet Raum, Daten und Lernziele. Für den persönlichen Beratungsarbeitsplatz nutze die [Testumgebung](/umgebungen/).
 
 Hier entscheidest Du, **wo Server und Daten laufen, an welchem Gerät die Teilnehmenden arbeiten und wer den Ausgangsstand wiederherstellt**. Installiere erst, wenn diese drei Punkte geklärt sind.
 

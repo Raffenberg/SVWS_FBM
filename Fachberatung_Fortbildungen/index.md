@@ -18,6 +18,10 @@ Die folgende Terminreihe von Februar bis Juli 2026 ist abgeschlossen. Die Materi
 
 + Teilnehmerinnen und Teilnehmer, die keine Fragen mehr haben, können das Meeting nach dem Input-Teil gerne verlassen.
 
+## Wie Du die Materialien nutzt
+
+Die verlinkten Seiten sind überwiegend Veranstaltungsunterlagen mit Agenda und Begleitlinks. Sie sind nicht automatisch vollständige Anleitungen. [Lernwege](/fortbildung/lernwege) führen zu praktisch nutzbaren Schrittfolgen; der [Inhaltsstand](/fortbildung/inhaltsstand) benennt offene Nachbereitungen. Datum und damalige Themen bleiben unten erhalten.
+
 ## Übersicht - Fortbildungen
 
 | Thema   | Datum | Uhrzeit | Anmeldung erforderlich |

@@ -1,39 +1,36 @@
-# Installation, Hardware & Updates
+# Installation und Migration einer Schule begleiten
 
-Diese Seite bündelt den Einstieg bei Installations- und Updatefragen. Nutze die vorhandenen Anleitungen und halte zunächst fest, welche Komponente betroffen ist.
+## Ziel und Abgrenzung
 
-## 1. Die Ausgangslage klären
+Du hilfst der Schule, den passenden dokumentierten Weg zu finden und einen Fehler einzugrenzen. Eine Schulinstallation, Dein eigener Testplatz und ein Schulungsraum haben unterschiedliche Betriebsbedingungen.
 
-- Geht es um einen persönlichen Testplatz, einen Arbeitsplatz in der Schule oder einen zentralen Server?
-- Wer betreibt die Umgebung: Schule, Schulträger oder IT-Dienstleister?
-- Welche Versionen von SVWS-Server und SchILD-NRW 3 sind installiert beziehungsweise vorgesehen?
-- An welchem Schritt scheitert es: Installation, Serverstart, Browserzugriff, Datenbankzugriff oder SchILD-Anmeldung?
+Für Deinen Arbeitsplatz beginnt der Weg unter [Testumgebung](/umgebungen/). Für eine Veranstaltung nutze die [Schulungsumgebung](/Fachberatung_Anleitungen/Test-_und_Schulungsserver/).
 
-Die Fachberatung begleitet die Schule. Technische Fragen von IT-Dienstleistern werden durch die Landesfachberatung betreut; die [Rollenübersicht](/neu-im-team/rollen) beschreibt den Weg.
+## 1. Den Auftrag und die Umgebung klären
 
-## 2. Die Hardware zur Umgebung passend prüfen
+Erfasse betroffene Komponenten, Betriebssystem, vorhandene Datenhaltung, Versionen, Benutzerzahl und zuständige Administration. Ist es eine Neuinstallation, ein Update, eine Migration oder eine reine Arbeitsplatzanbindung?
 
-Die Anforderungen hängen von Betriebssystem, Betriebsart und Nutzung ab. Für einen persönlichen Testplatz beginne mit den [Systemvoraussetzungen der Windows-Installation](https://doku.svws-nrw.de/deployment/Windows-Installer/). Für den Schulbetrieb helfen die [IT-Umgebungen und Beispiele zur Serverdimensionierung](https://doku.svws-nrw.de/deployment/IT-Umgebungen/).
+IT-Dienstleister mit mehreren Schulen werden durch die Landesfachberatung betreut. Verweise solche Architektur- und Betriebsfragen an den [Supportweg](/neu-im-team/rollen).
 
-Kläre bei einer Hardwarefrage Betriebssystem, Arbeitsspeicher, verfügbaren Speicher für Datenbanken und Sicherungen sowie die Zahl gleichzeitig arbeitender Personen. Übertrage die Ausstattung einer Schulungsumgebung nicht ungeprüft auf den Mehrbenutzerbetrieb einer Schule.
+## 2. Die Originalanleitung wählen
 
-## 3. Installation Schritt für Schritt zuordnen
-
-| Schritt | Vorhandene Anleitung |
+| Fragestellung | Maßgebliche Quelle |
 | --- | --- |
-| SVWS-Server installieren | [Lokale Installationsunterlagen](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Installation_SVWS/), [aktuelle Windows-Installation](https://doku.svws-nrw.de/deployment/Windows-Installer/) |
-| Zertifikat einrichten | [Zertifikatsinstallation](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Installation_Zertifikat/) |
-| Datenbankschema anlegen oder Sicherung importieren | [SVWS-AdminClient](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/AdminTool/) |
-| SchILD-NRW 3 installieren und `.con`-Datei erstellen | [Installation und SchILD_DBConfig](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Installation_SchILD3/) |
-| Datenbank in DBeaver ansehen | [MariaDB-Verbindung mit DBeaver](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/DBeaver/) |
-| Einen Fehler genauer eingrenzen | [Logdateien](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Log_Files/) und [Systemüberblick](./systemueberblick.md) |
+| Installationsverfahren und Hardware einordnen | [SVWS-Installationsübersicht](https://doku.svws-nrw.de/deployment/) und [IT-Umgebungen](https://doku.svws-nrw.de/deployment/IT-Umgebungen/) |
+| Windows-Installation | [Offizieller Windows-Installer](https://doku.svws-nrw.de/deployment/Windows-Installer/) |
+| SchILD-NRW 3 und Verbindungsdatei | [Offizielle SchILD-Anbindung](https://doku.svws-nrw.de/deployment/Schild-NRW3/) |
+| SchILD2-Daten in SVWS übernehmen | [AdminClient: Migration](https://doku.svws-nrw.de/adminclient/anleitungen/kurzanleitung_migration.html) |
 
-## 4. Bei Updates auf zusammenpassende Versionen achten
+Übertrage die Konfiguration eines einzelnen Schulungslaptops nicht ungeprüft auf den laufenden Schulbetrieb.
 
-SVWS-Server und SchILD-NRW 3 müssen zusammenpassen. Prüfe die Angaben der jeweiligen Veröffentlichung. Wenn der Browserzugriff funktioniert, SchILD-NRW 3 aber nicht, gehören die ausgewählte Verbindungsdatei und der direkte MariaDB-Zugriff zu den nächsten Prüfpunkten. Die [offizielle Installationsbeschreibung](https://doku.svws-nrw.de/deployment/Schild-NRW3/) erläutert diese beiden Zugriffswege.
+## 3. Den letzten funktionierenden Schritt bestimmen
 
-Notiere den vorherigen und den neuen Stand sowie die genaue Fehlermeldung. Tritt das Problem nur in einem Schema auf, ergänze die [Datenbank- und Migrationsprüfung](./migration.md).
+Unterscheide Installerfehler, Dienststart, HTTPS-Verbindung, Datenbankzugriff und Anmeldung. Die [Systemübersicht](./systemueberblick.md) erklärt die Komponenten. Für SchILD-NRW 3 sind neben HTTPS derzeit auch direkte MariaDB-Verbindungen relevant.
 
-## 5. Einen offenen Fall weitergeben
+## 4. Eine Migration gesondert prüfen
 
-Wenn die bisherigen Prüfungen nicht weiterführen, bereite die [Anfrage an die Landesfachberatung](./anfrage-vorbereiten.md) vor. Beschreibe dabei insbesondere den letzten funktionierenden Schritt und die betroffenen Komponenten.
+Halte Quelle, Werkzeug, Ziel und Protokoll fest. Die [Migrationsübersicht](./migration.md) unterscheidet SchILD2-Vorbereitung, MDB-Reparatur und Übernahme in ein SVWS-Schema. Ein SQLite-Import ist ein anderer Vorgang.
+
+## 5. Erfolg oder offenen Befund festhalten
+
+Prüfe mit der Schule die betroffene Aufgabe und den richtigen Datenstand. Reichen die vorhandenen Kenntnisse nicht aus, bereite die [Weitergabe](./anfrage-vorbereiten.md) vor. Produktive Installationen werden nicht durch ungeprüfte lokale Reparaturversuche ersetzt.

@@ -5,6 +5,7 @@ import { createSidebar } from '../.vitepress/navigation.mjs'
 import './check-databases.mjs'
 import './check-knowledge.mjs'
 import './check-training-content.mjs'
+import './check-portal-content.mjs'
 const nav = JSON.parse(readFileSync('.vitepress/sidebar.json', 'utf8'))
 const sidebar = createSidebar(nav)
 const git = (...args) => execFileSync('git', args, { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
@@ -16,6 +17,7 @@ assert.equal(files.length, 199, 'Vollständiges Markdown-Inventar einschließlic
 const removedDatabaseArticles = new Set(["Datenbanken/Berufskolleg/index.md","Datenbanken/GOSt-DB/GOSt_DB_Eigenschaften.md","Datenbanken/GOSt-DB_2026/GOSt_DB_Eigenschaften.md"])
 const redesignedDatabaseArticles = new Set(["Datenbanken/index.md","Datenbanken/steckbrief.md","Datenbanken/Grundschule/index.md","Datenbanken/Gesamtschule/index.md","Datenbanken/GOSt-DB/index.md","Datenbanken/GOSt-DB_2026/index.md"])
 const redesignedKnowledgeArticles = new Set(['wissen/links.md', 'wissen/schild-tipps.md', 'wissen/svws-tipps.md', 'Tipp_der_Woche/index.md'])
+const portalRedesign = new Set(JSON.parse(readFileSync('tests/portal-content.json', 'utf8')).rewritten)
 let checked = 0
 for (const file of files) {
   if (removedDatabaseArticles.has(file)) {
@@ -24,6 +26,11 @@ for (const file of files) {
   }
   assert.ok(existsSync(file), 'Bisheriger Artikel fehlt: ' + file)
   if (excluded.test(file)) continue
+  if (portalRedesign.has(file)) {
+    assert.ok(sidebar['/' + file], 'Keine gezielte Sidebar: ' + file)
+    checked++
+    continue
+  }
   if (redesignedDatabaseArticles.has(file)) {
     // Explicitly authorized consolidation; download, asset and merged text
     // preservation is verified by check-databases.mjs above.

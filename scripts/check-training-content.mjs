@@ -16,7 +16,7 @@ for (const path of paths) {
   assert.equal(markdown.parse(current, {}).filter(token => token.type === 'heading_open' && token.tag === 'h1').length, 1, path + ': genau ein Artikeltitel')
 }
 const nav = JSON.parse(readFileSync('.vitepress/sidebar.json', 'utf8'))
-const group = nav.sections.schulungen.find(item => item.text === 'Schulungsumgebungen')
+const group = nav.sections.testdaten.find(item => item.text === 'Schulungsumgebung')
 assert.equal(group.items.length, 9)
 const oldScripts = execFileSync('git', ['ls-tree', '-r', '--name-only', ref, prefix], { encoding: 'utf8' }).split('\n').filter(path => path.endsWith('.sh'))
 assert.equal(oldScripts.length, 27)

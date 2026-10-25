@@ -1,5 +1,10 @@
 # Installation vom SVWS-Server
 
+
+::: info Ergänzende Installationsunterlagen
+Diese erhaltene Bildfolge gehört zur zentralen Testumgebung. Dialoge und Versionsstände können abweichen. Für einen neuen Aufbau beginne mit [PC oder Laptop einrichten](/umgebungen/einrichten); die Originalanleitungen dort sind maßgeblich.
+:::
+
 ### Download der Installationsdateien
 Lade Dich im SVWS-NRW-Repository die notwendigen Installationspakete herunter.  
 

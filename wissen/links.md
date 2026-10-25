@@ -22,8 +22,9 @@
 | --- | --- |
 | [Nightly des SVWS-Servers](https://nightly.svws-nrw.de/) | Aktuelle Entwicklungsstände für die Arbeit mit Testumgebungen |
 | [SVWS-DevOps](https://svws-devops.de/) | Technische Informationen und Werkzeuge im SVWS-Umfeld |
-| [Testdatenbanken im Portal](/Datenbanken/) | Vorhandene Übungsstände nach Schulform und Aufgabe |
-| [Schulungsumgebungen im Portal](/umgebungen/) | Einrichtung, Betrieb und Rücksetzen von Testumgebungen |
+| [Datenbanken im Portal](/Datenbanken/) | Vorhandene Übungsstände nach Schulform und Aufgabe |
+| [Testumgebung im Portal](/umgebungen/) | Den persönlichen Beratungsarbeitsplatz einrichten und prüfen |
+| [Schulungsumgebung im Portal](/Fachberatung_Anleitungen/Test-_und_Schulungsserver/) | Raumaufbau, Arbeitsplatzzuordnung und Rücksetzen |
 | Fachberatercloud | Zugang und Passwort über die [Koordination oder das Team](/neu-im-team/kommunikation#fachberatercloud) |
 
 ## Entwicklung & Fehlermeldungen {#entwicklung-fehlermeldungen}

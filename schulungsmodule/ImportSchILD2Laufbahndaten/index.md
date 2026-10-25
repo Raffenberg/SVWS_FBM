@@ -2,11 +2,13 @@
 
 Für diesen Aufgabenblock findest Du im Ordner Import_LUPO_KURS eine SQLite-Spieldatenbank mit zugehörigen .lup und .blo-Dateien.
 
+Die [Datenseite zu diesem Modul](/Datenbanken/schulungen/laufbahndaten) verlinkt die vorhandenen Dateien und benennt die Prüfgrenzen.
+
 ## Download der benötigten Dateien
 Speichere alle Beispiel-Dateien aus dem Ordner Import_LUPO_KURS. 
 
 ## Import der Spieldatenbank
-Importiere die SQLite Datenbank über das Admin-Tool im Client. Da einige Features derzeit noch nicht über den Client realisiert werden können (beispielsweise Gruppenprozesse), ist es hilfreich, eine Verbidungsdatei von SchILD-NRW3 zur Datenbank zu erstellen. Nutze dazu das Program migrate.db.    
+Importiere die SQLite Datenbank über das Admin-Tool im Client. Da einige Features derzeit noch nicht über den Client realisiert werden können (beispielsweise Gruppenprozesse), ist es hilfreich, eine Verbidungsdatei von SchILD-NRW3 zur Datenbank zu erstellen. Erstelle die Verbindung mit SchILD_DBConfig; das ist keine Datenmigration.    
 Kontrolliere anschließend im Client, 
 + ob in der Datenbank noch kein Abiturjahrgang angelegt ist und
 + ob bei den SchülerInnen noch keine Laufbahnplanung hinterlegt ist.

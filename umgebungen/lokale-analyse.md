@@ -1,45 +1,41 @@
-# Lokale Test- & Analyseumgebung
+# Einen Datenbankfall an einer Kopie untersuchen
 
-Der empfohlene persönliche Einstieg für die Fachberatung ist eine lokale Umgebung: SVWS-Server mit MariaDB, SchILD-NRW 3 und DBeaver auf dem eigenen Rechner. Damit kannst Du verschiedene Schulformen erproben und hartnäckige Fehler anhand einer bereitgestellten Datenbankkopie untersuchen.
+## Ziel und Voraussetzungen
 
-## Testdaten oder konkreter Beratungsfall?
+Du kannst den beschriebenen Fehler reproduzieren und Deine Beobachtungen nachvollziehbar weitergeben. Benötigt werden ein [vorbereiteter Testplatz](/beratung/arbeitsplatz), ein klarer Auftrag und die [abgestimmt übertragene Sicherung](/Datenbanken/problemdatenbanken).
 
-Nutze zum Kennenlernen der Programme die [Testdatenbanken](/Datenbanken/). Sie können als getrennte Schemata eingebunden werden. Für einen konkreten Fall vereinbarst Du mit der Schule die Bereitstellung ihres SQLite-Backups, beispielsweise als verschlüsselte ZIP-Datei oder über einen anderen vereinbarten Austauschweg. Eine solche Problemdatenbank gehört nicht in den öffentlichen Materialbestand.
+Dieser Artikel gehört zum Arbeitsablauf der Fachberatung. Die technischen Einrichtungsverfahren liegen zentral unter [Datenbanken & Installation](/technik/).
 
-## Der Ablauf im Überblick
+## 1. Fall und Ausgangsdatei dokumentieren
 
-**SQLite-Backup erhalten → in ein lokales Schema importieren → mit DBeaver prüfen → passende `.con`-Datei erstellen → den Fehler in SchILD-NRW 3 nachstellen.**
+Notiere Fallkennung, Schulform, Datenstand, Programmversionen und die Handlung, die den Fehler auslöst. Bewahre die empfangene Datei unverändert und geschützt auf. Arbeitskopie und Original müssen unterscheidbar bleiben.
 
-Das SQLite-Backup ist dabei die übertragene Sicherung. DBeaver und SchILD-NRW 3 arbeiten im hier beschriebenen Ablauf anschließend mit der importierten MariaDB-Datenbank. Der [Systemüberblick](/beratung/systemueberblick) erklärt die einzelnen Bausteine.
+## 2. In ein eigenes Schema importieren
 
-## 1. Den persönlichen Arbeitsplatz einrichten
+Spiele das SQLite-Backup nach [Testdaten einspielen](/umgebungen/testdaten) in ein ausdrücklich gewähltes Untersuchungsschema ein. SQLite ist hier die Sicherungsdatei; SVWS und SchILD-NRW 3 arbeiten anschließend mit dem importierten MariaDB-Schema.
 
-Installiere SVWS-Server mit MariaDB, SchILD-NRW 3 und DBeaver. Die [Installationsübersicht](/beratung/installation) verknüpft Voraussetzungen, vorhandene Schrittfolgen und Diagnosehilfen. Stimme die Programmversionen aufeinander ab.
+Prüfe Meldung, Datenstand und Schulzuordnung. Bei einem Importfehler wird zuerst dieser Vorgang eingegrenzt, bevor der ursprüngliche Anwendungsfehler untersucht wird.
 
-## 2. Eine Sicherung in ein eigenes Schema importieren
+## 3. Die richtige Verbindung herstellen
 
-Halte das erhaltene Backup unverändert vor und lege für die Untersuchung ein eigenes lokales Schema an. Importiere dort die SQLite-Sicherung. Die vorhandene [Anleitung zum SVWS-AdminClient](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/AdminTool/) beschreibt das Anlegen eines Schemas und das Einlesen einer Sicherung.
+Öffne das Schema im SVWS-Client. Erstelle bei Bedarf mit SchILD_DBConfig eine separate, eindeutig benannte Verbindung für SchILD-NRW 3. Vergleiche die angezeigten Daten mit dem erwarteten Fall.
 
-Prüfe nach dem Import, dass Schulnummer und Datenstand zum Beratungsfall gehören. Gib dem Schema eine Bezeichnung, die es von Deinen übrigen Testdatenbanken unterscheidet.
+Falls ein Zugang innerhalb der Untersuchungskopie fehlt, vereinbare das zur Version passende Vorgehen mit der zuständigen Unterstützung. Nutze keine ungeprüften Kennwortänderungen per SQL.
 
-## 3. Mit DBeaver prüfen und den Analysezugang vorbereiten
+## 4. Den Fehler nachstellen
 
-Verbinde DBeaver mit der lokalen MariaDB und dem importierten Schema. Die [vorhandene DBeaver-Anleitung](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/DBeaver/) zeigt den Verbindungsaufbau und das Einsehen der Tabellen.
+Führe genau die übermittelten Schritte aus. Notiere erwartetes und tatsächliches Ergebnis. Gelingt die Reproduktion nicht, vergleiche zunächst Versionen, Abschnitt, Berechtigungen und beteiligte Zusatztools mit der Schule.
 
-Wenn für die beauftragte Analyse ein Administratorzugang zur importierten Schuldatenbank benötigt wird, kann das Admin-Benutzerkennwort nach dem abgestimmten Verfahren in dieser lokalen Kopie zurückgesetzt werden. Gemeint ist das Benutzerkennwort der Schuldatenbank, nicht das Root-Kennwort der MariaDB-Instanz. Die konkrete versionsbezogene Schrittfolge und die zu ändernden Felder werden hier noch ergänzt; diese Übersicht enthält dafür keinen pauschalen SQL-Befehl.
+Bei einem SchILD2-Ausgangsproblem prüfst Du außerdem die [Migrationswege](/umgebungen/schild2). Ein SVWS-Backup allein ersetzt nicht den benötigten MDB-Ausgangsbestand.
 
-Für Abschnittsprobleme beginne mit der [Einordnung der Migrationsfehler](/beratung/migration) und den dort verknüpften Beispielen.
+## 5. Gezielt analysieren
 
-## 4. Eine passende Verbindungsdatei erstellen
+Sichte bei Bedarf mit [DBeaver](/umgebungen/dbeaver) die betroffenen Tabellen und Protokolle. Trenne Beobachtung, vermutete Ursache und vorgeschlagene Änderung. Reproduziere den Ausgangszustand, bevor Du eine weitere Hypothese prüfst.
 
-Erstelle mit **SchILD_DBConfig** eine `.con`-Datei für die lokale Umgebung und das importierte Schema. Die vorhandene [SchILD-NRW-3-Installationsanleitung](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Installation_SchILD3/) beschreibt den Einstieg in dieses Werkzeug.
+Ein Befund aus einem einzelnen Schema ist noch kein allgemein gültiger Reparaturbefehl. Prüfe insbesondere die Grenzen der [SQL-Fallbeispiele](/Fachberatung_Anleitungen/DBReparatur/).
 
-Öffne SchILD-NRW 3 mit dieser Verbindung und prüfe, ob der richtige Datenstand geladen wurde.
+## 6. Ergebnis gemeinsam prüfen
 
-## 5. Fehler nachstellen und Ergebnis festhalten
+Teste die ursprüngliche Aufgabe erneut und vereinbare mit der Schule den weiteren Umgang. Eine lokale Korrektur wird nicht automatisch als komplette Datenbank in den Schulbetrieb zurückgespielt.
 
-Gehe die von der Schule beschriebenen Schritte durch. Notiere den betroffenen Abschnitt, die genaue Meldung und das erwartete Ergebnis. Halte Änderungen getrennt von den ursprünglichen Befunden fest. Lässt sich der Fall nicht lösen, hilft die [Checkliste für die Weitergabe](/beratung/anfrage-vorbereiten).
-
-## Fernunterstützung ergänzend einsetzen
-
-Viele Fachberaterinnen und Fachberater nutzen TeamViewer für die gemeinsame Sicht auf den Arbeitsplatz der Schule. Damit lassen sich Bedienungswege und Einstellungen direkt nachvollziehen. Benötigt ein Fall eine wiederholbare Datenbankuntersuchung, ergänzt die lokale Analyse diesen Weg.
+Dokumentiere den Fall nach [Ergebnis und Weitergabe](/beratung/anfrage-vorbereiten). Nach Abschluss gehören auch Arbeitskopien, Exporte und Freigaben in die vereinbarte Aufräum- und Löschregelung.

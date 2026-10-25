@@ -1,69 +1,67 @@
 ---
 layout: home
-title: Gemeinsam beraten. Wissen teilen.
+title: Fachberatung und Moderation
 hero:
   name: SVWS-Teamportal
-  text: Gemeinsam beraten. Wissen teilen.
-  tagline: Deine Wissensdatenbank für Fachberatung und Moderation rund um SchILD-NRW und den SVWS-Server.
+  text: Sicher beraten. Verständlich schulen.
+  tagline: Schritt für Schritt zu Deiner Aufgabe – mit gemeinsam gepflegten Anleitungen und Daten.
   actions:
     - theme: brand
+      text: Fachberatung
+      link: /beratung/
+    - theme: alt
+      text: Moderation
+      link: /moderation/
+    - theme: alt
       text: Neu im Team
       link: /neu-im-team/
-    - theme: alt
-      text: Installation & Migration
-      link: /beratung/installation
-    - theme: alt
-      text: Hilfe im Beratungsfall
-      link: /beratung/
 features:
-  - title: Neu im Team
-    details: Ankommen, Kommunikationswege kennenlernen und die ersten Schritte gemeinsam gehen.
+  - title: "Neu im Team"
+    details: "Ankommen, Rollen kennenlernen und verlässliche Kommunikationswege finden."
     link: /neu-im-team/
-    linkText: Deinen Einstieg finden
-  - title: Schulungen durchführen
-    details: Aufgaben und Moderationsmaterial für Grundschule, Sekundarstufe I, Oberstufe und Berufskolleg.
-    link: /schulungsmodule/
-    linkText: Module auswählen
-  - title: Testdaten
-    details: Schulungsdatenbanken nach Schulform und Einsatzbereich auswählen.
-    link: /Datenbanken/
-    linkText: Datenbanken auswählen
-  - title: Beratung & Umstieg
-    details: Änderungen beim Wechsel zu SchILD-NRW 3 verstehen und typische Beratungsfälle gezielt bearbeiten.
+    linkText: Einstieg öffnen
+  - title: "Fachberatung"
+    details: "Den Beratungsarbeitsplatz vorbereiten und Supportfälle nachvollziehbar bearbeiten."
     link: /beratung/
-    linkText: Lösungswege finden
-  - title: Fortbildung & Austausch
-    details: Angebote von David, Anne und Jens, Materialien vergangener Termine und Austausch im Team.
+    linkText: Einstieg öffnen
+  - title: "Moderation"
+    details: "Schulungen mit passenden Aufgaben, Daten und Raum vorbereiten und durchführen."
+    link: /moderation/
+    linkText: Einstieg öffnen
+  - title: "Datenbanken & Installation"
+    details: "Test-, Schulungs- und Problemdaten unterscheiden; Testplatz oder Schulungsraum einrichten."
+    link: /technik/
+    linkText: Einstieg öffnen
+  - title: "Fortbildung"
+    details: "Kenntnisse gezielt aufbauen und aus Demonstrationen nutzbare Anleitungen machen."
     link: /fortbildung/
-    linkText: Wissen vertiefen
-  - title: Wissen & Links
-    details: Tipps der Woche, zentrale Dokumentationen, Downloads und Werkzeuge an einem Ort.
+    linkText: Einstieg öffnen
+  - title: "Wissen & Links"
+    details: "Aktuelle Hinweise einordnen, Dokumentationen finden und Probleme nachschlagen."
     link: /wissen/
-    linkText: Wissen nachschlagen
+    linkText: Einstieg öffnen
 ---
 
 <div class="vp-doc portal-home" id="svws-schulungsunterlagen">
 
-## Im Blick
+## Was möchtest Du jetzt tun?
 
-| Was brauchst Du gerade? | Dein direkter Weg |
+| Aufgabe | Dein direkter Einstieg |
 | --- | --- |
-| Eine Lösung für eine aktuelle Frage | [Probleme nach Themen finden](/beratung/probleme) |
-| Installation, Hardware oder Update klären | [Installationshilfen bündeln](/beratung/installation) |
-| Eine Migration scheitert | [Migrationsprobleme eingrenzen](/beratung/migration) |
-| Eine Datenbank selbst untersuchen | [Lokale Analyseumgebung](/umgebungen/lokale-analyse) |
-| Die neuesten veröffentlichten Tipps | [SchILD-Tipps](/wissen/schild-tipps) und [SVWS-Tipps](/wissen/svws-tipps) |
-| Ein Fortbildungsangebot für das Team | [Fortbildung & Austausch](/fortbildung/) |
-| Informationen zu Neuerungen | [Material zum Entwicklungsstand](/Fachberatung_Fortbildungen/Aktuell/) – Stand und Version im Einzelfall prüfen |
+| Einen Supportfall übernehmen | [Beratungsablauf](/beratung/ablauf) |
+| Den eigenen PC oder Laptop vorbereiten | [Testumgebung einrichten](/umgebungen/einrichten) |
+| Eine SQLite-Sicherung einer Schule übernehmen | [Problemdatenbanken geschützt austauschen](/Datenbanken/problemdatenbanken) |
+| Eine Schulung organisieren | [Vorbereitung für die Moderation](/moderation/vorbereiten) |
+| Raum und Übungsdaten bereitstellen | [Schulungsumgebung](/Fachberatung_Anleitungen/Test-_und_Schulungsserver/) und [Daten nach Modul](/Datenbanken/schulungen/) |
+| Neuerungen oder ein Fehlerbild prüfen | [Aktuelle Hinweise](/wissen/aktuelles) und [Probleme und Lösungen](/beratung/probleme) |
+| Etwas erstmals selbst durchführen | [Lernwege](/fortbildung/lernwege) |
 
-## Unsere wichtigsten Anlaufstellen
+## Verlässliche Quellen nutzen
 
-[SVWS-Dokumentation](https://doku.svws-nrw.de/) · [Nightly des Servers](https://nightly.svws-nrw.de/) · [SVWS-DevOps](https://svws-devops.de/) · [Alle wichtigen Links](/wissen/links)
+Dieses Portal beschreibt Arbeitsabläufe für Fachberatung und Moderation. Die ausführliche Programmbedienung und Installation bleiben in den zuständigen Wikis und Handbüchern. [Wichtige Links](/wissen/links) erschließt diese Quellen; die [Umstiegsorientierung](/wissen/umstieg) hilft beim Vergleich SchILD2/SchILD3.
 
-Die neue SchILD-NRW-3-Dokumentation ist unter **schild3.svws-nrw.de** vorgesehen. Den Link findest Du nach der Freischaltung hier; bis dahin führt die [Linksammlung](/wissen/links) auch zum bisherigen Wiki.
+## Wissen gemeinsam pflegen
 
-## Gemeinsam weiterentwickeln
-
-Das Portal bündelt vorhandene Materialien und Lösungswissen über Bezirksregierungsgrenzen hinweg. Der Austausch erfolgt im Forum, über die Fachberater-Koordinationen und auf der jährlichen Convention in Düsseldorf. Nutze die [Kommunikationswege im Team](/neu-im-team/kommunikation), um Erfahrungen und Themenwünsche einzubringen. Die Überarbeitung von Schulungsunterlagen bleibt bei den Moderationsteams.
+Im [Fortbildungsarchiv](/Fachberatung_Fortbildungen/) bleiben Termine und Materialien erhalten. Eine Agenda ist keine vollständige Anleitung; der [Inhaltsstand](/fortbildung/inhaltsstand) macht offene Nachbereitungen sichtbar. Über [Kommunikation im Team](/neu-im-team/kommunikation) kannst Du Fragen und Erfahrungen einbringen.
 
 </div>

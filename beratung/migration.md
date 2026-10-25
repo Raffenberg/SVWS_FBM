@@ -1,40 +1,39 @@
 # Migrationsprobleme eingrenzen
 
-Bei einer gescheiterten Migration oder auffälligen Daten nach dem Umstieg ist die Unterscheidung wichtig: Liegt das Problem bereits im SchILD-NRW-2-Ausgangsbestand oder zeigt es sich im migrierten Datenbankschema?
+## Ziel
 
-## 1. Fehler und Ausgangsdaten festhalten
+Du erkennst, ob das Problem im SchILD2-Ausgangsbestand, bei der Übernahme oder erst im SVWS-Ergebnis liegt. Arbeite mit unverändert aufbewahrter Quelle und einer getrennten Untersuchungskopie.
 
-Notiere Programmversionen, betroffene Schulform, Migrationsschritt und Fehlermeldung. Sieh die [Migrationsprotokolle](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Log_Files/) an und halte den ursprünglichen Datenstand für Vergleiche unverändert vor. Korrekturen werden zunächst an einer Kopie untersucht.
+## 1. Den Vorgang benennen
 
-## 2. Eine neue SchILD-NRW-2-Access-Datenbank als Zwischenstufe
-
-Ein in der Landesfachberatung häufig hilfreicher Weg ist, die vorhandene SchILD-NRW-2-Datenbank mit dem Migrationstool in eine neue SchILD-NRW-2-Access-Datenbank zu überführen. Erst danach folgt ein erneuter Migrationsversuch in den SVWS-Server. Das ist ein eigener Vorbereitungsschritt und nicht bereits die Migration in das neue SVWS-Schema.
-
-Die vorhandenen [Fortbildungsunterlagen zur Reparatur von SchILD-NRW-2-Datenbanken](/Fachberatung_Fortbildungen/ReparaturMDB/) beschreiben den Einsatz des Migrationstools bei beschädigten oder veralteten Access-Datenbanken und verweisen auf den Download.
-
-Vergleiche anschließend das Ergebnis mit dem vorherigen Versuch. Dieser Weg behebt nicht jedes fehlerhafte Datenfeld automatisch.
-
-## 3. Fehleinträge im Ausgangsbestand untersuchen
-
-Bleiben Fehler bestehen, können gezielte Korrekturen in der SchILD-NRW-2-Access-Datenbank nötig sein. Die Fehlermeldung und das Protokoll müssen bestimmen, welche Einträge geprüft werden. Nach der Korrektur erfolgt ein neuer Migrationsversuch mit dokumentiertem Ausgangsstand.
-
-Eine allgemeine Sammlung freigegebener Access-Korrekturen für die verschiedenen Fehlerbilder ist hier noch nicht hinterlegt. Wenn sich die Ursache nicht eindeutig eingrenzen lässt, gib den Fall mit den bisherigen Befunden an die [Landesfachberatung](./anfrage-vorbereiten.md) weiter.
-
-## 4. Abschnittstabellen nach der Migration prüfen
-
-Nach der Migration können Lücken, Mehrfacheinträge oder falsche Bezüge zwischen Schuljahresabschnitten und abhängigen Tabellen auffallen. Annes vorhandene Beiträge bieten dafür konkrete Ausgangspunkte:
-
-| Fehlerbild oder Aufgabe | Vorhandenes Material |
+| Ausgangslage | Was untersucht wird |
 | --- | --- |
-| Warnung zu Schuljahresabschnitten beim Start | [Tipp: Startwarnung und Abschnittseinträge](/Tipp_der_Woche/SchILD-Tipp_der_Woche/StartwarnungSchuljahresabschnitt) |
-| Mehrfacheinträge und fehlerhafte Bezüge untersuchen | [Datenbanken prüfen und reparieren](/Fachberatung_Anleitungen/DBReparatur/) |
-| Migration und Sicherungen einordnen | [Fortbildung: Migration & Datenbanksicherung](/Fachberatung_Fortbildungen/MigrationSicherung/) |
-| Migration über den AdminClient starten | [Tipp: Datenbankmigration](/Tipp_der_Woche/SchILD-Tipp_der_Woche/datenbankmigration) |
+| MDB lässt sich schon in SchILD-NRW 2 nicht öffnen | Verbindung, Format, Passwort oder Dateischaden |
+| SchILD2-Migrationstool scheitert | Überführung zwischen SchILD2-Beständen |
+| SVWS-AdminClient meldet einen Migrationsfehler | Übernahme in das SVWS-Datenmodell |
+| SQLite-Sicherung lässt sich nicht wiederherstellen | Import und Versionsverträglichkeit eines SVWS-Backups |
+| Migration endet, Daten oder Funktionen fallen danach auf | Fachlicher Vergleich von Quelle und Ergebnis |
 
-Die SQL-Beispiele im Reparaturartikel enthalten konkrete IDs aus dem dort beschriebenen Fall. Prüfe Tabellen und Bezüge der jeweiligen Datenbank; übernimm diese IDs nicht als allgemeine Korrekturregel. Insbesondere bei fehlenden Abschnitten reicht das Löschen einzelner Einträge nicht automatisch aus.
+Notiere Programmversionen, Schulform, Schritt und genaue Meldung. Sichere das relevante Protokoll; [Logdateien](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/Log_Files/) bieten ergänzende Orientierung.
 
-## 5. Ergebnis prüfen oder Fall weitergeben
+## 2. Den SchILD2-Ausgangsbestand prüfen
 
-Prüfe nach einem Korrekturversuch, ob der ursprüngliche Fehler verschwunden ist, der erwartete Schuljahresabschnitt angezeigt wird und die betroffenen Arbeitsabläufe funktionieren. Dokumentiere die geprüften Änderungen. Die [lokale Analyseumgebung](/umgebungen/lokale-analyse) hilft Dir, den Fall nachvollziehbar vorzubereiten.
+Kann die Kopie in SchILD-NRW 2 geöffnet werden? Ist der betroffene Arbeitsablauf dort möglich? Prüfe die [Vorbereitung von SchILD2 und Migrationstool](/umgebungen/schild2).
 
-Ist eine Änderung an den Bezügen nicht eindeutig, beziehe die Landesfachberatung ein. Die [Checkliste für die Weitergabe](./anfrage-vorbereiten.md) verhindert, dass bereits geklärte Fragen erneut gestellt werden müssen.
+Die Überführung in einen neuen SchILD2-Access-Bestand kann bei bestimmten Ausgangsproblemen helfen. Sie ist nicht bereits die Migration zum SVWS-Server und garantiert keine Reparatur jedes Datenfelds.
+
+## 3. Bei Dateischäden den passenden Weg wählen
+
+[DBeaver und Access](/umgebungen/dbeaver) trennt Datenzugriff von Reparatur. Wenn Access für eine erforderliche Reparatur fehlt, dokumentiere den Fall und vereinbare Unterstützung. Die frühere [Fortbildungsseite zur MDB-Reparatur](/Fachberatung_Fortbildungen/ReparaturMDB/) enthält Themen, aber keine vollständige Reparaturanleitung.
+
+## 4. Den SVWS-Versuch nachvollziehen
+
+Nutze die aktuelle [AdminClient-Anleitung](https://doku.svws-nrw.de/adminclient/anleitungen/kurzanleitung_migration.html). Bestimme das entbehrliche Zielschema ausdrücklich und prüfe das Protokoll. Erzeuge nicht nebenbei mehrere unbekannte Zwischenstände.
+
+## 5. Auffälligkeiten fachlich prüfen
+
+Vergleiche den betroffenen Fall mit der Quelle und dem erwarteten Ergebnis. Für Abschnittsprobleme gibt es den [versionsbezogenen Hinweis](/Tipp_der_Woche/SchILD-Tipp_der_Woche/StartwarnungSchuljahresabschnitt) und ein [konkretes SQL-Fallbeispiel](/Fachberatung_Anleitungen/DBReparatur/). Dessen IDs sind keine allgemeine Korrekturvorschrift.
+
+## 6. Prüfen oder weitergeben
+
+Wiederhole die ursprüngliche Aufgabe. Dokumentiere Quelle, gegebenenfalls SchILD2-Zwischenstand, SVWS-Ergebnis und alle Änderungen getrennt. Bleiben Bezüge oder notwendige Korrekturen unklar, nutze [Ergebnis und Weitergabe](./anfrage-vorbereiten.md).
