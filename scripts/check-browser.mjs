@@ -91,7 +91,8 @@ try {
     assert.ok(await roots().nth(1).isVisible())
     assert.equal(await roots().nth(1).locator(':scope > .item .text').innerText(),'Testumgebung')
     await page.screenshot({path:'test-results/portal-'+scheme+'-mobile-sidebar.png',fullPage:true})
-    await page.locator('.VPLocalNav button.menu').click()
+    await page.locator('.VPBackdrop').click({ position: { x: 380, y: 300 } })
+    await page.waitForFunction(()=>!document.querySelector('.VPSidebar')?.classList.contains('open'))
    }
   }
  }
