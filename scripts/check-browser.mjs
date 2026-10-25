@@ -92,7 +92,8 @@ try {
     await page.locator('.VPLocalNav button.menu').click()
     assert.ok(await roots().nth(1).isVisible())
     assert.equal(await roots().nth(1).locator(':scope > .item .text').innerText(),'Testumgebung')
-    await page.screenshot({path:'test-results/portal-'+scheme+'-mobile-sidebar.png',fullPage:true})
+    await page.waitForFunction(()=>document.querySelector('.VPSidebar')?.getBoundingClientRect().left>=-1)
+    await page.screenshot({path:'test-results/portal-'+scheme+'-mobile-sidebar.png',fullPage:false,animations:'disabled'})
     await page.locator('.VPBackdrop').click({ position: { x: 380, y: 300 } })
     await page.waitForFunction(()=>!document.querySelector('.VPSidebar')?.classList.contains('open'))
    }
@@ -104,6 +105,7 @@ try {
    await page.locator('.VPNavBarHamburger').click()
    assert.deepEqual((await page.locator('.VPNavScreenMenuLink').allTextContents()).map(x=>x.trim()),nav.nav.map(x=>x.text))
    await page.locator('.VPNavBarHamburger').click()
+   await page.waitForSelector('.VPNavScreen',{state:'hidden'})
   } else assert.deepEqual((await page.locator('.VPNavBarMenu > a').allTextContents()).map(x=>x.trim()),nav.nav.map(x=>x.text))
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'Kopfmenü '+width)
   await page.screenshot({path:'test-results/portal-header-'+width+'.png',fullPage:true})
