@@ -1,0 +1,99 @@
+{
+  "sourceRef": "e3eca0ad5b51077c847141930eb7dc607e51a5fc",
+  "redirects": {
+    "Datenbanken/Grundschule/index.md": "/Datenbanken/testdaten/#grundschule",
+    "Datenbanken/testdaten/sekundarstufe-i.md": "/Datenbanken/testdaten/#sekundarstufe-i",
+    "Datenbanken/GOSt-DB/index.md": "/Datenbanken/testdaten/#sekundarstufe-ii-bis-2026",
+    "Datenbanken/GOSt-DB_2026/index.md": "/Datenbanken/testdaten/#sekundarstufe-ii-ab-2026",
+    "Datenbanken/Gesamtschule/index.md": "/Datenbanken/testdaten/#gesamtschule",
+    "Datenbanken/testdaten/berufskolleg.md": "/Datenbanken/testdaten/#berufskolleg",
+    "Datenbanken/schulungen/basisschulung.md": "/Datenbanken/schulungen/#basisschulung",
+    "Datenbanken/schulungen/grundschule-grundlagen.md": "/Datenbanken/schulungen/#grundschule-grundlagen",
+    "Datenbanken/schulungen/grundschule-zeugnisse.md": "/Datenbanken/schulungen/#grundschule-zeugnisse",
+    "Datenbanken/schulungen/sekundarstufe-i.md": "/Datenbanken/schulungen/#sekundarstufe-i",
+    "Datenbanken/schulungen/oberstufe-ef.md": "/Datenbanken/schulungen/#oberstufe-ef",
+    "Datenbanken/schulungen/oberstufe-qphase.md": "/Datenbanken/schulungen/#oberstufe-qphase",
+    "Datenbanken/schulungen/klausurplanung.md": "/Datenbanken/schulungen/#klausurplanung",
+    "Datenbanken/schulungen/laufbahndaten.md": "/Datenbanken/schulungen/#laufbahndaten",
+    "Datenbanken/schulungen/berufskolleg.md": "/Datenbanken/schulungen/#berufskolleg",
+    "Datenbanken/schulungen/reports.md": "/Datenbanken/schulungen/#reports",
+    "Datenbanken/schulungen/schild2-zu-3.md": "/Datenbanken/schulungen/#schild2-zu-3",
+    "Datenbanken/schulungen/umstieg-vergleich.md": "/Datenbanken/schulungen/#umstieg-vergleich"
+  },
+  "schoolChapters": [
+    {
+      "text": "Grundschule",
+      "id": "grundschule"
+    },
+    {
+      "text": "Sekundarstufe I",
+      "id": "sekundarstufe-i"
+    },
+    {
+      "text": "Sekundarstufe II - bis 2026",
+      "id": "sekundarstufe-ii-bis-2026"
+    },
+    {
+      "text": "Sekundarstufe II ab 2026",
+      "id": "sekundarstufe-ii-ab-2026"
+    },
+    {
+      "text": "Gesamtschule",
+      "id": "gesamtschule"
+    },
+    {
+      "text": "Berufskolleg",
+      "id": "berufskolleg"
+    }
+  ],
+  "moduleChapters": [
+    {
+      "text": "Basisschulung",
+      "id": "basisschulung"
+    },
+    {
+      "text": "Grundschule Grundlagen",
+      "id": "grundschule-grundlagen"
+    },
+    {
+      "text": "Grundschule Zeugnisse",
+      "id": "grundschule-zeugnisse"
+    },
+    {
+      "text": "Sekundarstufe I",
+      "id": "sekundarstufe-i"
+    },
+    {
+      "text": "Sekundarstufe II - EF",
+      "id": "oberstufe-ef"
+    },
+    {
+      "text": "Sekundarstufe II - Q1/Q2 und Abitur",
+      "id": "oberstufe-qphase"
+    },
+    {
+      "text": "Sekundarstufe II - Klausurplanung",
+      "id": "klausurplanung"
+    },
+    {
+      "text": "Sekundarstufe II - Laufbahnplanung",
+      "id": "laufbahndaten"
+    },
+    {
+      "text": "Berufskolleg",
+      "id": "berufskolleg"
+    },
+    {
+      "text": "Reports erstellen",
+      "id": "reports"
+    },
+    {
+      "text": "SchILD-NRW 2 zu 3",
+      "id": "schild2-zu-3"
+    },
+    {
+      "text": "Umstieg zu SchILD-NRW 3",
+      "id": "umstieg-vergleich"
+    }
+  ]
+}

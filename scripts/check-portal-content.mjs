@@ -39,14 +39,9 @@ const strip=source=>source.replace(/\n\n::: info Veranstaltungsunterlagen – ke
 const events=manifest.rewritten.filter(p=>/^Fachberatung_Fortbildungen\/[^/]+\/index\.md$/.test(p)&&!p.includes('Installation_Fachberatung_Moderation_offline'))
 assert.equal(events.length,20)
 for(const path of events) assert.equal(strip(read(path)),migrate(old(path)),path+': Veranstaltungsbestand verändert')
-const modules=nav.sections.schulungen.filter(item=>item.module)
-const bindings=nav.sections.testdaten[0].items.find(item=>item.text==='Schulungsdatenbanken').items
-assert.equal(bindings.length,modules.length,'Modulzuordnungen unvollständig')
-for(const module of modules) {
- const article=bindings.find(item=>item.text===module.text)
- assert.ok(read(article.link.slice(1)+'.md').includes(module.link),module.text+': Bezug zum Modul fehlt')
- assert.ok(read(article.link.slice(1)+'.md').includes('Zuordnungsstand'),module.text+': Prüfstatus fehlt')
-}
+const catalog=JSON.parse(read('tests/database-catalogs.json'))
+assert.deepEqual(manifest.consolidated,Object.keys(catalog.redirects),'Konsolidierte Artikel vollständig erfasst')
+assert.equal(catalog.moduleChapters.length,nav.sections.schulungen.filter(item=>item.module).length,'Alle Module erfasst')
 const problem=read('Datenbanken/problemdatenbanken.md')
 assert.ok(!/\]\([^)]*\.(?:sqlite|mdb|zip)\)/.test(problem),'Problemdaten dürfen nicht öffentlich angeboten werden')
 assert.ok(problem.includes('getrennten vereinbarten Kanal'))

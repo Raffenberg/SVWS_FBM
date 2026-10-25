@@ -6,6 +6,9 @@ import { clean, sectionFor, topicFor, sequence, footerFor, createSidebar, sideba
 import { overviewRows } from '../.vitepress/overview.mjs'
 const nav=JSON.parse(readFileSync('.vitepress/sidebar.json','utf8'))
 const sidebar=createSidebar(nav)
+const technical=nav.sections.testdaten
+const database=technical.find(x=>x.text==='Datenbanken')
+const environment=technical.find(x=>x.text==='Schulungsumgebung')
 const pages=Object.values(nav.sections).flatMap(flatten).filter(item=>item.link&&!item.link.includes('#'))
 test('canonical URLs and prefix boundaries',()=>{
  assert.equal(clean('/a/index.md'),'/a')
@@ -48,14 +51,14 @@ test('sequences stop at topic and section boundaries',()=>{
  assert.deepEqual(footerFor(nav,'/Datenbanken/'),{prev:false,next:false})
 })
 test('technical area has three independent roots and preserved environment addresses',()=>{
- const roots=['Datenbanken','Testumgebung','Schulungsumgebung','Weitere Bereiche']
- for(const [url,index] of [['/Datenbanken/testdaten/',0],['/umgebungen/einrichten',1],['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Docker_Schulungsserver/',2]]) {
+ const roots=['Übersicht','Datenbanken','Testumgebung','Schulungsumgebung','Weitere Bereiche']
+ for(const [url,index] of [['/Datenbanken/testdaten/',1],['/umgebungen/einrichten',2],['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Docker_Schulungsserver/',3]]) {
   const groups=sidebarFor(nav,url)
   assert.deepEqual(groups.map(x=>x.text),roots)
   assert.equal(groups[index].collapsed,false)
   assert.equal(groups.filter(x=>x.collapsed===false).length,1)
  }
- assert.ok(nav.sections.testdaten[2].items.length>=9)
+ assert.ok(environment.items.length>=9)
  assert.ok(!nav.sections.schulungen.some(x=>x.link?.includes('Test-_und_Schulungsserver')))
 })
 test('onboarding has no collapse control; other areas follow global order',()=>{
@@ -70,12 +73,10 @@ test('onboarding has no collapse control; other areas follow global order',()=>{
 })
 test('automatic tables reflect the requested topic rather than unrelated work steps',()=>{
  const checks=[
-  ['/technik/',nav.sections.testdaten],
-  ['/Datenbanken/',nav.sections.testdaten[0].items],
-  ['/Datenbanken/testdaten/',nav.sections.testdaten[0].items[0].items],
-  ['/Datenbanken/schulungen/',nav.sections.testdaten[0].items[1].items],
+  ['/technik/',nav.sections.testdaten.filter(x=>x.link!=='/technik/')],
+  ['/Datenbanken/',database.items],
   ['/schulungsmodule/',nav.sections.schulungen.filter(x=>x.module)],
-  ['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/',nav.sections.testdaten[2].items]
+  ['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/',environment.items]
  ]
  for(const [url,items] of checks) {
   assert.deepEqual(overviewRows(nav,url),items.map(({text,link,description})=>({text,link,description})),url)
@@ -88,20 +89,23 @@ test('automatic tables reflect the requested topic rather than unrelated work st
  }
 })
 test('test data and module bindings remain distinct and complete',()=>{
- const [testdata,training,problem]=nav.sections.testdaten[0].items
+ const [testdata,training,problem]=database.items
  assert.equal(testdata.text,'Testdatenbanken')
  assert.equal(training.text,'Schulungsdatenbanken')
  assert.equal(problem.text,'Problemdatenbanken')
- assert.equal(training.items.length,nav.sections.schulungen.filter(x=>x.module).length)
- for(const name of ['Sekundarstufe I','Berufskolleg']) assert.ok(testdata.items.find(x=>x.text===name).link)
+ assert.equal(testdata.items,undefined)
+ assert.equal(training.items,undefined)
+ const catalog=JSON.parse(readFileSync('tests/database-catalogs.json','utf8'))
+ assert.equal(catalog.moduleChapters.length,nav.sections.schulungen.filter(x=>x.module).length)
+ assert.equal(catalog.schoolChapters.length,6)
 })
 test('all existing articles and aliases have a routed owner',()=>{
  const manifest=JSON.parse(readFileSync('tests/portal-content.json','utf8'))
- for(const path of [...manifest.protectedArticles,...manifest.rewritten,...manifest.newArticles]) {
+ for(const path of [...manifest.protectedArticles,...manifest.rewritten,...manifest.newArticles,...manifest.consolidated]) {
   if(path==='index.md') continue
   assert.ok(sectionFor(nav,'/'+path),path)
  }
- for(const url of Object.keys(nav.aliases)) assert.ok(sidebar[clean(url)+'/index.md'])
+ for(const url of Object.keys(nav.aliases)) assert.ok(sidebar[clean(url)+(url.endsWith('/')?'/index.md':'.md')])
 })
 test('cards link into their own area and dated tips keep their topic',()=>{
  const paths=execFileSync('git',['ls-files','-z','*.md'],{encoding:'utf8'}).split('\0').filter(Boolean)

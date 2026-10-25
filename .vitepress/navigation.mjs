@@ -64,7 +64,7 @@ export function createSidebar(navigation) {
     const target = clean(item.link)
     exact[target + (item.link.endsWith('/') ? '/index.md' : '.md')] = sidebarFor(navigation, target)
   }
-  for (const alias of Object.keys(navigation.aliases ?? {})) exact[clean(alias) + '/index.md'] = sidebarFor(navigation, alias)
+  for (const alias of Object.keys(navigation.aliases ?? {})) exact[clean(alias) + (alias.endsWith('/') ? '/index.md' : '.md')] = sidebarFor(navigation, alias)
   const prefixes = Object.keys(navigation.routes).sort((a,b) => b.length-a.length).map(prefix => [prefix, sidebarFor(navigation, prefix)])
   return { ...exact, ...Object.fromEntries(prefixes) }
 }

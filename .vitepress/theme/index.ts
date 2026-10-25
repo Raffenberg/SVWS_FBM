@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme';
 import DownloadPdf from './components/DownloadPdf.vue';
 import SectionCards from './components/SectionCards.vue';
 import NavigationOverview from './components/NavigationOverview.vue';
+import DatabaseRedirect from './components/DatabaseRedirect.vue';
 import LatestTips from './components/LatestTips.vue';
 import type { Theme } from 'vitepress';
 import { useData } from 'vitepress';
@@ -31,6 +32,7 @@ export default {
     app.component('SectionCards', SectionCards)
     app.component('NavigationOverview', NavigationOverview)
     app.component('LatestTips', LatestTips)
+    app.component('DatabaseRedirect', DatabaseRedirect)
   },
   
   

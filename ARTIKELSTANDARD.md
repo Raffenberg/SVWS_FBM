@@ -86,8 +86,8 @@ Für Beispiele `::: example` verwenden; der Standardtitel ist „Beispiel“. Ei
 
 - Hauptnavigation in dieser Reihenfolge: Neu im Team, Fachberatung, Moderation, Datenbanken & Installation, Fortbildung, Wissen & Links.
 - Historische Artikeladressen bleiben erhalten. Die längste passende Route bestimmt den verantwortlichen Bereich.
-- Datenbanken & Installation zeigt drei unabhängig aufklappbare Sektionen: Datenbanken, Testumgebung, Schulungsumgebung. Die Überschriften führen zur jeweiligen Übersicht. Weitere Bereiche folgt der Hauptnavigation.
-- Die zusätzliche Ebene unter Datenbanken ist fachlich festgelegt: Sektion → Testdatenbanken/Schulungsdatenbanken → Schulform/Modul. Keine beliebig tieferen Unterartikel.
+- Datenbanken & Installation beginnt mit Übersicht und zeigt danach drei unabhängig aufklappbare Sektionen: Datenbanken, Testumgebung, Schulungsumgebung. Die Überschriften führen zur jeweiligen Übersicht. Weitere Bereiche folgt der Hauptnavigation.
+- Datenbanken enthält genau Testdatenbanken, Schulungsdatenbanken und Problemdatenbanken. Schulformen und Module sind Kapitel mit Downloadtabellen in den beiden Sammelartikeln, keine eigenen Menüebenen. Frühere Einzeladressen leiten zum passenden Kapitel weiter.
 - Die übrigen Bereiche verwenden eine gemeinsame Bereichsüberschrift und darunter Themen/Artikel. Neu im Team bleibt ohne Ausklappmarker geöffnet.
 - Aktive Themenzweige werden beim Seitenaufruf geöffnet. Andere Zweige bleiben manuell bedienbar; kein gegenseitiges automatisches Zuklappen.
 - Vorheriges/Nächstes folgt ausschließlich der eigenen Lesefolge. Unterthemen beginnen eine eigene Folge. Die Datenbank-Gesamtübersicht mischt keine Schulform- und Modulfolgen.

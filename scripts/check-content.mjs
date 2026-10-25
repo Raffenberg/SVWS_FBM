@@ -17,7 +17,7 @@ assert.equal(files.length, 199, 'Vollständiges Markdown-Inventar einschließlic
 const removedDatabaseArticles = new Set(["Datenbanken/Berufskolleg/index.md","Datenbanken/GOSt-DB/GOSt_DB_Eigenschaften.md","Datenbanken/GOSt-DB_2026/GOSt_DB_Eigenschaften.md"])
 const redesignedDatabaseArticles = new Set(["Datenbanken/index.md","Datenbanken/steckbrief.md","Datenbanken/Grundschule/index.md","Datenbanken/Gesamtschule/index.md","Datenbanken/GOSt-DB/index.md","Datenbanken/GOSt-DB_2026/index.md"])
 const redesignedKnowledgeArticles = new Set(['wissen/links.md', 'wissen/schild-tipps.md', 'wissen/svws-tipps.md', 'Tipp_der_Woche/index.md'])
-const portalRedesign = new Set(JSON.parse(readFileSync('tests/portal-content.json', 'utf8')).rewritten)
+const portalRedesign = new Set(['rewritten','consolidated'].flatMap(key=>JSON.parse(readFileSync('tests/portal-content.json', 'utf8'))[key]))
 let checked = 0
 for (const file of files) {
   if (removedDatabaseArticles.has(file)) {

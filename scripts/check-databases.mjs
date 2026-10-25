@@ -1,43 +1,41 @@
 import assert from 'node:assert/strict'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-
-const sourceRef = 'a2af73f2774552d76e55d03ac82cf1b8839e11bb'
-const git = (...args) => execFileSync('git', args, { encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 })
-const source = path => git('show', sourceRef + ':' + path)
-const current = path => readFileSync(path, 'utf8')
-const folders = ['Grundschule', 'GOSt-DB', 'GOSt-DB_2026', 'Gesamtschule']
-const downloads = text => [...text.matchAll(/\]\((https:[^)]+\.(?:sqlite|zip|7z|pdf))\)/g)].map(match => match[1])
-const tree = new Set(git('ls-files', '-z', 'Datenbanken').split('\0').filter(Boolean))
-for (const folder of folders) {
-  const path = 'Datenbanken/' + folder + '/index.md'
-  const article = current(path)
-  for (const heading of ['Einsatzbereich', 'Datenbanken herunterladen', 'Eigenschaften und Einsatzmöglichkeiten', 'Herkunft und Hinweise']) {
-    assert.ok(article.includes('## ' + heading), path + ': ' + heading)
-  }
-  const before = downloads(source(path))
-  const after = downloads(article)
-  assert.ok(before.length > 0, path + ': keine belegten Downloads')
-  for (const link of before) assert.ok(after.includes(link), path + ': Download entfernt: ' + link)
-  for (const link of after) {
-    const relative = decodeURIComponent(link.split('/refs/heads/dev/')[1] ?? '')
-    assert.ok(tree.has(relative), path + ': Download nicht im Bestand: ' + link)
-  }
+const read = path => readFileSync(path, 'utf8')
+const catalog = JSON.parse(read('tests/database-catalogs.json'))
+const nav = JSON.parse(read('.vitepress/sidebar.json'))
+const git = (...args) => execFileSync('git', args, {encoding:'utf8',maxBuffer:32*1024*1024})
+const old = path => git('show',catalog.sourceRef+':'+path)
+const downloads = source => [...source.matchAll(/\]\((https:[^)]+\.(?:sqlite|mdb|zip|7z|pdf))\)/g)].map(m=>m[1])
+const test = read('Datenbanken/testdaten/index.md')
+const training = read('Datenbanken/schulungen/index.md')
+assert.equal(nav.sections.testdaten[0].text,'Übersicht')
+assert.equal(nav.sections.testdaten[0].link,nav.nav.find(x=>x.text==='Datenbanken & Installation').link)
+const group = nav.sections.testdaten.find(x=>x.text==='Datenbanken')
+assert.deepEqual(group.items.map(x=>x.text),['Testdatenbanken','Schulungsdatenbanken','Problemdatenbanken'])
+for(const item of group.items) assert.equal(item.items,undefined,'Keine weitere Menüebene: '+item.text)
+for(const [source,chapters] of [[test,catalog.schoolChapters],[training,catalog.moduleChapters]]) {
+ assert.equal((source.match(/^# /gm)||[]).length,1)
+ assert.ok(!/Eigenschaften und Einsatzmöglichkeiten|Herkunft und Hinweise|NavigationOverview/.test(source))
+ assert.deepEqual([...source.matchAll(/^## (.+?) \{#([^}]+)\}/gm)].map(m=>({text:m[1],id:m[2]})),chapters)
+ assert.ok(!/^### /m.test(source),'Keine Unterartikel im Katalog')
+ for(const chapter of chapters) {
+  const body=source.split('{#'+chapter.id+'}')[1].split('\n## ')[0]
+  assert.ok(body.includes('| Datenbank | Kurzbeschreibung |'),chapter.text+': Tabelle fehlt')
+  assert.ok(body.split('\n').some(line=>line.startsWith('| ')&&!line.startsWith('| Datenbank')),'Leere Tabelle')
+ }
 }
-for (const folder of ['GOSt-DB', 'GOSt-DB_2026']) {
-  const oldPath = 'Datenbanken/' + folder + '/GOSt_DB_Eigenschaften.md'
-  const retained = source(oldPath).replace(/^# Erläuterung der Datenbanken GOSt[^\n]*\n+/, '').trimEnd()
-    .replace(/^### /gm, '#### ').replace(/^## /gm, '### ')
-  assert.ok(current('Datenbanken/' + folder + '/index.md').includes(retained), oldPath + ': fachliche Beschreibung nicht vollständig übernommen')
-  assert.ok(!existsSync(oldPath), oldPath + ': Doppelartikel nicht entfernt')
+for(const [path,target] of Object.entries(catalog.redirects)) {
+ const source=read(path)
+ assert.ok(source.includes('<DatabaseRedirect to="'+target+'" />'),path+': Weiterleitung fehlt')
+ assert.ok(source.includes('search: false'),path+': Doppelter Suchtreffer')
+ assert.ok(!/^## /m.test(source),path+': Doppelter Fachartikel')
+ for(const link of downloads(old(path))) assert.ok(downloads(test).includes(link)||downloads(training).includes(link),path+': Download verloren: '+link)
+ const [page,anchor]=target.split('#')
+ const destination=read(page.slice(1)+'index.md')
+ assert.ok(destination.includes('{#'+anchor+'}'),path+': Zielkapitel fehlt')
 }
-assert.ok(!existsSync('Datenbanken/Berufskolleg/index.md'), 'Berufskolleg-Platzhalter nicht entfernt')
-const beforeGS = source('Datenbanken/Grundschule/index.md').split('## Datenbanken gs_2026_x.sqlite und gs_2026_x_mitLeistungsdaten.sqlite')[1]
-  .split('## Dateien in dieser Sammlung')[0].trim().replace('Grundschludatenbank', 'Grundschuldatenbank')
-assert.ok(current('Datenbanken/Grundschule/index.md').includes(beforeGS), 'Grundschul-Eigenschaften unvollständig')
-const oldCardLink = './GOSt-DB_2026/GOSt_DB_Eigenschaften.md'
-assert.ok(current('Datenbanken/steckbrief.md').startsWith(source('Datenbanken/steckbrief.md').replace(oldCardLink, './GOSt-DB_2026/#eigenschaften')))
-for (const sourceName of ['SVWS-TestSqlites', 'SVWS-TestMDBs']) assert.ok(current('Datenbanken/steckbrief.md').includes('https://github.com/SVWS-NRW/' + sourceName), 'Testdatenquelle verloren: ' + sourceName)
-const changedAssets = git('diff', '--diff-filter=MD', '--name-only', sourceRef, '--', 'Datenbanken/').trim().split('\n').filter(path => path && !path.endsWith('.md'))
-assert.deepEqual(changedAssets, [], 'Datenbankdateien oder Begleitmaterialien verändert')
-console.log('Datenbanksammlungen: Downloadziele, unveränderte Dateien und vollständig zusammengeführte Fachbeschreibungen geprüft.')
+assert.equal(read('Datenbanken/problemdatenbanken.md'),old('Datenbanken/problemdatenbanken.md'),'Problemdatenbanken verändert')
+assert.equal(read('Datenbanken/steckbrief.md'),old('Datenbanken/steckbrief.md'),'Steckbrief verändert')
+assert.deepEqual(git('diff','--name-only',catalog.sourceRef,'--','Datenbanken/').trim().split('\n').filter(p=>p&&!p.endsWith('.md')),[],'Datenbankdateien oder Begleitmaterial verändert')
+console.log('Datenbankkataloge: Übersicht, genau drei Menüpunkte, sechs Schulformen, zwölf Module, Weiterleitungen, Download- und Dateierhalt geprüft.')
