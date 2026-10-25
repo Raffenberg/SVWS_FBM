@@ -1,4 +1,4 @@
-# Datenbanken
+# Datenbanken {#datenbanken}
 
 Wähle den Bestand nach Deiner Aufgabe. **Testdaten dienen dem Ausprobieren, Schulungsdaten müssen zu den konkreten Aufgaben passen. Problemdatenbanken sind fallbezogene Sicherungen einer Schule.**
 
@@ -14,4 +14,3 @@ Wähle den Bestand nach Deiner Aufgabe. **Testdaten dienen dem Ausprobieren, Sch
 
 Dateien werden einmal in ihrer Sammlung gepflegt. Die Modulübersichten verweisen auf diese Dateien; es gibt keine zweite Kopie mit unklarem Aktualisierungsstand.
 
-<span id="datenbanken"></span>

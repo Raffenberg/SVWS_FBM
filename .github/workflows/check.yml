@@ -28,6 +28,8 @@ jobs:
           find Fachberatung_Anleitungen/Test-_und_Schulungsserver -name '*.sh' -print0 | xargs -0 shellcheck --format=json > test-results/training-shellcheck.json || true
       - name: Externe Links der Schulungsumgebungen
         run: python3 scripts/check-training-links.py
+      - name: Externe Links des gesamten Portals
+        run: python3 scripts/check-portal-links.py
       - name: Echte Docker-Diensteprobe
         run: bash scripts/smoke-training-docker.sh
       - run: npm run docs:check

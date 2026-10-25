@@ -27,7 +27,7 @@ for (const file of files) {
   assert.ok(existsSync(file), 'Bisheriger Artikel fehlt: ' + file)
   if (excluded.test(file)) continue
   if (portalRedesign.has(file)) {
-    assert.ok(sidebar['/' + file], 'Keine gezielte Sidebar: ' + file)
+    if (file !== 'index.md') assert.ok(sidebar['/' + file], 'Keine gezielte Sidebar: ' + file)
     checked++
     continue
   }

@@ -54,4 +54,17 @@ assert.ok(read('umgebungen/schild2.md').includes('SchILD2-Migrationstool'))
 assert.ok(read('umgebungen/dbeaver.md').includes('Ohne Microsoft Access'))
 assert.ok(read('fortbildung/inhaltsstand.md').includes('Referierende'))
 for(const item of Object.values(nav.sections).flatMap(flatten)) if(item.link&&!item.link.includes('#')) assert.ok(createSidebar(nav)[clean(item.link)+(item.link.endsWith('/')?'/index.md':'.md')],item.link+': gezielte Sidebar fehlt')
+
+const missingAnchors={}
+for(const path of manifest.rewritten) {
+ const previous=markdown.render(old(path),{})
+ const current=markdown.render(read(path),{})
+ const beforeIDs=[...previous.matchAll(/<h[1-6]\b[^>]*\bid="([^"]+)"/g)].map(m=>m[1])
+ const currentIDs=new Set([...current.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]))
+ const missing=beforeIDs.filter(id=>!currentIDs.has(id))
+ if(missing.length) missingAnchors[path]=missing
+}
+console.log('PORTAL_ANCHORS='+JSON.stringify(missingAnchors))
+assert.equal(Object.keys(missingAnchors).length,0,'Historische Überschriftenanker fehlen')
+
 console.log('Portal: '+manifest.rewritten.length+' autorisierte Überarbeitungen, '+manifest.newArticles.length+' neue Artikel, '+manifest.protectedArticles.length+' unveränderte Fachseiten; Medien, Code, Anker, Module und Inhaltsarten geprüft.')
