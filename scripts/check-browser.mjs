@@ -9,7 +9,7 @@ const base=process.env.BASE??'/Schulungsunterlagen/'
 const urlFor=link=>origin+base+link.slice(1)
 const local=href=>new URL(href,urlFor('/')).pathname.slice(base.length-1)
 const browser=await chromium.launch()
-const page=await browser.newPage({viewport:{width:1440,height:1000}})
+const page=await browser.newPage({viewport:{width:1440,height:1000},locale:'de-DE'})
 const errors=[]
 page.on('pageerror',error=>errors.push(error.message))
 mkdirSync('test-results',{recursive:true})
@@ -83,7 +83,7 @@ try {
    for(const link of shots) {
     await visit(link)
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,width+': '+link)
-    await page.screenshot({path:'test-results/portal-'+scheme+'-'+width+'-'+encodeURIComponent(link)+'.png',fullPage:true})
+    await page.screenshot({path:'test-results/portal-'+scheme+'-'+width+'-'+encodeURIComponent(link)+'.png',fullPage:true,animations:'disabled'})
    }
    if(width===390) {
     await visit('/umgebungen/einrichten')

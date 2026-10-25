@@ -155,3 +155,9 @@
 @media (min-width: 768px) {
   .VPHome .VPHomeFeatures .item.grid-6 { width: calc(100% / 3); }
 }
+
+/* Keep linked task names readable in screen tables; wide tables scroll locally. */
+@media screen {
+  .vp-doc:not(.portal-home) td:first-child,
+  .vp-doc:not(.portal-home) td:first-child a { overflow-wrap: normal; }
+}
