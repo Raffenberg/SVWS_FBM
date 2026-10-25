@@ -75,7 +75,7 @@ Finde heraus, wo Du die Sprachenfolge eines Schülers findest und füge dem Sch�
 + Kontrolliere, ob die 10er eine Folgeklasse *EF* eingetragen haben (ebenso Q1 als Folgeklasse der EF bzw. Q2 als Folgeklasse der Q1).
 + Beachte: Die Klassen sind - im Gegensatz zu Schild2 - für jeden Abschnitt angelegt. So wird z.B. auch die Sichtbarkeit abschnittsweise gesteuert, ebenso Klassenlehrer: Wähle zur Ansicht vergangene Abschnitte aus.
 
-:information_source: [Infos zum Katalog *Klassen-/Versetzungstabellen*](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Klassen-Versetzungstabelle_(Schulbezogene_Kataloge))
+:information_source: [Infos zum Katalog *Klassen-/Versetzungstabellen*](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Klassen-%2FVersetzungstabelle_(Schulbezogene_Kataloge))
 
 > [!TIP] Moderationshinweis
 > * Klassenlehrer bei den 10ern in Ruhe lassen und nicht durch neue Beratungslehrer ersetzen.

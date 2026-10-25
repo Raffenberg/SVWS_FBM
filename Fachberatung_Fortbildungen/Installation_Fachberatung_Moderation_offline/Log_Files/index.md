@@ -18,7 +18,7 @@ Prüfe
 &nbsp;
 
 Sichte die Datei **svwsconfig.json** im Ordner C:\ProgramData\SVWS-Server\res. Beachte, dass hier ihr Benutzername und ihr Passwort in Klartext gespeichert sind.
-Die Bedeutung der einzelnen Parameter können [hier](https://doku.svws-nrw.de/Deployment/Windows-Installer/#konfigurationsdatei-editieren) nachgelesen werden.
+Die Bedeutung der einzelnen Parameter können [hier](https://doku.svws-nrw.de/deployment/Einrichtung/) nachgelesen werden.
 
 
 ### SVWS-Arbeitsverzeichnis

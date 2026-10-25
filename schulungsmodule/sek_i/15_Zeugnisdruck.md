@@ -2,9 +2,9 @@
 
 ## 15.1 Vorbereitung der Zeugnisreports  
 
-Auf der Webseite des MSB für [Schulverwaltungssoftware](https://www.svws.nrw.de/schild-nrw2/reports/zeugnisformulare) finden sich aktuelle Zeugnisformulare, die für den aktuellen Abschnitt genutzt werden sollen.
+Auf der Webseite des MSB für [Schulverwaltungssoftware](https://www.svws.nrw.de/reports-schild-nrw-3) finden sich aktuelle Zeugnisformulare, die für den aktuellen Abschnitt genutzt werden sollen.
 
-## 15.2 [Importieren und Konfigurieren der Zeugnisformulare](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Import_neuer_Zeugnisformulare_in_Schild-NRW_(Tutorial))
+## 15.2 [Importieren und Konfigurieren der Zeugnisformulare](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Zeugnisformulare_herunterladen_und_aktualisieren)
 
 ## 15.3 [Zeugnisdruck](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Zeugnisvorbereitungen_und_Zeugnisdruck_(Einf%C3%BChrung_in_SchILD-NRW)#Zeugnisdruck_und_Archivierung)  
 

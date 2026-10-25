@@ -6,6 +6,7 @@ Du findest die passende Erklärung und kannst einen Vergleich für Beratung oder
 
 | Fragestellung | Hauptquelle |
 | --- | --- |
+| Wesentliche Unterschiede zentral nachschlagen | [SchILD3-Wiki: Unterschiede zu SchILD-NRW 2](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Wesentliche_Unterschiede_zu_SchILD-NRW_2) |
 | SchILD-NRW 3 bedienen und geänderte Arbeitsabläufe verstehen | [SchILD-NRW-3-Wiki](https://schulverwaltungsinfos.nrw.de/svws/wiki/) |
 | Den älteren SchILD2-Arbeitsablauf vergleichen | [SchILD-NRW-2-Wiki](https://wiki.svws.nrw.de/mediawiki) |
 | Geänderte Konzepte im SVWS-Client | [Offizielle Übersicht „Was ist neu?“](https://doku.svws-nrw.de/svws-client/dokumentationsartikel/%C3%A4nderungen/) |

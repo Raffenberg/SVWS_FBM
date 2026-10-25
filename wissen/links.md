@@ -11,7 +11,7 @@
 | [SchILD-NRW-2-Wiki](https://wiki.svws.nrw.de/mediawiki) | Nachschlagen zu SchILD-NRW 2, auch beim Vergleich von Arbeitsabläufen |
 | [SVWS-Forum](https://schulverwaltungsinfos.nrw.de/svws/forum/index.php) | Erfahrungen und Lösungen suchen; geschützter Fachberaterbereich nach Freischaltung |
 | [Fachberatersuche](https://www.svws.nrw.de/service/fachberatersuche) | Zuständigkeit für eine Schule finden |
-| [Supportkonzept](https://www.svws.nrw.de/service/supportkonzept) | Supportwege und Zuständigkeiten einordnen |
+| [Service und Zuständigkeiten](https://www.svws.nrw.de/service-0) | Fachberatersuche, Forum und zuständige Unterstützungsangebote |
 | [Fortbildungen für Schulen](https://www.svws.nrw.de/service/fortbildungen) | Fortbildungsangebote für Schulen finden |
 | [Interne Teamangebote](/fortbildung/) | Fortbildungen und Austausch für das Fachberatungsteam finden |
 | [support@svws-nrw.de](mailto:support@svws-nrw.de) | Zentrale Kontaktadresse für das Team |

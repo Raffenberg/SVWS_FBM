@@ -41,7 +41,7 @@ Lege eine Dokumentenverwaltung mit Hilfe von SchILD-NRW3 an (unter "Verwaltung" 
 ::: details
 + Es wird empfohlen, das Arbeitsverzeichnis für die Dokumentenverwaltung zu nutzen.\
 ![Report-Reiter](./graphics/vonS2nachS3_uebersicht_Arbeitsverzeichnis_dokumentenverwaltung.png) 
-+ Informationen zu den Einstellungen findest Du [hier](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Reports_verwenden_(Einf%C3%BChrung_in_SchILD-NRW)#Dokumenten-_und_Zeugnisarchivierung). Bei den Einstellungen gab es keine Änderungen im Vergleich zu SchILD-NRW2 
++ Informationen zu den Einstellungen findest Du [hier](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Dokumentenverwaltung_und_Zeugnisarchivierung). Bei den Einstellungen gab es keine Änderungen im Vergleich zu SchILD-NRW2 
 :::
 
 ::: info 

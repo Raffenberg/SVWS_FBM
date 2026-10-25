@@ -25,7 +25,7 @@ Im Anschluss gibt es die Möglichkeit, Fragen zu stellen und/oder die gezeigten 
 + Ebenso bereiten veraltetet Access-Datenbanken Probleme bei der Migration. Auch hier hilft das Migrationstool weiter.
 
 ### Hilfreiche Links
-+ Download **Migraitonstool** (Unter kleine Windows Hilfsprogramme): https://www.svws.nrw.de/download/schild-nrw-tools-download
++ Download **Migraitonstool** (Unter kleine Windows Hilfsprogramme): https://www.svws.nrw.de/schild-nrw-2/tools-module
 
 
 

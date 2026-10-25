@@ -8,7 +8,7 @@
 Zunächst ist es für die spätere Fehlersuche hilfreich nachzuvollziehen, wie die Leistungsdaten im SVWS-Server verwaltet werden. 
 Die Noteneingabe unterscheidet sich mit dem SVWS-Client grundsätzlich von der Eingabe mit dem SchILD3-Client. Diese wird nachstehend beschrieben.
 
-Die externe Noteneingabe mit dem [WeNoM - WebNotenManager](https://doku.svws-nrw.de/wenom/benutzerhandbuch/anleitung_lehrkraefte.html), einer Online Plattform zur Erfassung und Verwaltung der Noten und Zeugniseintragungen, kann anhand der verfügbaren Dokumentation nachvollzogen werden.
+Die externe Noteneingabe mit dem [WeNoM - WebNotenManager](https://doku.svws-nrw.de/svws-wenom/benutzerhandbuch_lehrkraefte/), einer Online Plattform zur Erfassung und Verwaltung der Noten und Zeugniseintragungen, kann anhand der verfügbaren Dokumentation nachvollzogen werden.
 
 # Leistungsdatenverwaltung im SVWS-Server
 

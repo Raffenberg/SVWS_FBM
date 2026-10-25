@@ -18,13 +18,13 @@ Beschaffe SchILD-NRW 2 und ergänzende Werkzeuge über die offiziellen [Download
 | Eine SchILD2-Datenbank in das SVWS-Datenmodell übernehmen | SVWS-AdminClient; Ergebnis ist ein SVWS-Schema in MariaDB |
 | Ein vorhandenes SVWS-Backup wiederherstellen | SQLite-Import im AdminClient; keine erneute SchILD2-Migration |
 
-Das SchILD2-Migrationstool findest Du unter den [offiziellen SchILD-NRW-Tools](https://www.svws.nrw.de/download/schild-nrw-tools-download). Lies die zum Paket gehörende Dokumentation. Verwechsle es nicht mit **SchILD_DBConfig**, das die Verbindung für SchILD-NRW 3 einrichtet.
+Das SchILD2-Migrationstool findest Du unter den [offiziellen SchILD-NRW-Tools](https://www.svws.nrw.de/schild-nrw-2/tools-module). Lies die zum Paket gehörende Dokumentation. Das Konfigurationsprogramm selbst überträgt keine Daten. Das SchILD2-Werkzeugpaket kann mit **SchILD_DBConfig** Quell- und Zielkonfigurationen für das Migrationstool erzeugen; bei SchILD-NRW 3 wird damit die Arbeitsplatzverbindung eingerichtet. Beachte jeweils das Werkzeugpaket und Dateiformat. Die [SchILD2-Wiki-Anleitung](https://wiki.svws.nrw.de/mediawiki/index.php?title=Schild-NRW-Daten_in_eine_andere_Datenbank_%C3%BCbertragen_(migrieren)) beschreibt den dokumentierten Ablauf.
 
 ## 3. Einen Migrationsversuch vorbereiten
 
 1. Sichere den unveränderten Ausgangsbestand und das Fehlerprotokoll.
 2. Bestimme Quell- und Zielverbindung ausdrücklich. Ein Zielbestand darf für diese Probe überschrieben werden; eine produktive Datenbank ist kein Testziel.
-3. Führe das zum Fehler passende dokumentierte Verfahren an einer Kopie aus.
+3. Lege nach der Paketdokumentation die Quell- und Zielkonfiguration an, prüfe beide Verbindungen und starte das Migrationstool mit diesen Konfigurationen. Führe den Versuch an einer Kopie aus.
 4. Öffne das Ergebnis in SchILD-NRW 2 und prüfe die betroffenen Daten und Funktionen.
 5. Erst danach folgt gegebenenfalls ein neuer Versuch mit dem [SVWS-AdminClient](https://doku.svws-nrw.de/adminclient/anleitungen/kurzanleitung_migration.html).
 
