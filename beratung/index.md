@@ -1,5 +1,10 @@
 # Fachberatung
 
+<span id="beratung-umstieg"></span>
+<span id="aktuelle-schwerpunkte"></span>
+<span id="warum-der-umstieg-jetzt-so-viel-unterstutzung-braucht"></span>
+<span id="bewahrte-materialien-nutzen"></span>
+
 Du unterstützt Schulen bei Bedienungsfragen, Einstellungen, Installation und Umstieg. Beginne beim Anliegen der Schule. Du musst nicht schon beim ersten Gespräch wissen, welches technische Werkzeug die Lösung liefert.
 
 ## Was möchtest Du tun?

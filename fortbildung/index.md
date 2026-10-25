@@ -1,5 +1,11 @@
 # Fortbildung
 
+<span id="fortbildung-austausch"></span>
+<span id="termine-teilnahme"></span>
+<span id="material-nach-themen"></span>
+<span id="themenwunsche-austausch"></span>
+<span id="svws-convention"></span>
+
 Hier entwickelst Du Kenntnisse für Fachberatung und Moderation weiter. Wähle zuerst eine Aufgabe, die Du anschließend selbstständig bewältigen möchtest. Ein Veranstaltungstitel allein zeigt noch nicht, ob eine vollständige Anleitung vorliegt.
 
 | Dein Bedarf | Dein Einstieg |

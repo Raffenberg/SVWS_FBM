@@ -1,5 +1,9 @@
 # Eigene Testumgebung
 
+<span id="test-schulungsumgebungen"></span>
+<span id="fur-einen-beratungsfall"></span>
+<span id="vor-dem-einsatz"></span>
+
 Dein Ziel ist ein **vorbereiteter Beratungsarbeitsplatz**, an dem Du Fragen ohne Zeitdruck nachvollziehen kannst. Beginne mit einer überschaubaren Umgebung. Weitere Dienste kommen hinzu, wenn ein Fall oder Lernziel sie benötigt.
 
 ## Dein Weg zum arbeitsfähigen Testplatz

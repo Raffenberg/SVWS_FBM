@@ -93,7 +93,7 @@ test('test data and module bindings remain distinct and complete',()=>{
  assert.equal(training.text,'Schulungsdatenbanken')
  assert.equal(problem.text,'Problemdatenbanken')
  assert.equal(training.items.length,nav.sections.schulungen.filter(x=>x.module).length)
- for(const name of ['Sekundarstufe I','Berufskolleg']) assert.equal(testdata.items.find(x=>x.text===name).link,undefined)
+ for(const name of ['Sekundarstufe I','Berufskolleg']) assert.ok(testdata.items.find(x=>x.text===name).link)
 })
 test('all existing articles and aliases have a routed owner',()=>{
  const manifest=JSON.parse(readFileSync('tests/portal-content.json','utf8'))

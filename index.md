@@ -42,6 +42,10 @@ features:
     linkText: Einstieg öffnen
 ---
 
+<span id="im-blick"></span>
+<span id="unsere-wichtigsten-anlaufstellen"></span>
+<span id="gemeinsam-weiterentwickeln"></span>
+
 <div class="vp-doc portal-home" id="svws-schulungsunterlagen">
 
 ## Was möchtest Du jetzt tun?

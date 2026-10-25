@@ -1,5 +1,11 @@
 # Migrationsprobleme eingrenzen
 
+<span id="_1-fehler-und-ausgangsdaten-festhalten"></span>
+<span id="_2-eine-neue-schild-nrw-2-access-datenbank-als-zwischenstufe"></span>
+<span id="_3-fehleintrage-im-ausgangsbestand-untersuchen"></span>
+<span id="_4-abschnittstabellen-nach-der-migration-prufen"></span>
+<span id="_5-ergebnis-prufen-oder-fall-weitergeben"></span>
+
 ## Ziel
 
 Du erkennst, ob das Problem im SchILD2-Ausgangsbestand, bei der Übernahme oder erst im SVWS-Ergebnis liegt. Arbeite mit unverändert aufbewahrter Quelle und einer getrennten Untersuchungskopie.

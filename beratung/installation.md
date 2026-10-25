@@ -1,5 +1,12 @@
 # Installation und Migration einer Schule begleiten
 
+<span id="installation-hardware-updates"></span>
+<span id="_1-die-ausgangslage-klaren"></span>
+<span id="_2-die-hardware-zur-umgebung-passend-prufen"></span>
+<span id="_3-installation-schritt-fur-schritt-zuordnen"></span>
+<span id="_4-bei-updates-auf-zusammenpassende-versionen-achten"></span>
+<span id="_5-einen-offenen-fall-weitergeben"></span>
+
 ## Ziel und Abgrenzung
 
 Du hilfst der Schule, den passenden dokumentierten Weg zu finden und einen Fehler einzugrenzen. Eine Schulinstallation, Dein eigener Testplatz und ein Schulungsraum haben unterschiedliche Betriebsbedingungen.

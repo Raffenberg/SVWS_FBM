@@ -514,7 +514,8 @@
               },
               {
                 "text": "Sekundarstufe I",
-                "description": "Noch kein eigener Datenbankartikel vorhanden."
+                "description": "Offizieller Gesamtschul-Testbestand für Sek I; Kurszuordnungen vor Einsatz prüfen.",
+                "link": "/Datenbanken/testdaten/sekundarstufe-i"
               },
               {
                 "text": "Sekundarstufe II - bis 2026",
@@ -533,7 +534,8 @@
               },
               {
                 "text": "Berufskolleg",
-                "description": "Noch keine eigene Datenbankdatei in dieser Sammlung verlinkt."
+                "description": "Offizieller BK-Testbestand; Schuljahreszuordnungen vor Einsatz prüfen.",
+                "link": "/Datenbanken/testdaten/berufskolleg"
               }
             ]
           },

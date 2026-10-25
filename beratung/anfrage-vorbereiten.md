@@ -1,5 +1,7 @@
 # Ergebnis prüfen und Beratungsanfrage vorbereiten
 
+<span id="beratungsanfrage-vorbereiten"></span>
+
 Eine gut beschriebene Frage erleichtert es dem Team, das Problem nachzustellen und die passende Lösung zu finden.
 
 ## Vor der Rückfrage

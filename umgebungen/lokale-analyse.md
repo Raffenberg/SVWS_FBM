@@ -1,5 +1,15 @@
 # Einen Datenbankfall an einer Kopie untersuchen
 
+<span id="lokale-test-analyseumgebung"></span>
+<span id="testdaten-oder-konkreter-beratungsfall"></span>
+<span id="der-ablauf-im-uberblick"></span>
+<span id="_1-den-personlichen-arbeitsplatz-einrichten"></span>
+<span id="_2-eine-sicherung-in-ein-eigenes-schema-importieren"></span>
+<span id="_3-mit-dbeaver-prufen-und-den-analysezugang-vorbereiten"></span>
+<span id="_4-eine-passende-verbindungsdatei-erstellen"></span>
+<span id="_5-fehler-nachstellen-und-ergebnis-festhalten"></span>
+<span id="fernunterstutzung-erganzend-einsetzen"></span>
+
 ## Ziel und Voraussetzungen
 
 Du kannst den beschriebenen Fehler reproduzieren und Deine Beobachtungen nachvollziehbar weitergeben. Benötigt werden ein [vorbereiteter Testplatz](/beratung/arbeitsplatz), ein klarer Auftrag und die [abgestimmt übertragene Sicherung](/Datenbanken/problemdatenbanken).

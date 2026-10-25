@@ -8,7 +8,7 @@ Diese Seite gehört zum Modul [Sekundarstufe I](/schulungsmodule/sek_i/). Du ber
 
 ## Vorhandener Bestand
 
-Eine eigenständige Sek-I-Datei ist in dieser Sammlung nicht dokumentiert. Die [Gesamtschuldatenbank](/Datenbanken/Gesamtschule/) ist ein möglicher Ausgangspunkt, muss aber auf die gewählten Aufgaben geprüft werden.
+Die [Sek-I-Testdatenseite](/Datenbanken/testdaten/sekundarstufe-i) verlinkt einen offiziellen Gesamtschulbestand und benennt dessen offene Kurszuordnungen. Dieser ist ein möglicher Ausgangspunkt; die konkrete Schulform und die gewählten Aufgaben müssen dazu passen.
 
 **Zuordnungsstand:** Zuordnung noch zu prüfen. Diese Einordnung beruht auf den vorhandenen Aufgaben und Dateibeschreibungen; sie ist keine neu durchgeführte fachliche Freigabe des gesamten Moduls.
 

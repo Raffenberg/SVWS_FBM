@@ -105,7 +105,9 @@
     "fortbildung/dokumentieren.md",
     "fortbildung/inhaltsstand.md",
     "wissen/aktuelles.md",
-    "wissen/umstieg.md"
+    "wissen/umstieg.md",
+    "Datenbanken/testdaten/sekundarstufe-i.md",
+    "Datenbanken/testdaten/berufskolleg.md"
   ],
   "protectedArticles": [
     "Datenbanken/GOSt-DB_2026/index.md",

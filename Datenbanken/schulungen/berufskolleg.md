@@ -8,9 +8,9 @@ Diese Seite gehört zum Modul [Berufskolleg](/schulungsmodule/BK/). Du bereitest
 
 ## Vorhandener Bestand
 
-Eine eigene BK-Datenbankdatei ist hier noch nicht verlinkt. Kläre mit dem Moderationsteam einen geeigneten öffentlichen bzw. freigegebenen Schulungsbestand. Eine echte Schuldatenbank ist kein Ersatz für einen öffentlichen Kursdownload.
+Die [BK-Testdatenseite](/Datenbanken/testdaten/berufskolleg) verlinkt einen offiziellen öffentlichen Bestand. Die Quelle nennt offene Schuljahreszuordnungen; seine Eignung für diese Aufgabenfolge ist deshalb mit dem Moderationsteam zu erproben. Eine echte Schuldatenbank ist kein Ersatz für einen öffentlichen Kursdownload.
 
-**Zuordnungsstand:** Dateizuordnung fehlt. Diese Einordnung beruht auf den vorhandenen Aufgaben und Dateibeschreibungen; sie ist keine neu durchgeführte fachliche Freigabe des gesamten Moduls.
+**Zuordnungsstand:** Öffentlicher Testbestand vorhanden; Modulzuordnung noch fachlich zu prüfen. Diese Einordnung beruht auf den vorhandenen Aufgaben und Dateibeschreibungen; sie ist keine neu durchgeführte fachliche Freigabe des gesamten Moduls.
 
 ## Vor der Schulung prüfen
 
