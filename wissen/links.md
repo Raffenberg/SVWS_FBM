@@ -11,7 +11,7 @@
 | [SchILD-NRW-2-Wiki](https://wiki.svws.nrw.de/mediawiki) | Nachschlagen zu SchILD-NRW 2, auch beim Vergleich von Arbeitsabläufen |
 | [SVWS-Forum](https://schulverwaltungsinfos.nrw.de/svws/forum/index.php) | Erfahrungen und Lösungen suchen; geschützter Fachberaterbereich nach Freischaltung |
 | [Fachberatersuche](https://www.svws.nrw.de/service/fachberatersuche) | Zuständigkeit für eine Schule finden |
-| [Supportkonzept](https://www.svws.nrw.de/service/supportkonzept) | Supportwege und Zuständigkeiten einordnen |
+| [Service und Zuständigkeiten](https://www.svws.nrw.de/service-0) | Fachberatersuche, Forum und zuständige Unterstützungsangebote |
 | [Fortbildungen für Schulen](https://www.svws.nrw.de/service/fortbildungen) | Fortbildungsangebote für Schulen finden |
 | [Interne Teamangebote](/fortbildung/) | Fortbildungen und Austausch für das Fachberatungsteam finden |
 | [support@svws-nrw.de](mailto:support@svws-nrw.de) | Zentrale Kontaktadresse für das Team |
@@ -22,8 +22,9 @@
 | --- | --- |
 | [Nightly des SVWS-Servers](https://nightly.svws-nrw.de/) | Aktuelle Entwicklungsstände für die Arbeit mit Testumgebungen |
 | [SVWS-DevOps](https://svws-devops.de/) | Technische Informationen und Werkzeuge im SVWS-Umfeld |
-| [Testdatenbanken im Portal](/Datenbanken/) | Vorhandene Übungsstände nach Schulform und Aufgabe |
-| [Schulungsumgebungen im Portal](/umgebungen/) | Einrichtung, Betrieb und Rücksetzen von Testumgebungen |
+| [Datenbanken im Portal](/Datenbanken/) | Vorhandene Übungsstände nach Schulform und Aufgabe |
+| [Testumgebung im Portal](/umgebungen/) | Den persönlichen Beratungsarbeitsplatz einrichten und prüfen |
+| [Schulungsumgebung im Portal](/Fachberatung_Anleitungen/Test-_und_Schulungsserver/) | Raumaufbau, Arbeitsplatzzuordnung und Rücksetzen |
 | Fachberatercloud | Zugang und Passwort über die [Koordination oder das Team](/neu-im-team/kommunikation#fachberatercloud) |
 
 ## Entwicklung & Fehlermeldungen {#entwicklung-fehlermeldungen}

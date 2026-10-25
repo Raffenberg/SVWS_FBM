@@ -58,5 +58,5 @@ Die Teilnahmebescheinigungen werden zeitnah automatisch generiert und verschickt
 
 Alles ist über diese Links erreichbar:
 
-+ SVWS-Seite des MSB: https://www.svws-nrw.de
++ SVWS-Seite des MSB: https://www.svws.nrw.de/
 + SVWS-Client und Server: https://doku.svws-nrw.de

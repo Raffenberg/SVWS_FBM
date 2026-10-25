@@ -2,167 +2,122 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { clean, sectionFor, topicFor, sequence, footerFor, createSidebar, sidebarFor } from '../.vitepress/navigation.mjs'
+import { clean, sectionFor, topicFor, sequence, footerFor, createSidebar, sidebarFor, flatten } from '../.vitepress/navigation.mjs'
 import { overviewRows } from '../.vitepress/overview.mjs'
-const nav = JSON.parse(readFileSync(new URL('../.vitepress/sidebar.json', import.meta.url), 'utf8'))
-const sidebar = createSidebar(nav)
-test('canonical URLs, encoded spaces and index pages', () => {
-  assert.equal(clean('/a/index.md'), '/a')
-  assert.equal(clean('/a/'), '/a')
-  assert.equal(clean('/a%20b.html#test'), '/a b')
+const nav=JSON.parse(readFileSync('.vitepress/sidebar.json','utf8'))
+const sidebar=createSidebar(nav)
+const pages=Object.values(nav.sections).flatMap(flatten).filter(item=>item.link&&!item.link.includes('#'))
+test('canonical URLs and prefix boundaries',()=>{
+ assert.equal(clean('/a/index.md'),'/a')
+ assert.equal(clean('/a%20b.html#x'),'/a b')
+ assert.equal(sectionFor(nav,'/umgebungen/lokale-analyse.html'),'beratung')
+ assert.equal(sectionFor(nav,'/umgebungen/einrichten.html'),'testdaten')
+ assert.equal(sectionFor(nav,'/beratung-neu/'),undefined)
 })
-test('every article has a suitable initial section and reciprocal local neighbours', () => {
-  for (const groups of Object.values(nav.sections)) for (const group of groups) {
-    for (const item of [group, ...group.items ?? []]) {
-      if (!item.link || item.link.includes('#')) continue
-      const { section, topic } = topicFor(nav, item.link)
-      const key = clean(item.link) + (item.link.endsWith('/') ? '/index.md' : '.md')
-      assert.ok(sidebar[key], key)
-      const menu = sidebar[key]
-      if (section === 'schulungen') {
-        const opened = menu.filter(group => group.collapsed === false)
-        assert.equal(opened.length, 1, key)
-        assert.equal(opened[0].text, topic.text === 'Schulungsumgebungen' ? 'Schulungsumgebungen' : 'Schulungen', key)
-      }
-      const footer = footerFor(nav, item.link)
-      if (footer.next) assert.equal(clean(footerFor(nav, footer.next.link).prev.link), clean(item.link), item.link)
-      if (footer.prev) assert.equal(clean(footerFor(nav, footer.prev.link).next.link), clean(item.link), item.link)
-    }
+test('six requested areas in the requested order',()=>{
+ assert.deepEqual(nav.nav.map(x=>x.text),['Neu im Team','Fachberatung','Moderation','Datenbanken & Installation','Fortbildung','Wissen & Links'])
+ for(const entry of nav.nav) assert.ok(sectionFor(nav,entry.link))
+})
+test('every menu page has one owner, exact sidebar and reciprocal local neighbours',()=>{
+ const seen=new Set()
+ for(const item of pages) {
+  const {section,topic}=topicFor(nav,item.link)
+  assert.ok(section,item.link)
+  assert.ok(topic,item.link)
+  assert.ok(!seen.has(clean(item.link)),item.link+': doppelt im Menü')
+  seen.add(clean(item.link))
+  const key=clean(item.link)+(item.link.endsWith('/')?'/index.md':'.md')
+  assert.ok(sidebar[key],key)
+  const active=nav.nav.filter(entry=>entry.activeMatch&&new RegExp(entry.activeMatch).test(item.link))
+  if(section!=='team') assert.deepEqual(active.map(x=>x.text),[nav.sectionLabels[section]],item.link)
+  const footer=footerFor(nav,item.link)
+  for(const side of ['prev','next']) if(footer[side]) {
+   assert.equal(sectionFor(nav,footer[side].link),section,item.link)
+   assert.equal(clean(footerFor(nav,footer[side].link)[side==='prev'?'next':'prev'].link),clean(item.link),item.link)
   }
+ }
 })
-test('the complete transition module belongs to training', () => {
-  const group = nav.sections.schulungen.find(item => item.text === 'Umstieg zu SchILD-NRW 3')
-  assert.ok(group)
-  for (const item of [group, ...group.items]) {
-    assert.equal(sectionFor(nav, item.link), 'schulungen')
-    assert.equal(topicFor(nav, item.link).topic, group)
+test('sequences stop at topic and section boundaries',()=>{
+ for(const item of pages) {
+  const seq=sequence(nav,item)
+  if(topicFor(nav,item.link).topic!==item) continue
+  if(!seq.length) continue
+  assert.equal(footerFor(nav,seq[0].link).prev,false,item.link)
+  assert.equal(footerFor(nav,seq.at(-1).link).next,false,item.link)
+ }
+ assert.deepEqual(footerFor(nav,'/Datenbanken/'),{prev:false,next:false})
+})
+test('technical area has three independent roots and preserved environment addresses',()=>{
+ const roots=['Datenbanken','Testumgebung','Schulungsumgebung','Weitere Bereiche']
+ for(const [url,index] of [['/Datenbanken/testdaten/',0],['/umgebungen/einrichten',1],['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/Docker_Schulungsserver/',2]]) {
+  const groups=sidebarFor(nav,url)
+  assert.deepEqual(groups.map(x=>x.text),roots)
+  assert.equal(groups[index].collapsed,false)
+  assert.equal(groups.filter(x=>x.collapsed===false).length,1)
+ }
+ assert.ok(nav.sections.testdaten[2].items.length>=9)
+ assert.ok(!nav.sections.schulungen.some(x=>x.link?.includes('Test-_und_Schulungsserver')))
+})
+test('onboarding has no collapse control; other areas follow global order',()=>{
+ for(const entry of nav.nav) {
+  const groups=sidebarFor(nav,entry.link)
+  assert.equal(groups.at(-1).text,'Weitere Bereiche')
+  assert.equal(groups.at(-1).collapsed,true)
+  assert.deepEqual(groups.at(-1).items,nav.nav.filter(x=>x!==entry).map(({text,link})=>({text,link})))
+ }
+ assert.equal(sidebarFor(nav,'/neu-im-team/')[0].collapsed,undefined)
+ assert.equal(sidebarFor(nav,'/neu-im-team/')[0].items.length,3)
+})
+test('automatic tables reflect the requested topic rather than unrelated work steps',()=>{
+ const checks=[
+  ['/technik/',nav.sections.testdaten],
+  ['/Datenbanken/',nav.sections.testdaten[0].items],
+  ['/Datenbanken/testdaten/',nav.sections.testdaten[0].items[0].items],
+  ['/Datenbanken/schulungen/',nav.sections.testdaten[0].items[1].items],
+  ['/schulungsmodule/',nav.sections.schulungen.filter(x=>x.module)],
+  ['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/',nav.sections.testdaten[2].items]
+ ]
+ for(const [url,items] of checks) {
+  assert.deepEqual(overviewRows(nav,url),items.map(({text,link,description})=>({text,link,description})),url)
+  const changed=structuredClone(nav)
+  const target=url==='/schulungsmodule/'?changed.sections.schulungen:Object.values(changed.sections).flatMap(flatten).find(x=>x.link===url)?.items??changed.sections.testdaten
+  target.push({text:'Neuer Inhalt',link:url+'neu',description:'Eine neue Aufgabe.',...(url==='/schulungsmodule/'?{module:true}:{})})
+  assert.equal(overviewRows(changed,url).at(-1).text,'Neuer Inhalt',url)
+  delete target.at(-1).description
+  assert.throws(()=>overviewRows(changed,url),/Kurzbeschreibung fehlt/)
+ }
+})
+test('test data and module bindings remain distinct and complete',()=>{
+ const [testdata,training,problem]=nav.sections.testdaten[0].items
+ assert.equal(testdata.text,'Testdatenbanken')
+ assert.equal(training.text,'Schulungsdatenbanken')
+ assert.equal(problem.text,'Problemdatenbanken')
+ assert.equal(training.items.length,nav.sections.schulungen.filter(x=>x.module).length)
+ for(const name of ['Sekundarstufe I','Berufskolleg']) assert.ok(testdata.items.find(x=>x.text===name).link)
+})
+test('all existing articles and aliases have a routed owner',()=>{
+ const manifest=JSON.parse(readFileSync('tests/portal-content.json','utf8'))
+ for(const path of [...manifest.protectedArticles,...manifest.rewritten,...manifest.newArticles]) {
+  if(path==='index.md') continue
+  assert.ok(sectionFor(nav,'/'+path),path)
+ }
+ for(const url of Object.keys(nav.aliases)) assert.ok(sidebar[clean(url)+'/index.md'])
+})
+test('cards link into their own area and dated tips keep their topic',()=>{
+ const paths=execFileSync('git',['ls-files','-z','*.md'],{encoding:'utf8'}).split('\0').filter(Boolean)
+ let checked=0
+ for(const path of paths) {
+  if(path==='index.md') continue
+  const source=readFileSync(path,'utf8')
+  const front=source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if(!front||!front[1].includes('sectionCards:')) continue
+  for(const match of front[1].matchAll(/^\s+link:\s*"([^"]+)"/gm)) {
+   assert.equal(sectionFor(nav,match[1]),sectionFor(nav,'/'+path),path)
+   checked++
   }
-  assert.ok(!nav.sections.beratung.some(item => item.link?.includes('VonSchild2_ZuSchild3')))
-  const index = nav.sections.schulungen.findIndex(item => item.text === 'SchILD-NRW 2 zu 3')
-  assert.equal(nav.sections.schulungen[index + 1], group)
-})
-test('reading sequences stop at topic boundaries and ignore fragment shortcuts', () => {
-  for (const groups of Object.values(nav.sections)) for (const group of groups) {
-    const pages = sequence(nav, group)
-    if (!pages.length) continue
-    assert.equal(footerFor(nav, pages[0].link).prev, false)
-    assert.equal(footerFor(nav, pages.at(-1).link).next, false)
-  }
-})
-test('school sidebar has exactly the three requested collapsible sections', () => {
-  for (const url of ['/schulungsmodule/', '/Fachberatung_Anleitungen/Test-_und_Schulungsserver/']) {
-    const groups = sidebarFor(nav, url)
-    assert.deepEqual(groups.map(item => item.text), ['Schulungen', 'Schulungsumgebungen', 'Weitere Bereiche'])
-    assert.ok(groups.every(item => typeof item.collapsed === 'boolean'))
-    assert.equal(groups.filter(item => !item.collapsed).length, 1)
-    assert.equal(groups[0].link, '/schulungsmodule/')
-    assert.equal(groups[1].link, '/Fachberatung_Anleitungen/Test-_und_Schulungsserver/')
-    assert.ok(groups.slice(0, 2).every(group => !group.items.some(item => item.text === 'Übersicht')))
-    assert.equal(groups[0].items[0].text, 'Schulungsvorlagen')
-    assert.equal(groups[1].items[0].text, 'Arbeitsplätze & lokale VMs')
-    assert.ok(!groups[0].items.some(item => item.text === 'Schulungsumgebungen'))
-  }
-})
-test('other areas follow the top navigation in every section', () => {
-  for (const entry of nav.nav) {
-    const section = sectionFor(nav, entry.link)
-    const groups = sidebarFor(nav, entry.link)
-    assert.deepEqual(groups.at(-1).items, nav.nav.filter(item => item.link !== entry.link).map(({ text, link }) => ({ text, link })))
-    assert.equal(groups.at(-1).collapsed, true)
-  }
-})
-test('onboarding stays permanently expanded and offers all other areas', () => {
-  const expected = [
-    { text: 'Erste Schritte', link: '/neu-im-team/' },
-    { text: 'Kommunikation', link: '/neu-im-team/kommunikation' },
-    { text: 'Zusammenarbeit', link: '/neu-im-team/rollen' }
-  ]
-  for (const item of expected) {
-    const groups = sidebarFor(nav, item.link)
-    assert.equal(groups[0].text, 'Neu im Team')
-    assert.equal(groups[0].collapsed, undefined)
-    assert.deepEqual(groups[0].items, expected)
-    assert.equal(groups[1].text, 'Weitere Bereiche')
-    assert.equal(groups[1].collapsed, true)
-    assert.deepEqual(groups[1].items, nav.nav.filter(entry => entry.link !== '/neu-im-team/').map(({ text, link }) => ({ text, link })))
-  }
-})
-test('old overview URLs retain their exact sidebar', () => {
-  for (const url of Object.keys(nav.aliases)) {
-    assert.ok(sidebar[clean(url) + '/index.md'])
-    assert.deepEqual(footerFor(nav, url), { prev: false, next: false })
-  }
-})
-test('all overview cards belong to the page section', () => {
-  const paths = execFileSync('git', ['ls-files', '-z', '*.md'], { encoding: 'utf8' }).split('\0').filter(Boolean)
-  let checked = 0
-  for (const path of paths) {
-    if (path === 'index.md') continue // Portal cards intentionally span all sections.
-    const source = readFileSync(path, 'utf8')
-    const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-    if (!frontmatter || !frontmatter[1].includes('sectionCards:')) continue
-    const section = sectionFor(nav, '/' + path)
-    assert.ok(section, path)
-    for (const match of frontmatter[1].matchAll(/^\s+link:\s*"([^"]+)"/gm)) {
-      assert.equal(sectionFor(nav, match[1]), section, path + ': misplaced card ' + match[1])
-      checked++
-    }
-  }
-  assert.ok(checked > 0, 'Overview cards were not discovered')
-})
-
-
-test('training overview tables follow all menu topics and require descriptions', () => {
-  for (const [path, index] of [['/schulungsmodule/', 0], ['/Fachberatung_Anleitungen/Test-_und_Schulungsserver/', 1]]) {
-    const topics = sidebarFor(nav, path)[index].items.filter(item => item.text !== 'Übersicht')
-    const rows = overviewRows(nav, path)
-    assert.deepEqual(rows.map(({ text, link }) => ({ text, link })), topics.map(({ text, link }) => ({ text, link })))
-    assert.ok(rows.every(row => row.description.trim().length > 0))
-    const changed = structuredClone(nav)
-    const list = index === 0 ? changed.sections.schulungen : changed.sections.schulungen.at(-1).items
-    list.push({ text: 'Neues Thema', link: path + 'neu', description: 'Neue Schulungsinhalte.' })
-    assert.equal(overviewRows(changed, path).at(-1).text, 'Neues Thema')
-    delete list.at(-1).description
-    assert.throws(() => overviewRows(changed, path), /Kurzbeschreibung fehlt/)
-  }
-})
-
-test('test data menu is flat, complete and automatically reflected in its table', () => {
-  const topics = nav.sections.testdaten
-  const expected = ['Übersicht', 'Datenbanksteckbrief', 'Grundschule', 'Sekundarstufe I', 'Sekundarstufe II - bis 2026', 'Sekundarstufe II ab 2026', 'Gesamtschule', 'Berufskolleg']
-  assert.deepEqual(topics.map(item => item.text).filter(text => expected.includes(text)), expected)
-  assert.ok(topics.every(item => !item.items))
-  assert.deepEqual(overviewRows(nav, '/Datenbanken/'), topics.slice(1).map(({ text, link, description }) => ({ text, link, description })))
-  for (const name of ['Sekundarstufe I', 'Berufskolleg']) assert.equal(topics.find(item => item.text === name).link, undefined)
-  const changed = structuredClone(nav)
-  changed.sections.testdaten.push({ text: 'Neue Sammlung', link: '/Datenbanken/neu/', description: 'Neuer Bestand.' })
-  assert.equal(overviewRows(changed, '/Datenbanken/').at(-1).text, 'Neue Sammlung')
-  delete changed.sections.testdaten.at(-1).description
-  assert.throws(() => overviewRows(changed, '/Datenbanken/'), /Kurzbeschreibung fehlt/)
-})
-test('all local analysis articles belong to advice and activate its top menu', () => {
-  const analysis = nav.sections.beratung.find(item => item.text === 'Lokale Analyse')
-  assert.ok(analysis)
-  assert.ok(!nav.sections.testdaten.some(item => item.text === 'Lokale Analyse'))
-  for (const item of [analysis, ...analysis.items]) {
-    assert.equal(sectionFor(nav, item.link), 'beratung')
-    const active = nav.nav.filter(entry => entry.activeMatch && new RegExp(entry.activeMatch).test(item.link))
-    assert.deepEqual(active.map(entry => entry.text), ['Beratung'])
-  }
-})
-
-test('important links are a direct leaf and dated tips have separate topic pages', () => {
-  const items = nav.sections.wissen
-  const links = items.find(item => item.text === 'Wichtige Links')
-  assert.equal(links.link, '/wissen/links')
-  assert.equal(links.items, undefined)
-  assert.ok(!items.some(item => item.text === 'Nachschlagen & Links'))
-  assert.ok(!items.some(item => [item, ...item.items ?? []].some(entry => entry.link === '/Tipp_der_Woche/')))
-  for (const [label, path] of [['SchILD-Tipps', '/wissen/schild-tipps'], ['SVWS-Tipps', '/wissen/svws-tipps']]) {
-    const topic = items.find(item => item.text === label)
-    assert.equal(topic.link, path)
-    assert.equal(topicFor(nav, path).topic, topic)
-    for (const article of topic.items) assert.equal(topicFor(nav, article.link).topic, topic)
-  }
-  assert.ok(sidebar['/Tipp_der_Woche/index.md'])
+ }
+ assert.ok(checked>0)
+ for(const topic of nav.sections.wissen.filter(x=>x.items)) for(const article of topic.items) assert.equal(topicFor(nav,article.link).topic,topic)
+ const links=nav.sections.wissen.find(x=>x.text==='Wichtige Links')
+ assert.equal(links.items,undefined)
 })

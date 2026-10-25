@@ -1,44 +1,35 @@
----
-sectionCards:
-  - title: "Orientierung & Support"
-    details: "Systemzusammenhänge, Installation, Migration und den Beratungsweg nachvollziehen."
-    link: "/beratung/systemueberblick"
-  - title: "Technische Anleitungen"
-    details: "Datenbankprüfung, Reporting und API-Beispiele gezielt nachschlagen."
-    link: "/Fachberatung_Anleitungen/"
-  - title: "Lokale Analyse"
-    details: "Eine lokale Datenbankkopie untersuchen und die benötigten Werkzeuge einrichten."
-    link: "/umgebungen/"
----
+# Fachberatung
 
-# Beratung & Umstieg
+<span id="beratung-umstieg"></span>
+<span id="aktuelle-schwerpunkte"></span>
+<span id="warum-der-umstieg-jetzt-so-viel-unterstutzung-braucht"></span>
+<span id="bewahrte-materialien-nutzen"></span>
 
-Die Fachberatung unterstützt Schulen vor allem bei Bedienungsfragen und Fehleinstellungen. Mit dem Umstieg auf SVWS-Server und SchILD-NRW 3 kommen viele Fragen zu Installation, Updates und Migration hinzu. Hier findest Du die vorhandenen Hilfen nach Beratungsanlass gebündelt.
+Du unterstützt Schulen bei Bedienungsfragen, Einstellungen, Installation und Umstieg. Beginne beim Anliegen der Schule. Du musst nicht schon beim ersten Gespräch wissen, welches technische Werkzeug die Lösung liefert.
 
-<SectionCards />
+## Was möchtest Du tun?
 
-## Aktuelle Schwerpunkte
-
-| Anliegen | Dein Einstieg |
+| Deine Aufgabe | Dein Einstieg |
 | --- | --- |
-| Wie arbeiten die Programme zusammen? | [SVWS-Server, MariaDB, SVWS-Client und SchILD-NRW 3](./systemueberblick.md) |
-| Was muss installiert werden und welche Hardware passt? | [Installation, Hardware & Updates](./installation.md) |
-| Die Migration scheitert oder die Daten wirken danach fehlerhaft | [Migrationsprobleme eingrenzen](./migration.md) |
-| Eine Test- oder Problemdatenbank lokal untersuchen | [Lokale Test- & Analyseumgebung](/umgebungen/lokale-analyse) |
-| Ein bestimmtes Fehlerbild nachschlagen | [Probleme & Lösungen nach Themen](./probleme.md) |
-| Einen hartnäckigen Fall weitergeben | [Beratungsanfrage vorbereiten](./anfrage-vorbereiten.md) |
+| Mich für künftige Fälle vorbereiten | [Beratungsarbeitsplatz vorbereiten](./arbeitsplatz.md) |
+| Einen neuen Fall übernehmen | [Supportfall Schritt für Schritt bearbeiten](./ablauf.md) |
+| Bei einer Installation oder Migration helfen | [Installation und Migration begleiten](./installation.md) |
+| Eine übermittelte Datenbank untersuchen | [Datenbankfall bearbeiten](/umgebungen/lokale-analyse) |
+| Ein bekanntes Fehlerbild suchen | [Probleme und Lösungen](./probleme.md) |
+| Einen offenen Fall weitergeben | [Ergebnis prüfen und Anfrage vorbereiten](./anfrage-vorbereiten.md) |
 
-## Warum der Umstieg jetzt so viel Unterstützung braucht
+## Der Arbeitsweg
 
-Die landesweite Umstellung auf den SVWS-Server erhöht den Installations-, Update- und Migrationsbedarf. Für 2027 ist die Erfassung der Schulstatistik über den Server vorgesehen; die [SVWS-Dokumentation ordnet die Umstellung ein](https://doku.svws-nrw.de/deployment/FAQ.html). Die meisten Schulen nutzen den Server zusammen mit SchILD-NRW 3.
+**Anliegen verstehen → Rahmenbedingungen klären → passenden Unterstützungsweg wählen → Ursache eingrenzen → Ergebnis prüfen → dokumentieren oder weitergeben.**
 
-Fachberaterinnen und Fachberater helfen auch Schulen mit selbst betriebener Serverumgebung. Anliegen von IT-Dienstleistern betreuen Anne, David und Jens als Landesfachberatung. Den [Supportweg und die Rollen](/neu-im-team/rollen) findest Du im Teameinstieg.
+Telefon, Fernunterstützung, Schulbesuch und Analyse einer Kopie ergänzen sich. Fordere nicht automatisch eine Datenbank an, wenn sich eine Bedienungsfrage bereits gemeinsam klären lässt.
 
-## Bewährte Materialien nutzen
+## Zuständigkeit und Unterstützung
 
-- Das Schulungsmodul [Umstiegsübersicht](/schulungsmodule/VonSchild2_ZuSchild3/) vergleicht bestehende Arbeitsabläufe in SchILD-NRW 2, SchILD-NRW 3 und dem SVWS-Client.
-- Die [vorhandenen Installationsunterlagen](/Fachberatung_Fortbildungen/Installation_Fachberatung_Moderation_offline/) beschreiben Einrichtung, Sicherungen und Diagnose.
-- Annes Beiträge zu typischen Problemen sind über die [Tipps der Woche](/Tipp_der_Woche/) und die [thematische Sammlung](./probleme.md) erreichbar.
-- Für vertiefte Untersuchungen gibt es [technische Anleitungen](/Fachberatung_Anleitungen/) und [Fallbeispiele zu Supportanfragen](/Fachberatung_Fortbildungen/Wissenswert/).
+Die Fachberatung ist erste Anlaufstelle ihrer Schulen. Die [Rollenübersicht](/neu-im-team/rollen) erklärt die Zusammenarbeit mit Koordination und Landesfachberatung.
 
-Die vorhandenen Schulungsunterlagen bleiben als Bestand zugänglich. Deine fachliche Überarbeitung liegt bei den Moderatorinnen und Moderatoren.
+**IT-Dienstleister, die mehrere Schulen betreuen, werden durch die Landesfachberatung unterstützt.** Dieses Portal beschreibt dafür keine eigenen Betriebsmodelle. Verweise solche Anliegen an die zuständige Landesfachberatung. Sie bietet außerdem eine Online-Sprechstunde am Montag an; Zielgruppe, Zugang und aktuelle Teilnahmeinformationen klärst Du über die [Teamkommunikation](/neu-im-team/kommunikation). Hier wird keine unbestätigte Uhrzeit oder öffentliche Einwahl veröffentlicht.
+
+## Wenn Dir Wissen fehlt
+
+Wähle einen [Lernweg](/fortbildung/lernwege) und arbeite zunächst mit Testdaten. Ein unbekannter Installationsfall ist ein Anlass zur Rückfrage, nicht zum Ausprobieren am produktiven System. Technische Grundlagen findest Du zentral unter [Datenbanken & Installation](/technik/).

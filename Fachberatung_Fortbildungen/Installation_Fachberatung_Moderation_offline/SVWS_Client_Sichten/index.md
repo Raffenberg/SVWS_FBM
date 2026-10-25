@@ -1,5 +1,10 @@
 # Sichten des SVWS-Clients
 
+
+::: info Ergänzende Installationsunterlagen
+Diese erhaltene Bildfolge gehört zur zentralen Testumgebung. Dialoge und Versionsstände können abweichen. Für einen neuen Aufbau beginne mit [PC oder Laptop einrichten](/umgebungen/einrichten); die Originalanleitungen dort sind maßgeblich.
+:::
+
 ### Aufgabe: Datenbank im Browser öffnen
 Öffne die Datenbank über einen Internet-Browser.   
 

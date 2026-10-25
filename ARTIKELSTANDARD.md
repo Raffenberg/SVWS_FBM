@@ -82,46 +82,30 @@ Für Beispiele `::: example` verwenden; der Standardtitel ist „Beispiel“. Ei
 - ESLint und die Codequalitätsvorgaben der **Inits**: separat abstimmen, nicht im Zuge der Artikelformatierung verändern.
 - PDF-Ausgabe und druckgerechte Gestaltung: später als gemeinsames Thema beider Dokumentationen betrachten; vorhandene FBM-Funktionen vorerst unverändert lassen.
 
-## Navigation: Bereich → Thema → Artikel
+## Navigation und Zuständigkeit
 
-- Die sechs Bereiche stehen in der Hauptnavigation. Die Sidebar fasst die gleichberechtigten Themen unter einer Bereichsüberschrift zusammen; direkt unter den Themen stehen die Artikel. Darunter folgen keine weiteren Artikel-Ebenen.
-- Unterthemen mit eigener Aufgabenreihe werden zu eigenständigen Themen, beispielsweise „Oberstufe: Klausurplanung“. Keine zusätzlichen aufklappbaren Ebenen unter einem Artikel.
-- Menütitel sind Klartext, höchstens 48 Zeichen lang. Keine Markdown-Links, Dateinamen mit Unterstrichen oder ausgeschriebenen URLs. Die Langtitel im Artikel bleiben möglich.
-- Bestehende Artikelpfade bleiben erhalten. Die längste passende Route in `.vitepress/sidebar.json` legt den verantwortlichen Bereich fest, auch bei historischen Verzeichnisnamen.
-- Nur das aktuelle Thema wird automatisch geöffnet. Andere Themen bleiben manuell aufklappbar; ein Themenwechsel setzt die Auswahl zurück.
-- Vorheriges/Nächstes Thema folgt der redaktionellen Reihenfolge innerhalb des aktuellen Themas, einschließlich seiner Übersicht. An der Themengrenze endet die Folge. Sprungmarken und Verweise in andere Bereiche sind keine zusätzlichen Leseschritte.
-- Ergänze Artikel und Reihenfolge in `.vitepress/sidebar.json`; Sidebar und Seitenfuß nutzen gemeinsam `.vitepress/navigation.mjs`.
+- Hauptnavigation in dieser Reihenfolge: Neu im Team, Fachberatung, Moderation, Datenbanken & Installation, Fortbildung, Wissen & Links.
+- Historische Artikeladressen bleiben erhalten. Die längste passende Route bestimmt den verantwortlichen Bereich.
+- Datenbanken & Installation zeigt drei unabhängig aufklappbare Sektionen: Datenbanken, Testumgebung, Schulungsumgebung. Die Überschriften führen zur jeweiligen Übersicht. Weitere Bereiche folgt der Hauptnavigation.
+- Die zusätzliche Ebene unter Datenbanken ist fachlich festgelegt: Sektion → Testdatenbanken/Schulungsdatenbanken → Schulform/Modul. Keine beliebig tieferen Unterartikel.
+- Die übrigen Bereiche verwenden eine gemeinsame Bereichsüberschrift und darunter Themen/Artikel. Neu im Team bleibt ohne Ausklappmarker geöffnet.
+- Aktive Themenzweige werden beim Seitenaufruf geöffnet. Andere Zweige bleiben manuell bedienbar; kein gegenseitiges automatisches Zuklappen.
+- Vorheriges/Nächstes folgt ausschließlich der eigenen Lesefolge. Unterthemen beginnen eine eigene Folge. Die Datenbank-Gesamtübersicht mischt keine Schulform- und Modulfolgen.
+- Namen, Links und Kurzbeschreibungen der Übersichtstabellen kommen aus dem Menü. Module tragen dort die Eigenschaft module; so bleibt die Modulliste von den Moderationsabläufen getrennt.
 
-### Bereichsübersicht und Wechsel zwischen Bereichen
+## Inhaltliche Hauptorte
 
-- Außer „Neu im Team“ und „Schulungen“ beginnt das Hauptmenü jedes Bereichs mit „Übersicht“, die auf dessen Landing-Page führt. Unter „Schulungen“ führen die verlinkten Hauptmenüpunkte „Schulungen“ und „Schulungsumgebungen“ direkt zur jeweiligen Landing-Page; separate „Übersicht“-Einträge entfallen. Die Pfeile klappen die Sektionen unabhängig voneinander auf und zu.
-- Der Hauptblock trägt den Bereichsnamen. Unter Schulungen gibt es drei native VitePress-Hauptsektionen, die unabhängig voneinander auf- und zugeklappt werden. Nur das aktive Thema darin wird beim Seitenaufruf automatisch aufgeklappt.
-- „Weitere Bereiche“ zeigt die übrigen Bereiche in der Reihenfolge der Hauptnavigation. Unter Schulungen stehen „Schulungen“, „Schulungsumgebungen“ und „Weitere Bereiche“ als getrennte Hauptsektionen. Das Öffnen oder Schließen einer Sektion verändert die anderen nicht.
-- Hauptnavigation und Bereichswechsel werden gemeinsam aus `.vitepress/sidebar.json` unter `nav` erzeugt. „Neu im Team“ zeigt seine drei Einträge dauerhaft ohne Ausklapp-Marker; darunter steht „Weitere Bereiche“ als eingeklappter Block.
-- Historische Verzeichnisse ändern bei einer redaktionellen Verschiebung ihren Pfad nicht. Die Route der Schulungsumgebung gehört zu „Schulungen“; das vollständige Modul „Umstieg zu SchILD-NRW 3“ gehört ebenfalls zu „Schulungen“.
+- Fachberatung: Arbeitsvorbereitung, Supportprozess, Telefon/Fernhilfe, Schulbesuch, Fallanalyse und Weitergabe.
+- Moderation: Vorbereitung, Durchführung, Nachbereitung, Aufgaben und Materialpflege.
+- Datenbanken & Installation: einmal gepflegte Dateisammlungen, Zuordnungen, persönlicher Testplatz und Schulungsraum. Problemdatenbanken enthält nur die Austauschanleitung, keine Schuldaten.
+- Ausführliche SchILD-Bedienung und Unterschiede SchILD2/SchILD3 werden in der SchILD3-Dokumentation bzw. dem vorhandenen Wiki gepflegt. Server-/AdminClient-Anleitungen gehören zur SVWS-Dokumentation. Das Portal verlinkt sie gezielt.
+- Eine vorhandene Beschreibung eines Ausgangsstands ist keine neue fachliche Prüfung aller Modulaufgaben. Fehlende Zuordnungen sichtbar lassen.
 
-### Landingpages und Emoji-Kürzel
+## Inhaltsarten und Prüfung
 
-- Themenkacheln auf Bereichsübersichten verlinken ausschließlich Themen des eigenen Bereichs. Bereichsübergreifende Hinweise bleiben als ausdrücklich benannte Textlinks möglich; die globale Startseite erschließt alle Bereiche.
-- Nach einer Verschiebung Menüzuordnung und Übersichts-Kacheln gemeinsam pflegen. Die Zuordnung wird in Quellen und Browser geprüft.
-- Die Kürzel `:a:`, `:date:` und `:information_source:` werden im normalen Artikeltext als Emoji dargestellt. Innerhalb von Code bleiben sie unverändert.
-- Die Übersicht der Schulungsumgebungen liegt unter dem erhaltenen Pfad `/Fachberatung_Anleitungen/Test-_und_Schulungsserver/`.
-
-### Tabellenübersichten unter Schulungen
-
-- Die Übersichten „Schulungen“ und „Schulungsumgebungen“ verwenden statt Kacheln `NavigationOverview`. Namen, Links und Reihenfolge stammen automatisch aus dem jeweiligen Sidebar-Hauptmenü; die Landing-Page ist über dessen Überschrift erreichbar.
-- Bei neuen oder geänderten Themen die kurze `description` direkt am Menüeintrag in `.vitepress/sidebar.json` pflegen. Fehlende Kurzbeschreibungen lassen die Qualitätsprüfung scheitern. Keine zweite Modulliste im Markdown anlegen.
-
-### Testdaten und Datenbankartikel
-
-- „Testdaten“ führt Übersicht, Datenbanksteckbrief und Schulformen in einer flachen Liste. Sekundarstufe I und Berufskolleg bleiben ohne Link, solange kein eigener Artikel mit Datenbankdownloads vorhanden ist.
-- Die Übersicht enthält ausschließlich die automatisch aus dem Menü erzeugte Tabelle. Neue Menüpunkte benötigen eine kurze `description`; Einträge ohne Artikel werden als Text angezeigt.
-- Datenbankartikel verwenden die Abschnitte „Einsatzbereich“, „Datenbanken herunterladen“, „Eigenschaften und Einsatzmöglichkeiten“ und „Herkunft und Hinweise“. Downloads, fachliche Beschreibungen und Begleitdateien gemeinsam pflegen; keine separaten Beschreibungsartikel ohne Datenbanklinks anlegen.
-- Die beiden bisherigen GOSt-Beschreibungen sind in die jeweilige Sammlung integriert; der leere Berufskolleg-Artikel ist entfernt. Die vorhandenen Datenbank- und Begleitdateien bleiben unverändert.
-- „Lokale Analyse“ einschließlich Offline-Installation gehört zu „Beratung“. Historische Artikelpfade bleiben dabei erhalten.
-
-### Wissen und Links
-
-- „Wichtige Links“ ist ein direkter Menüpunkt ohne Untermenü. Allgemeine Information, Dokumentation, Beratung und Austausch stehen gemeinsam in der ersten Tabelle; der SVWS-Internetauftritt steht zuerst. Entwicklungs- und Fehlermeldestellen stehen ebenfalls mit Kurzbeschreibung in einer Tabelle.
-- Die Seiten „SchILD-Tipps“ und „SVWS-Tipps“ führen ihre datierten Beiträge getrennt mit Hinweis auf Programmstände und die thematische Problemlösungssammlung. Neue Beiträge in der passenden Datumstabelle ergänzen; bestehende Artikelpfade erhalten.
-- Der gemeinsame Menüpunkt „Tipp der Woche: nach Datum“ entfällt. Die historische Adresse bleibt als Wegweiser zu beiden Sammlungen erreichbar.
+- Anleitung: Ziel, Voraussetzungen, Handlungsschritte, Erfolgskontrolle und Geltungsbereich.
+- Fallbeispiel: konkrete Ausgangslage, Befund und begrenzte Übertragbarkeit. Keine pauschalen SQL-Reparaturen aus Beispiel-IDs ableiten.
+- Veranstaltungsunterlagen: Datum, Agenda und Begleitmaterial; fehlende Demonstrationsschritte benennen. Keine Agenda als vollständige Anleitung verlinken.
+- Historische Bildfolgen: Bilder erhalten und ihren früheren Stand erklären; aktuelle Originalanleitung als Einstieg anbieten.
+- Fachliche Freigabe und technische CI getrennt benennen. Der Inhaltsstand der Fortbildungen zeigt offene Nachbereitung.
+- Änderungen in einem eigenen Branch und PR gegen dev. Keine Änderungen am SchILD-Repo, an ESLint/Inits, Paketen oder PDF/Druck im Rahmen dieses Umbaus.

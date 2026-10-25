@@ -1,6 +1,6 @@
 # 9 Zeugnisformulare
 
-[Download der Zeugnisformulare](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Import_neuer_Zeugnisformulare_in_Schild-NRW_(Tutorial)) und Anpassen der Datei »Zeugniseinstellungen.ini«
+[Download der Zeugnisformulare](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Zeugnisformulare_herunterladen_und_aktualisieren) und Anpassen der Datei »Zeugniseinstellungen.ini«
 
 **Aufgabe**  
 Öffne eine INI Datei in den Zeugnisformularen in der Fortbildung und schaue, welche Änderungen möglich wären.

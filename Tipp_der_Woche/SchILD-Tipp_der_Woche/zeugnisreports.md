@@ -5,7 +5,7 @@ Wusstest du schon, dass die **Zeugnisreports für Schild3 im Github** bereitsteh
 
 Der Download der Zeugnisse ist - anders als bei Schild2 - nur über Github möglich. Auf der Homepage findet ihr hier die entsprechenden Download-Links.
 
-[Die Verlinkung zu Github findet ihr auf der Homepage](https://www.svws.nrw.de/svws-server-schild-nrw-3/reports-zeugnisse-fuer-schild-nrw-3-als-download)
+[Die Verlinkung zu Github findet ihr auf der Homepage](https://www.svws.nrw.de/reports-schild-nrw-3)
 
 | ![Link zu den Zeugnispaketen](./graphics/schildtipp_Zeugnisreports1.png)  |
 |---------------|

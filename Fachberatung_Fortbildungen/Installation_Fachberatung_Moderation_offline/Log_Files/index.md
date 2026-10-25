@@ -1,6 +1,11 @@
 # Ordnerstruktur und wichtige Installationsdateien
 
 
+::: info Ergänzende Installationsunterlagen
+Diese erhaltene Bildfolge gehört zur zentralen Testumgebung. Dialoge und Versionsstände können abweichen. Für einen neuen Aufbau beginne mit [PC oder Laptop einrichten](/umgebungen/einrichten); die Originalanleitungen dort sind maßgeblich.
+:::
+
+
 ### C:\ProgramData\SVWS-Server
 Sichte die Log-Datei **svws_server_service.out.log**. Diese liegt im Ordner C:\ProgramData\SVWS-Server\logs.
 Prüfe
@@ -13,7 +18,7 @@ Prüfe
 &nbsp;
 
 Sichte die Datei **svwsconfig.json** im Ordner C:\ProgramData\SVWS-Server\res. Beachte, dass hier ihr Benutzername und ihr Passwort in Klartext gespeichert sind.
-Die Bedeutung der einzelnen Parameter können [hier](https://doku.svws-nrw.de/Deployment/Windows-Installer/#konfigurationsdatei-editieren) nachgelesen werden.
+Die Bedeutung der einzelnen Parameter können [hier](https://doku.svws-nrw.de/deployment/Einrichtung/) nachgelesen werden.
 
 
 ### SVWS-Arbeitsverzeichnis

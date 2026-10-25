@@ -9,7 +9,7 @@ Die aktuellen Informationen und Downloads zu SchiLD und allen Tools findest Du i
 Schnelle Hilfe bei aktuellen Fragen/Problemen findest Du in der folgenden Reihenfolge auf www.svws.nrw.de
 
 - Online-Doku-Wiki
-Ausführliche Informationen und Anleitungen findest Du im [SchiLD-NRW-Wiki](https://www.svws.nrw.de/wiki). Es ersetzt die sonst üblichen Handbücher.
+Ausführliche Informationen und Anleitungen findest Du im [SchiLD-NRW-Wiki](https://schulverwaltungsinfos.nrw.de/svws/wiki/). Es ersetzt die sonst üblichen Handbücher.
 
 - Forum
 Aktuelle Fragen/Problemen findest Du im [Forum](https://schulverwaltungsinfos.nrw.de/svws/forum/index.php) - diskutiert und beantwortet - nach Schulform sortiert.
@@ -19,7 +19,7 @@ Aktuelle Fragen/Problemen findest Du im [Forum](https://schulverwaltungsinfos.nr
 Im SchILD-Forum kann jeder Fragen stellen, wenn er Hilfe benötigt. Zum guten Ton gehört, vorher nach schon vorhandenen Beiträgen zu suchen, die ggf. schon die Antwort auf das eigene Problem liefern. Falls kein entsprechender Beitrag gefunden wurde, stellt man die Frage im zugehörigen Bereich.
 
 - ADV Fachberater:in
-Jeder Schule ist ein:e [Fachberater:in](https://www.schulministerium.nrw.de/BiPo/fbsuche/fbsuche.xhtml) zugeordnet, der bei speziellen Problemen, die sich nicht durch Nutzung der Online-Hilfen lösen lassen, für Deine Fragen zur Verfügung steht. Du findest
+Jeder Schule ist ein:e [Fachberater:in](https://www.svws.nrw.de/service/fachberatersuche) zugeordnet, der bei speziellen Problemen, die sich nicht durch Nutzung der Online-Hilfen lösen lassen, für Deine Fragen zur Verfügung steht. Du findest
 Deine:n persönliche:n Fachberater:in über die Fachberatersuche unter Eingabe Deiner
 Schulnummer.
 
@@ -54,7 +54,7 @@ Das Fortbildungsangebot der Bezirksregierung Arnsberg findest Du [hier](https://
 
 # 2. Erste Orientierung in SchILD-NRW
 
-Die [Wiki-Seite](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=SchILD-NRW) hilft Dir einen strukturierten Blick auf SchILD zu erhalten - mitsamt allen Unterpunkten.
+Die [Wiki-Seite](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=SchILD-NRW_3) hilft Dir einen strukturierten Blick auf SchILD zu erhalten - mitsamt allen Unterpunkten.
 
 Die [Übersicht zu SchILD3](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=%C3%9Cbersicht:_SchILD-NRW_3_(Einf%C3%BChrung)), die [Karteireiterübersicht](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=SchILD-NRW_3#Karteireiter) und die [Tutorials](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=SchILD-NRW_3#Tutorials) für oft verwendete Schritte helfen bei der ersten Orientierung.
 
@@ -440,7 +440,7 @@ Die Reportverwaltung ermöglicht den Druck von Formularen, die über die Standar
 Im Fenster können links mit den Standardfiltern für den Container schnell einzelne Schüler:innen oder Gruppen ausgewählt werden.
 Rechts ist die Ordnerstruktur des Ordners `.\SVWS-Arbeitsverzeichnis\Schild-Reports` dargestellt. In dieses Verzeichnis hinein kannst Du neue Reports z. B. mit Hilfe des Windows-Explorers einfügen.
 Reports für SchILD werden auf dieser Seite bereitgestellt:
-[Schild-Reports](https://www.svws.nrw.de/svws-server-schild-nrw-3/reports).
+[Schild-Reports](https://www.svws.nrw.de/reports-schild-nrw-3).
 
 ## 9.1 Menüband
 
@@ -460,7 +460,7 @@ Sieh Dich den Bericht "Schülerliste - Klasse.rtm" für die Klasse 05A an.
 Sieh Dich nun denselben Bericht *aus dem vergangenen Schuljahr* an.
 
 **Aufgabe 3**
-Aktiviere den [Schnellzugriff](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Reports_verwenden_(Einf%C3%BChrung_in_SchILD-NRW)#Einstellungen_zu_Reports.2FSchnellzugriff) auf häufig genutzte Reports. Hiernach ist ein Neustart des Programms nötig.
+Aktiviere den [Schnellzugriff](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Reports_%C3%BCber_den_Schnellzugriff_aufrufen) auf häufig genutzte Reports. Hiernach ist ein Neustart des Programms nötig.
 Suche einen Report einer Klassenliste und füge ihn diesem Schnellzugriff hinzu.
 
 **Aufgabe 4**
@@ -468,7 +468,7 @@ Wähle einen Report einer Schulbescheinigung als "Standard-Bescheinigung".
 Sieh Dich die Vorschau aus dem Reiter "Schüler" heraus an.
 
 **Aufgabe 5**
-Drucke einen [Serienbrief](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Serienbriefsammlung_(Reportverwaltung)) an die Erziehungsberechtigten der Klasse 08A und teile ihnen mit, dass sich wegen der Schließung der Einrichtung durch das Gesundheitsamt die Klassenfahrt um vier Wochen verschiebt.
+Drucke einen [Serienbrief](https://www.svws.nrw.de/reports-schild-nrw-3) an die Erziehungsberechtigten der Klasse 08A und teile ihnen mit, dass sich wegen der Schließung der Einrichtung durch das Gesundheitsamt die Klassenfahrt um vier Wochen verschiebt.
 
 # 10. Versetzung
 

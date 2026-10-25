@@ -1,5 +1,8 @@
 ---
 sectionCards:
+  - title: "Aktuelles einordnen"
+    details: "Versionen, Änderungen und Handlungsbedarf für Beratung und Moderation prüfen."
+    link: "/wissen/aktuelles"
   - title: "Wichtige Links"
     details: "Dokumentationen, Downloads, Werkzeuge und Informationsquellen öffnen."
     link: "/wissen/links"
@@ -19,6 +22,7 @@ Hier findest Du kurze Praxistipps, zentrale Informationsquellen und den Einstieg
 
 | Du suchst … | Dein Einstieg |
 | --- | --- |
+| Unterschiede zwischen SchILD2 und SchILD3 | [Umstiegsorientierung](./umstieg.md) |
 | Einen veröffentlichten SchILD-Tipp nach Datum | [SchILD-Tipps](./schild-tipps.md) |
 | Einen veröffentlichten SVWS-Hinweis nach Datum | [SVWS-Tipps](./svws-tipps.md) |
 | Eine Lösung zu einem bestimmten Problem | [Probleme & Lösungen nach Themen](/beratung/probleme) |

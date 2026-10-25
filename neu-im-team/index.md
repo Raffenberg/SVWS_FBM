@@ -10,7 +10,7 @@ Schön, dass Du dabei bist! Hier findest Du Orientierung für Deine Arbeit als F
 - [ ] Zugang zur Fachberatercloud über die Koordination oder [support@svws-nrw.de](mailto:support@svws-nrw.de) erfragen.
 - [ ] Die [zentralen Dokumentationen und Informationsquellen](/wissen/links) kennenlernen.
 - [ ] Den [Zusammenhang von Server, MariaDB und SchILD-NRW 3](/beratung/systemueberblick) kennenlernen.
-- [ ] Eine [lokale Test- und Analyseumgebung](/umgebungen/lokale-analyse) mit passenden [Übungsdaten](/Datenbanken/) aufbauen.
+- [ ] Eine [persönliche Testumgebung](/umgebungen/) mit passenden [Übungsdaten](/Datenbanken/) aufbauen.
 - [ ] Die [Fortbildungsangebote](/fortbildung/) ansehen und einen Themenwunsch einbringen.
 
 ## Wo findest Du was?
@@ -19,7 +19,7 @@ Schön, dass Du dabei bist! Hier findest Du Orientierung für Deine Arbeit als F
 | --- | --- |
 | Welche Aufgaben haben die verschiedenen Rollen? | [Rollen & Zusammenarbeit](./rollen.md) |
 | Wie bleibe ich informiert und wen kontaktiere ich? | [Kommunikation & Zugänge](./kommunikation.md) |
-| Wie bereite ich meine erste Schulung vor? | [Schulungen durchführen](/schulungsmodule/) |
-| Wie gehe ich mit einer Rückfrage aus einer Schule um? | [Beratung & Umstieg](/beratung/) |
+| Wie bereite ich meine erste Schulung vor? | [Schulung vorbereiten](/moderation/vorbereiten) |
+| Wie gehe ich mit einer Rückfrage aus einer Schule um? | [Fachberatung](/beratung/) |
 
 Diese Orientierung greift das Willkommensschreiben auf und berücksichtigt die aktuelle Aufgabenverteilung im Team. Das Portal ist öffentlich; Zugänge zu geschützten Angeboten erhältst Du über die genannten Kommunikationswege.

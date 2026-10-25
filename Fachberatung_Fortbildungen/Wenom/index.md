@@ -1,5 +1,12 @@
 # Fortbildung: Webnotenmodul (WeNoM)
 
+
+::: info Veranstaltungsunterlagen – keine vollständige Anleitung
+Diese Seite hält Themen und gegebenenfalls Begleitlinks einer Fortbildung fest. Die mündliche Demonstration ist damit nicht vollständig dokumentiert. Frühere Aussagen zum „aktuellen“ Stand gelten für den damaligen Zusammenhang.
+
+Für die praktische Arbeit: [Offizielle SVWS-Handbücher](https://doku.svws-nrw.de/). Fehlende Ausarbeitungen stehen im [Inhaltsstand](/fortbildung/inhaltsstand).
+:::
+
 ## Inhalte
 
 + Aktueller Entwicklungsstand

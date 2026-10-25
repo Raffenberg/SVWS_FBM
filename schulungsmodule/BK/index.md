@@ -111,11 +111,11 @@ Wähle alle »Aktiven Schüler« aus und trage für das aktuelle Halbjahr ein Ko
 HINWEIS: Drucken
 Lade die Zeugnisformulare des aktuellen Halbjahres herunter! Die Zeugnisformulare für SchILD-NRW wurden von einem „Zeugnisteam“ gemäß den Vorgaben aus der BASS und in Absprache mit dem MSB entwickelt und werden auch weiterentwickelt, wenn rechtliche Vorgaben dies erfordern. Die Dateinamen der Formulare entsprechen den Bezeichnungen der Zeugnisanlagen in der BASS. Es empfiehlt sich, kurz vor den Zeugnissen das aktuelle Zeugnispaket für Deine Schulform von der Seite www.svws.nrw.de herunterzuladen. Die Zeugnisformulare sind so kompliziert aufgebaut, dass von einer Veränderung dringend abzuraten ist. Selbst Änderungen des Zeugniskopfes (z.B. Ergänzung eines Schullogos) müssen nicht in den Zeugnisformularen vorgenommen werden. Für ein Schullogo reicht es aus, unter Schulverwaltung Schule bearbeiten das NRW-Logo durch ein eigenes Logo zu ersetzen. Die Datei »Zeugniseinstellungen.ini« bietet eine Vielzahl weiterer Einstellungsmöglichkeiten.(z.B. die Möglichkeit, bei Schülern mit mehreren Vornamen zu entscheiden, ob nur der erste Vorname oder alle Vornamen auf dem Zeugnis erscheinen, Freitextangaben zum Elternsprechtag usw.)
     
-# 8 [VORBEREITUNG: Download der Zeugnisformulare und Anpassen der Datei »Zeugniseinstellungen.ini«](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Import_neuer_Zeugnisformulare_in_Schild-NRW_(Tutorial))
+# 8 [VORBEREITUNG: Download der Zeugnisformulare und Anpassen der Datei »Zeugniseinstellungen.ini«](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Zeugnisformulare_herunterladen_und_aktualisieren)
 
 ## 8.1 [Zeugnisvorbereitung und Zeugnisdruck](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Zeugnisvorbereitungen_und_Zeugnisdruck_(Einführung_in_SchILD-NRW))
 ## 8.2 [Installation des Externen Notenmoduls](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Installation_des_Externen_Notenmoduls_(Tutorial))
-## 8.2 [Verwendung des Externen Notenmoduls](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Verwendung_des_Externen_Notenmoduls_(Tutorial))
+## 8.2 [Verwendung des Externen Notenmoduls](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Externes_Notenmodul_3_(Tutorial))
 ## 8.3 [Dokumentenverwaltung](https://schulverwaltungsinfos.nrw.de/svws/wiki/index.php?title=Dokumentenverwaltung_(Schüler))
     
 # 9 Halbjahreswechsel

@@ -11,7 +11,7 @@ Der sehnliche und definitiv nachvollziehbare Wunsch etlicher Schulen ist nun in 
 + Download: Über die Homepage: https://www.svws.nrw.de/ (voraussichtlich Ende April)
 + Aktuelle Version: Release 0.3.1
 + Kompatible SVWS-Version: Ab SVWS-Release v1.3.0 (Ende April 2026)
-+ Anleitung: https://doku.svws-nrw.de/svws_module/svws_konferenzuebersicht/
++ Anleitung: https://doku.svws-nrw.de/svws-module/svws-konferenzuebersicht/
 
 
 

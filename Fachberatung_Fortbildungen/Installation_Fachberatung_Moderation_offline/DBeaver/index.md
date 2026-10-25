@@ -1,5 +1,10 @@
 # Öffnen der Datenbanken mit DBeaver
 
+
+::: info Ergänzende Installationsunterlagen
+Diese erhaltene Bildfolge gehört zur zentralen Testumgebung. Dialoge und Versionsstände können abweichen. Für einen neuen Aufbau beginne mit [PC oder Laptop einrichten](/umgebungen/einrichten); die Originalanleitungen dort sind maßgeblich.
+:::
+
 ### Installation von DBeaver
 Installiere DBeaver, sofern das Programm noch nicht auf Deinem Rechner installiert ist:
 https://dbeaver.io/download/

@@ -73,3 +73,16 @@ Die bisherige Sammlung enthält Übungsstände von der Vorbereitung der EF-Planu
 Die bisherige Sammlung findest Du auch im [ursprünglichen Ordner auf GitHub](https://github.com/SVWS-NRW/Schulungsunterlagen/tree/master/Datenbanken/GOSt-DB).
 
 Die Beschreibungen ordnen die vorhandenen Übungsstände ein. Prüfe Softwareversion und Import vor einer Schulung anhand des [Datenbanksteckbriefs](../steckbrief.md).
+
+## Dateien für den Import von Laufbahndaten {#laufbahndaten-import}
+
+Diese vorhandenen Beispieldateien gehören zur Aufgabenreihe [Import von SchILD2-Laufbahndaten](/schulungsmodule/ImportSchILD2Laufbahndaten/). Die Dateinamen beziehen sich teilweise auf 2023/2024; sie sind kein aktueller Schuljahresstand.
+
+| Datei | Einsatz |
+| --- | --- |
+| [Import_Lupo_Kurs_Beispieldateien.zip](https://github.com/Raffenberg/SVWS_FBM/raw/refs/heads/dev/Datenbanken/GOSt-DB/Import_LUPO_KURS/Import_Lupo_Kurs_Beispieldateien.zip) | Zusammengehöriges Beispielpaket; Inhalt vor der Schulung mit den Aufgaben abgleichen |
+| [1_fobi_vor_lupImport.sqlite](https://github.com/Raffenberg/SVWS_FBM/raw/refs/heads/dev/Datenbanken/GOSt-DB/Import_LUPO_KURS/1_fobi_vor_lupImport.sqlite) | Ausgangsdatei vor dem LuPO-Import |
+| [2_fobi_vor_lupImport_nachEKorrektur.sqlite](https://github.com/Raffenberg/SVWS_FBM/raw/refs/heads/dev/Datenbanken/GOSt-DB/Import_LUPO_KURS/2_fobi_vor_lupImport_nachEKorrektur.sqlite) | Vorhandener alternativer Zwischenstand nach E-Korrektur |
+| [Gym_23_24_2.mdb](https://github.com/Raffenberg/SVWS_FBM/raw/refs/heads/dev/Datenbanken/GOSt-DB/Import_LUPO_KURS/Gym_23_24_2.mdb) | SchILD2-Ausgangsbestand für die zugehörigen Beispiele |
+
+Die zugehörigen LuPO-, Blockungs- und Kursdateien liegen im [gemeinsamen Beispielordner](https://github.com/Raffenberg/SVWS_FBM/tree/dev/Datenbanken/GOSt-DB/Import_LUPO_KURS). Verwende die Dateien als zusammengehörigen Bestand; prüfe den Import mit Deinen Versionen.

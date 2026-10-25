@@ -1,5 +1,9 @@
 # Datenbanken prüfen und reparieren {#inkonsistente-datenbank-reparieren}
 
+::: warning Fallbeispiel mit begrenzter Übertragbarkeit
+Diese Seite beschreibt eine konkrete Datenkonstellation. Tabellen-IDs und SQL-Korrekturen sind keine allgemeine Reparaturregel. Arbeite an einer gesicherten Kopie und prüfe Ursache und Ergebnis fachlich. Der [Beratungsablauf](/beratung/ablauf) und die [Werkzeuggrenzen](/umgebungen/dbeaver) ordnen den Einsatz ein.
+:::
+
 Im folgenden wird die Reparatur einer SVWS-MariaDB anhand eines Beispiels erläutert. Die Anleitung ist für interessierte Fachberater vorgesehen.
 
 ## Problem: Mehrfacheinträge bei den Schuljahresabschnitten
