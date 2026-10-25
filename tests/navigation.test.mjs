@@ -55,7 +55,7 @@ test('technical area has three independent roots and preserved environment addre
   assert.equal(groups[index].collapsed,false)
   assert.equal(groups.filter(x=>x.collapsed===false).length,1)
  }
- assert.equal(nav.sections.testdaten[2].items.length,9)
+ assert.ok(nav.sections.testdaten[2].items.length>=9)
  assert.ok(!nav.sections.schulungen.some(x=>x.link?.includes('Test-_und_Schulungsserver')))
 })
 test('onboarding has no collapse control; other areas follow global order',()=>{

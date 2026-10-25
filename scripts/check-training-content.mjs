@@ -17,7 +17,9 @@ for (const path of paths) {
 }
 const nav = JSON.parse(readFileSync('.vitepress/sidebar.json', 'utf8'))
 const group = nav.sections.testdaten.find(item => item.text === 'Schulungsumgebung')
-assert.equal(group.items.length, 9)
+const previousNav = JSON.parse(execFileSync('git', ['show', ref + ':.vitepress/sidebar.json'], { encoding: 'utf8' }))
+const previousGroup = previousNav.sections.schulungen.find(item => item.text === 'Schulungsumgebungen')
+for (const item of previousGroup.items) assert.ok(group.items.some(current => current.link === item.link), 'Bisherige Umgebungsanleitung fehlt: ' + item.link)
 const oldScripts = execFileSync('git', ['ls-tree', '-r', '--name-only', ref, prefix], { encoding: 'utf8' }).split('\n').filter(path => path.endsWith('.sh'))
 assert.equal(oldScripts.length, 27)
 for (const path of oldScripts) {

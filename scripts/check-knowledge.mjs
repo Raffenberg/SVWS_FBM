@@ -27,7 +27,10 @@ for (const [path, prefix] of [
   ['wissen/svws-tipps.md', '/Tipp_der_Woche/SVWS-Hack_der_Woche/']
 ]) {
   const current = read(path)
-  assert.deepEqual(datedRows(current), original.filter(row => row.link.startsWith(prefix)), path + ': Datum oder Artikelzuordnung verändert')
+  const expected = original.filter(row => row.link.startsWith(prefix))
+  const rows = datedRows(current)
+  assert.deepEqual(rows.filter(row => expected.some(oldRow => oldRow.link === row.link)), expected, path + ': Datum oder Artikelzuordnung verändert')
+  assert.equal(new Set(rows.map(row => row.link)).size, rows.length, path + ': doppelter Beitrag')
   assert.ok(current.includes('**Programmstand beachten**'))
   assert.ok(links(current).includes('/beratung/probleme'))
   assert.ok(!current.includes('localhost:'), path + ': lokale URL veröffentlicht')

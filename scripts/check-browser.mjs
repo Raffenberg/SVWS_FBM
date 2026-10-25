@@ -74,7 +74,9 @@ try {
  await search.press('Escape')
  await visit('/wissen/aktuelles')
  assert.equal(await page.locator('.latest-tips tbody tr').count(),6)
- assert.ok((await page.locator('.latest-tips tbody tr').first().innerText()).includes('12.10.2026'))
+ const dates=await page.locator('.latest-tips tbody tr td:first-child').allTextContents()
+ const stamps=dates.map(date=>{const [d,m,y]=date.split('.').map(Number);return Date.UTC(y,m-1,d)})
+ assert.deepEqual(stamps,[...stamps].sort((a,b)=>b-a))
  const shots=['/','/beratung/','/moderation/','/technik/','/Datenbanken/schulungen/','/Datenbanken/schulungen/oberstufe-qphase','/Datenbanken/problemdatenbanken','/umgebungen/einrichten','/umgebungen/dbeaver','/Fachberatung_Anleitungen/Test-_und_Schulungsserver/','/fortbildung/inhaltsstand','/wissen/aktuelles']
  for(const scheme of ['light','dark']) {
   await page.evaluate(mode=>{document.documentElement.classList.toggle('dark',mode==='dark');localStorage.setItem('vitepress-theme-appearance',mode)},scheme)
