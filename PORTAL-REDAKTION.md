@@ -4,10 +4,12 @@
 
 Die sechs Bereiche und ihre Reihenfolge sind in der gemeinsamen Navigation festgelegt. Artikelpfade und vorhandene Daten-/Medienbestände bleiben erhalten. Die Schulungsumgebung gehört jetzt zu Datenbanken & Installation.
 
+Testdatenbanken und Schulungsdatenbanken sind jeweils ein Sammelartikel mit Kapitelverzeichnis rechts. Datenbanken enthält links nur diese beiden Artikel und Problemdatenbanken. Übersicht führt zur Einstiegsseite der gesamten Rubrik. Frühere Schulform- und Moduladressen sind ausschließlich Weiterleitungen; ihre Datenbankdateien bleiben unverändert.
+
 ## Fachliche Grenzen
 
 - Die neuen Beratungs- und Moderationsabläufe führen durch konkrete Aufgaben, ohne eine zweite Programmdokumentation aufzubauen.
-- Zwölf Modulseiten ordnen vorhandene Datenbeschreibungen und Lücken ein. Es wurde keine vollständige fachliche Erprobung aller Aufgaben behauptet.
+- Der Sammelartikel Schulungsdatenbanken ordnet vorhandene Dateien und Lücken in zwölf Modulkapiteln ein. Es wurde keine vollständige fachliche Erprobung aller Aufgaben behauptet.
 - Zwanzig frühere Fortbildungsseiten sind Veranstaltungsunterlagen. Referierende müssen fehlende Demonstrationen für eine vollständige Anleitung nacharbeiten.
 - Alte Vergleichsmaterialien bleiben erreichbar. Die zentrale Übernahme dauerhafter SchILD-Unterschiede in die SchILD3-Dokumentation ist ein offener Auftrag außerhalb dieses Repositories.
 - Keine garantierte MDB-Reparatur, keine pauschale Hardwarefreigabe und keine Betriebsberatung für IT-Dienstleister mit mehreren Schulen.

@@ -496,6 +496,12 @@
     ],
     "testdaten": [
       {
+        "text": "Übersicht",
+        "link": "/technik/",
+        "description": "Datenbanken, Testumgebung und Schulungsumgebung im Überblick.",
+        "items": []
+      },
+      {
         "text": "Datenbanken",
         "link": "/Datenbanken/",
         "description": "Den passenden Datenbestand auswählen.",
@@ -504,118 +510,17 @@
           {
             "text": "Testdatenbanken",
             "link": "/Datenbanken/testdaten/",
-            "description": "Schulformen und besondere Testfälle.",
-            "collapsed": true,
-            "items": [
-              {
-                "text": "Grundschule",
-                "link": "/Datenbanken/Grundschule/",
-                "description": "Vier SQLite-Datenbanken für 2026/2027, wahlweise mit Leistungsdaten."
-              },
-              {
-                "text": "Sekundarstufe I",
-                "description": "Offizieller Gesamtschul-Testbestand für Sek I; Kurszuordnungen vor Einsatz prüfen.",
-                "link": "/Datenbanken/testdaten/sekundarstufe-i"
-              },
-              {
-                "text": "Sekundarstufe II - bis 2026",
-                "link": "/Datenbanken/GOSt-DB/",
-                "description": "Bisherige Übungsstände für EF-Planung, Laufbahnen, Blockung und Klausurplanung."
-              },
-              {
-                "text": "Sekundarstufe II ab 2026",
-                "link": "/Datenbanken/GOSt-DB_2026/",
-                "description": "Auf 2026.2 angepasste Übungsstände und Planungsmatrix; Laufbahnen für Abi2030."
-              },
-              {
-                "text": "Gesamtschule",
-                "link": "/Datenbanken/Gesamtschule/",
-                "description": "Anonymisierte SQLite-Datenbank ge_2026_1 für Schulungen."
-              },
-              {
-                "text": "Berufskolleg",
-                "description": "Offizieller BK-Testbestand; Schuljahreszuordnungen vor Einsatz prüfen.",
-                "link": "/Datenbanken/testdaten/berufskolleg"
-              }
-            ]
+            "description": "Schulformen und besondere Testfälle."
           },
           {
             "text": "Schulungsdatenbanken",
             "link": "/Datenbanken/schulungen/",
-            "description": "Ausgangsstände nach Schulungsmodul.",
-            "collapsed": true,
-            "items": [
-              {
-                "text": "Basisschulung",
-                "link": "/Datenbanken/schulungen/basisschulung",
-                "description": "Grundlagen und erste Schritte in SchILD-NRW."
-              },
-              {
-                "text": "Grundschule Grundlagen",
-                "link": "/Datenbanken/schulungen/grundschule-grundlagen",
-                "description": "Grundlegende Arbeitsabläufe an Grundschulen."
-              },
-              {
-                "text": "Grundschule Zeugnisse",
-                "link": "/Datenbanken/schulungen/grundschule-zeugnisse",
-                "description": "Leistungsdaten und Zeugnisse an Grundschulen."
-              },
-              {
-                "text": "Sekundarstufe I",
-                "link": "/Datenbanken/schulungen/sekundarstufe-i",
-                "description": "Unterricht, Halbjahreswechsel und Zeugnisse in der Sekundarstufe I."
-              },
-              {
-                "text": "Sekundarstufe II - EF",
-                "link": "/Datenbanken/schulungen/oberstufe-ef",
-                "description": "Die kommende EF planen und die Oberstufen-App vorbereiten."
-              },
-              {
-                "text": "Sekundarstufe II - Q1/Q2 und Abitur",
-                "link": "/Datenbanken/schulungen/oberstufe-qphase",
-                "description": "Laufbahnen der Q-Phase prüfen und das Abitur vorbereiten."
-              },
-              {
-                "text": "Sekundarstufe II - Klausurplanung",
-                "link": "/Datenbanken/schulungen/klausurplanung",
-                "description": "Klausurvorgaben, Schienen und Termine planen."
-              },
-              {
-                "text": "Sekundarstufe II - Laufbahnplanung",
-                "link": "/Datenbanken/schulungen/laufbahndaten",
-                "description": "Laufbahndaten aus SchILD-NRW 2 übernehmen und weiterbearbeiten."
-              },
-              {
-                "text": "Berufskolleg",
-                "link": "/Datenbanken/schulungen/berufskolleg",
-                "description": "Schulungsmaterial für die Arbeit am Berufskolleg."
-              },
-              {
-                "text": "Reports erstellen",
-                "link": "/Datenbanken/schulungen/reports",
-                "description": "Lehrer- und Schülerlisten als Reports erstellen."
-              },
-              {
-                "text": "SchILD-NRW 2 zu 3",
-                "link": "/Datenbanken/schulungen/schild2-zu-3",
-                "description": "Den Wechsel von SchILD-NRW 2 zu 3 anhand von Aufgaben üben."
-              },
-              {
-                "text": "Umstieg zu SchILD-NRW 3",
-                "link": "/Datenbanken/schulungen/umstieg-vergleich",
-                "description": "Arbeitsabläufe in SchILD-NRW 3 und im SVWS-Client vergleichen."
-              }
-            ]
+            "description": "Ausgangsstände nach Schulungsmodul."
           },
           {
             "text": "Problemdatenbanken",
             "link": "/Datenbanken/problemdatenbanken",
             "description": "SQLite-Sicherungen geschützt austauschen."
-          },
-          {
-            "text": "Datenbanksteckbrief",
-            "link": "/Datenbanken/steckbrief",
-            "description": "Eignung und Ausgangszustand dokumentieren."
           }
         ],
         "readingOrder": "none"
@@ -1148,6 +1053,25 @@
   "aliases": {
     "/schulungsmodule/GS/": "/schulungsmodule/",
     "/schulungsmodule/gost/": "/schulungsmodule/",
-    "/Tipp_der_Woche/": "/wissen/"
+    "/Tipp_der_Woche/": "/wissen/",
+    "/Datenbanken/Grundschule/": "/Datenbanken/testdaten/#grundschule",
+    "/Datenbanken/testdaten/sekundarstufe-i": "/Datenbanken/testdaten/#sekundarstufe-i",
+    "/Datenbanken/GOSt-DB/": "/Datenbanken/testdaten/#sekundarstufe-ii-bis-2026",
+    "/Datenbanken/GOSt-DB_2026/": "/Datenbanken/testdaten/#sekundarstufe-ii-ab-2026",
+    "/Datenbanken/Gesamtschule/": "/Datenbanken/testdaten/#gesamtschule",
+    "/Datenbanken/testdaten/berufskolleg": "/Datenbanken/testdaten/#berufskolleg",
+    "/Datenbanken/schulungen/basisschulung": "/Datenbanken/schulungen/#basisschulung",
+    "/Datenbanken/schulungen/grundschule-grundlagen": "/Datenbanken/schulungen/#grundschule-grundlagen",
+    "/Datenbanken/schulungen/grundschule-zeugnisse": "/Datenbanken/schulungen/#grundschule-zeugnisse",
+    "/Datenbanken/schulungen/sekundarstufe-i": "/Datenbanken/schulungen/#sekundarstufe-i",
+    "/Datenbanken/schulungen/oberstufe-ef": "/Datenbanken/schulungen/#oberstufe-ef",
+    "/Datenbanken/schulungen/oberstufe-qphase": "/Datenbanken/schulungen/#oberstufe-qphase",
+    "/Datenbanken/schulungen/klausurplanung": "/Datenbanken/schulungen/#klausurplanung",
+    "/Datenbanken/schulungen/laufbahndaten": "/Datenbanken/schulungen/#laufbahndaten",
+    "/Datenbanken/schulungen/berufskolleg": "/Datenbanken/schulungen/#berufskolleg",
+    "/Datenbanken/schulungen/reports": "/Datenbanken/schulungen/#reports",
+    "/Datenbanken/schulungen/schild2-zu-3": "/Datenbanken/schulungen/#schild2-zu-3",
+    "/Datenbanken/schulungen/umstieg-vergleich": "/Datenbanken/schulungen/#umstieg-vergleich",
+    "/Datenbanken/steckbrief": "/Datenbanken/"
   }
 }

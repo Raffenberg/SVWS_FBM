@@ -1,4 +1,4 @@
-# Datenbanken & Installation
+# Übersicht: Datenbanken & Installation
 
 Hier bereitest Du die Technik für Deine Aufgabe vor. Du musst weder alle Programme kennen noch alle Installationsverfahren beherrschen. Entscheide zuerst, **ob Du selbst einen Fall untersuchen oder einen Schulungsraum bereitstellen möchtest**.
 
