@@ -498,7 +498,8 @@
       {
         "text": "Übersicht",
         "link": "/technik/",
-        "description": "Datenbanken, Testumgebung und Schulungsumgebung im Überblick."
+        "description": "Datenbanken, Testumgebung und Schulungsumgebung im Überblick.",
+        "items": []
       },
       {
         "text": "Datenbanken",

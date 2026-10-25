@@ -32,7 +32,10 @@ try {
   assert.deepEqual(await roots().locator(':scope > .item .text').allTextContents(),menu.map(x=>x.text),path)
   assert.deepEqual(await roots().last().locator('a .text').allTextContents(),menu.at(-1).items.map(x=>x.text),path)
   assert.ok((await roots().last().getAttribute('class')).includes('collapsed'),path)
-  if(section==='testdaten') assert.deepEqual(await roots().evaluateAll(nodes=>nodes.map(n=>n.classList.contains('collapsed'))),menu.map(x=>!!x.collapsed),path)
+  if(section==='testdaten') {
+   assert.deepEqual(await roots().evaluateAll(nodes=>nodes.map(n=>n.classList.contains('collapsed'))),menu.map(x=>!!x.collapsed),path)
+   assert.equal(await roots().first().locator(':scope > .item .caret').count(),0,'Übersicht ohne Ausklappmarker')
+  }
   else {
    assert.equal(await roots().first().locator(':scope > .item .text').innerText(),nav.sectionLabels[section],path)
    if(section==='team') assert.equal(await roots().first().locator(':scope > .item .caret').count(),0)
