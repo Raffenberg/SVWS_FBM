@@ -1,8 +1,8 @@
 ---
 layout: home
-title: SVWS-Crew
+title: SVWS Team-Hub
 hero:
-  name: SVWS-Crew
+  name: SVWS Team-Hub
   actions:
     - theme: brand
       text: Fachberatung
