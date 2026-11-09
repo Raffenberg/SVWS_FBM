@@ -1,10 +1,8 @@
 ---
 layout: home
-title: Fachberatung und Moderation
+title: SVWS-Crew
 hero:
-  name: SVWS-Teamportal
-  text: Sicher beraten. Verständlich schulen.
-  tagline: Schritt für Schritt zu Deiner Aufgabe – mit gemeinsam gepflegten Anleitungen und Daten.
+  name: SVWS-Crew
   actions:
     - theme: brand
       text: Fachberatung
