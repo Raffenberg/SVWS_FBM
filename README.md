@@ -82,28 +82,7 @@ Grundsätzlich ist es möglich, diese Doku mit einfachsten Hilfsmitteln oder auc
 
 Je nach Betriebssystem kann über die offizielle Seite von [NodeJS](https://nodejs.org) die aktuelle Version heruntergeladen und installiert werden.
 
-Anschließend empfiehlt es sich der Anleitung dieser Doku für die Installation von VS-Code zu folgen und die Erweiterungen für ESLint und Vue zu installieren, die dort auch aufgeführt sind.
-
-Sobald dies eingerichtet ist, müssen ein paar Schritte regelmäßig durchgeführt werden, dazu öffnet man in VS Code über das Menü das `Terminal`.
-
-Nach jedem `Pull` mit Git, um das lokale Repository zu aktualisieren, muss nun ein Update der lokalen NodeJS-Module erfolgen:
-
-```bash
-# im Terminal diesen Befehl ausführen
-npm ci
-```
-
-Dadurch wird der im Lockfile festgelegte Paketstand reproduzierbar installiert. Paketaktualisierungen werden gesondert durchgeführt.
-
-Beim allerersten Mal sollte man bei VS Code nun einmal das Fenster der Doku schließen und neu öffnen, damit alles funktioniert.
-
-Funktionieren bedeutet, dass Fehler in der `config.ts`, wo die Menüstruktur u.a. eingerichtet wird, rot unterschlängelt werden beziehungsweise Warnungen gelb unterschlängelt werden. Das betrifft v.a. das Fehlen von Kommas, falsche Leerzeichen oder zu wenig/zu viele Tabs. Geht man mit dem Mauszeiger über den unterschlängelten Fehler, wird einem angezeigt, was falsch ist.
-
-Viele Fehler können dann per F1 und dem Befehl `ESLint: Fix all auto-fixable Problems` automatisch behoben werden.
-
-Auch Fehler in den Markdown-Dateien werden angezeigt.
-
-Die Regeln, auf denen die angezeigten Fehler beruhen gehen auf die verwendeten Einstellungen in der `eslint.config.js`-Datei zurück, die für die Prüfung aller Daten zuständig ist. Gleiches gilt für Typescript-Fehler, die ebenfalls über die vue-Erweiterung geprüft werden.
+Nach jedem Git-Pull installierst Du den im Lockfile festgelegten Paketstand mit `npm ci`. Paketaktualisierungen werden gesondert durchgeführt.
 
 ## Vorschau und Prüfung
 
@@ -234,4 +213,4 @@ Für eine lokale Browserprüfung nach dem Build: `npm install --no-save --packag
 
 Der Bestandsvergleich verwendet standardmäßig den geprüften FBM-dev-Stand `022646efd04bf6a2e6c13a819b8974740588cf59`. Dieser bleibt als Regressionsreferenz bestehen; eine spätere bewusste Inhaltsänderung benötigt eine gesonderte Aktualisierung der Referenz über `CONTENT_BASE`.
 
-Der vollständige Abgleich aller 16 Vorschläge und bewusst beibehaltene Unterschiede stehen in [HARMONISIERUNG.md](./HARMONISIERUNG.md). ESLint/Inits und PDF-/Druckfunktionen bleiben gesonderte Folgethemen.
+Der vollständige Abgleich aller 16 Vorschläge und bewusst beibehaltene Unterschiede stehen in [HARMONISIERUNG.md](./HARMONISIERUNG.md). Die Inits und die PDF-/Druckfunktionen bleiben gesonderte Folgethemen.

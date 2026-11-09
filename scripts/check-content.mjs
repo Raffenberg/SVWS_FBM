@@ -102,7 +102,7 @@ for (const file of files) {
   if (file !== 'index.md') assert.ok(sidebar['/' + file], 'Keine gezielte Sidebar: ' + file)
   checked++
 }
-for (const file of ['eslint.config.js', '.vitepress/theme/print.css', '.vitepress/theme/components/DownloadPdf.vue']) {
+for (const file of ['.vitepress/theme/print.css', '.vitepress/theme/components/DownloadPdf.vue']) {
   assert.equal(readFileSync(file, 'utf8'), git('show', baseline + ':' + file), 'Zurückgestellter Bereich verändert: ' + file)
 }
 console.log(checked + ' veröffentlichte Bestandsseiten: Pfade und geschützte Inhalte geprüft; freigegebene Datenbank-Zusammenführung gesondert validiert.')

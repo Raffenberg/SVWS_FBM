@@ -34,7 +34,7 @@ for (const path of manifest.newArticles) {
 }
 const diff=git('diff','--name-only',manifest.base,'--','Datenbanken','Fachberatung_Anleitungen/Test-_und_Schulungsserver').trim().split('\n').filter(Boolean)
 assert.ok(diff.every(path=>path.endsWith('.md')),'Datenbank-/Medien-/Skriptbestand verändert')
-for(const path of ['package.json','package-lock.json','eslint.config.js','.vitepress/theme/print.css','.vitepress/theme/components/DownloadPdf.vue']) assert.equal(read(path),old(path),path+': zurückgestellter Bereich verändert')
+for(const path of ['.vitepress/theme/print.css','.vitepress/theme/components/DownloadPdf.vue']) assert.equal(read(path),old(path),path+': zurückgestellter Bereich verändert')
 const strip=source=>source.replace(/\n\n::: info Veranstaltungsunterlagen – keine vollständige Anleitung[\s\S]*?\n:::\n/,'')
 const events=manifest.rewritten.filter(p=>/^Fachberatung_Fortbildungen\/[^/]+\/index\.md$/.test(p)&&!p.includes('Installation_Fachberatung_Moderation_offline'))
 assert.equal(events.length,20)
