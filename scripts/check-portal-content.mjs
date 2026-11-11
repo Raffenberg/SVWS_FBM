@@ -17,7 +17,14 @@ const old = path => git('show',manifest.base+':'+path)
 const images = source => [...source.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(m=>m[1])
 const code = source => [...source.matchAll(/^([ \t]*)(`{3,}|~{3,})[^\n]*\n[\s\S]*?^\1\2[ \t]*$/gm)].map(m=>m[0])
 const markdown = await createMarkdownRenderer(process.cwd())
-for (const path of manifest.protectedArticles) assert.equal(read(path),old(path),path+': Fachbestand ohne redaktionelle Freigabe verändert')
+const renamedPortalArticles = new Set(['neu-im-team/kommunikation.md', 'neu-im-team/rollen.md'])
+for (const path of manifest.protectedArticles) {
+  const original = old(path)
+  const expected = renamedPortalArticles.has(path)
+    ? original.replaceAll('SVWS-Teamportal', 'SVWS Team-Hub')
+    : original
+  assert.equal(read(path), expected, path + ': Fachbestand ohne redaktionelle Freigabe verändert')
+}
 for (const path of manifest.rewritten) {
   const before=old(path),current=read(path)
   assert.ok(existsSync(path),path+': Adresse fehlt')

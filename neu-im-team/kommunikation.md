@@ -1,6 +1,6 @@
 # Kommunikation & Zugänge
 
-Das SVWS-Teamportal ist eine öffentlich erreichbare Wissensdatenbank. Es bündelt vorhandene Materialien und Lösungswissen für Fachberatung und Moderation aus allen Bezirksregierungen. Der Austausch erfolgt im Forum, über die Koordinatorinnen und Koordinatoren und auf der jährlichen Convention in Düsseldorf.
+Das SVWS Team-Hub ist eine öffentlich erreichbare Wissensdatenbank. Es bündelt vorhandene Materialien und Lösungswissen für Fachberatung und Moderation aus allen Bezirksregierungen. Der Austausch erfolgt im Forum, über die Koordinatorinnen und Koordinatoren und auf der jährlichen Convention in Düsseldorf.
 
 ## Informationen über die Bezirksregierungen
 

@@ -27,4 +27,4 @@ Mit der [Checkliste für Beratungsanfragen](/beratung/anfrage-vorbereiten) berei
 
 Informationen werden vor allem über die Fachberater-Koordinationen der Bezirksregierungen weitergeleitet. Der Austausch findet im [Forum](/neu-im-team/kommunikation#forum-geschutzter-austausch), über die Koordinationen und auf der jährlichen [SVWS-Convention in Düsseldorf](/fortbildung/convention) statt.
 
-Das öffentliche SVWS-Teamportal bündelt dazu Materialien und Lösungswissen über Bezirksregierungsgrenzen hinweg. Es ist die gemeinsame Wissensdatenbank; Diskussionen und fallbezogener Austausch bleiben in den genannten Kommunikationswegen.
+Das öffentliche SVWS Team-Hub bündelt dazu Materialien und Lösungswissen über Bezirksregierungsgrenzen hinweg. Es ist die gemeinsame Wissensdatenbank; Diskussionen und fallbezogener Austausch bleiben in den genannten Kommunikationswegen.
