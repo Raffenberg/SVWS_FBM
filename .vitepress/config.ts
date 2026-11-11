@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     return {
         lang: 'de-DE',
         base: env.BASE === undefined ? '/Schulungsunterlagen/' : env.BASE,
-        title: 'SVWS-Teamportal',
+        title: 'SVWS Team-Hub',
         description: 'Wissen, Schulungsmaterial und Austausch für Fachberatung und Moderation rund um SchILD-NRW und den SVWS-Server.',
         lastUpdated: true,
         transformPageData(pageData) {
