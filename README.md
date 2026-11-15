@@ -12,7 +12,7 @@ npm.cmd ci
 npm.cmd run docs:dev
 ```
 
-`npm.cmd` vermeidet die PowerShell-Sperre für `npm.ps1`; eine Änderung der Ausführungsrichtlinie ist nicht nötig. Der laufende Server zeigt seine Adresse im Terminal an. Wegen des bisherigen Basisverzeichnisses ist sie normalerweise `http://localhost:5173/Schulungsunterlagen/`. Beenden mit Strg+C.
+`npm.cmd` vermeidet die PowerShell-Sperre für `npm.ps1`; eine Änderung der Ausführungsrichtlinie ist nicht nötig. Der laufende Server zeigt seine Adresse im Terminal an. Standardmäßig ist das `http://localhost:5173/`. Beenden mit Strg+C.
 
 Alternativ für diese Sitzung ohne Unterpfad:
 

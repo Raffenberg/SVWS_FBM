@@ -6,7 +6,7 @@ import { overviewRows } from '../.vitepress/overview.mjs'
 const catalog=JSON.parse(readFileSync('tests/database-catalogs.json','utf8'))
 const nav=JSON.parse(readFileSync('.vitepress/sidebar.json','utf8'))
 const origin=process.env.PREVIEW_URL??'http://127.0.0.1:4173'
-const base=process.env.BASE??'/Schulungsunterlagen/'
+const base=process.env.BASE??'/'
 const urlFor=link=>origin+base+link.slice(1)
 const local=href=>new URL(href,urlFor('/')).pathname.slice(base.length-1)
 const browser=await chromium.launch()

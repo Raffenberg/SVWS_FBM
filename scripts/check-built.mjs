@@ -2,7 +2,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs'
 import { resolve, dirname, relative, join } from 'node:path'
 import assert from 'node:assert/strict'
 const root = resolve('.vitepress/dist')
-const base = process.env.BASE ?? '/Schulungsunterlagen/'
+const base = process.env.BASE ?? '/'
 const files = readdirSync(root, { recursive: true }).filter(p => String(p).endsWith('.html')).map(String)
 const errors = []
 const decode = text => text.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"')
