@@ -26,6 +26,8 @@ concurrency:
 jobs:
   # Build job
   build:
+    env:
+      BASE: /Schulungsunterlagen/
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

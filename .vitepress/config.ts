@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     return {
         lang: 'de-DE',
-        base: env.BASE === undefined ? '/Schulungsunterlagen/' : env.BASE,
+        base: env.BASE ?? '/',
         title: 'SVWS Team-Hub',
         description: 'Wissen, Schulungsmaterial und Austausch für Fachberatung und Moderation rund um SchILD-NRW und den SVWS-Server.',
         lastUpdated: true,
